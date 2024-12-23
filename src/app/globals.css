@@ -5,11 +5,13 @@
 :root {
   --primary-background: rgba(255, 255, 255, 0.6);
   --primary-foreground: rgb(0, 0, 0);
+  --primary-accent: rgba(255, 255, 255, 0.6);
 }
 
 body.dark-theme {
   --primary-background: rgba(28, 33, 39, 0.8);
   --primary-foreground: rgba(255, 255, 255, 0.835);
+  --primary-accent: rgb(9, 10, 12);
 }
 
 @font-face {

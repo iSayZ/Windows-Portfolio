@@ -12,6 +12,7 @@ export default {
       colors: {
         background: 'var(--primary-background)',
         foreground: 'var(--primary-foreground)',
+        accent: 'var(--primary-accent)',
       },
       borderRadius: {
         'custom-sm': '3px',
