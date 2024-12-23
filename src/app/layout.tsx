@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { Background } from './components/Background';
 
 export const metadata: Metadata = {
   title: 'Windows Portfolio - Alexis Estrine',
@@ -14,7 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body>{children}</body>
+      <body>
+        <Background />
+        {children}
+      </body>
     </html>
   );
 }
