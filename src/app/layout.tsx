@@ -3,6 +3,7 @@ import './globals.css';
 import { Background } from './components/Background';
 import { ThemeToggle } from './components/ThemeToggle';
 import { ThemeProvider } from './context/ThemeContext';
+import { Taskbar } from './components/Taskbar';
 
 export const metadata: Metadata = {
   title: 'Windows Portfolio - Alexis Estrine',
@@ -22,6 +23,7 @@ export default function RootLayout({
           <Background />
           <ThemeToggle />
           {children}
+          <Taskbar />
         </ThemeProvider>
       </body>
     </html>

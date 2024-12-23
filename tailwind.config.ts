@@ -10,9 +10,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: 'var(--primary-bg-color)',
-        secondary: 'var(--primary-text-color)',
-        accent: 'var(--accent-color)',
+        background: 'var(--primary-background)',
+        foreground: 'var(--primary-foreground)',
+      },
+      borderRadius: {
+        'custom-sm': '3px',
       },
     },
   },
