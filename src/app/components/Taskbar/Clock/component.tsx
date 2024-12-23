@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { getUserPreferences, formatTime, formatDate } from './utils/time';
 import { CalendarPortal } from './CalendarPortal';
 
@@ -11,6 +11,8 @@ const Clock: React.FC = () => {
         locale: '',
         uses24Hour: true
     });
+
+    const toggleButtonRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         const userPrefs = getUserPreferences();
@@ -34,6 +36,7 @@ const Clock: React.FC = () => {
         <>
             <div 
                 className="flex flex-col items-end justify-center ml-auto px-4 hover:bg-background rounded-custom-sm h-full cursor-pointer"
+                ref={toggleButtonRef}
                 onClick={() => setIsCalendarOpen(!isCalendarOpen)}
             >
                 <p className="text-sm">{currentTime}</p>
@@ -44,6 +47,7 @@ const Clock: React.FC = () => {
                     isOpen={isCalendarOpen}
                     onClose={() => setIsCalendarOpen(false)}
                     currentDate={currentDate}
+                    toggleButtonRef={toggleButtonRef}
                 />
             }
         </>

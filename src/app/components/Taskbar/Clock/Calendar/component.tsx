@@ -5,9 +5,10 @@ interface CalendarProps {
   isOpen: boolean;
   onClose: () => void;
   currentDate: string;
+  toggleButtonRef: React.RefObject<HTMLDivElement | null>;
 }
 
-const Calendar: React.FC<CalendarProps> = ({ isOpen, onClose, currentDate }) => {
+const Calendar: React.FC<CalendarProps> = ({ isOpen, onClose, currentDate, toggleButtonRef }) => {
   const [viewDate, setViewDate] = useState(() => {
     const [day, month, year] = currentDate.split('/').map(Number);
     return new Date(year, month - 1, day);
@@ -77,9 +78,12 @@ const Calendar: React.FC<CalendarProps> = ({ isOpen, onClose, currentDate }) => 
     if (!isOpen) return;
 
     const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        onClose();
-      }
+        if (
+            menuRef.current && !menuRef.current.contains(event.target as Node) && 
+            toggleButtonRef.current && !toggleButtonRef.current.contains(event.target as Node)
+        ) {
+            onClose(); // Ferme le menu si l'on clique en dehors
+        }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
