@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Background } from './components/Background';
+import { ThemeToggle } from './components/ThemeToggle';
+import { ThemeProvider } from './context/ThemeContext';
 
 export const metadata: Metadata = {
   title: 'Windows Portfolio - Alexis Estrine',
@@ -16,8 +18,11 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body>
-        <Background />
-        {children}
+        <ThemeProvider>
+          <Background />
+          <ThemeToggle />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

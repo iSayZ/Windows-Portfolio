@@ -3,15 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary-bg: rgba(255, 255, 255, 0.6);
+  --primary-text: rgb(0, 0, 0);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body.dark-theme {
+  --primary-bg: rgba(28, 33, 39, 0.8);
+  --primary-text: rgba(255, 255, 255, 0.835);
 }
 
 @font-face {
@@ -22,7 +20,5 @@
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: 'Segoe UI Variable', sans-serif;
 }
