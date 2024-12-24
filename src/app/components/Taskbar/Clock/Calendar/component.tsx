@@ -1,12 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-
-interface CalendarProps {
-  isOpen: boolean;
-  onClose: () => void;
-  currentDate: string;
-  toggleButtonRef: React.RefObject<HTMLDivElement | null>;
-}
+import { CalendarProps } from './types';
 
 const Calendar: React.FC<CalendarProps> = ({ isOpen, onClose, currentDate, toggleButtonRef }) => {
   const [viewDate, setViewDate] = useState(() => {
