@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { CalendarProps } from './types';
+import useClickOutside from '@/app/hooks/useClickOutside';
 
 const Calendar: React.FC<CalendarProps> = ({ isOpen, onClose, currentDate, toggleButtonRef }) => {
   const [viewDate, setViewDate] = useState(() => {
@@ -10,6 +11,11 @@ const Calendar: React.FC<CalendarProps> = ({ isOpen, onClose, currentDate, toggl
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
   const menuRef = useRef<HTMLDivElement>(null);
+  useClickOutside({
+    isOpen,
+    onClose,
+    refs: [toggleButtonRef, menuRef]
+  });
   
   const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 
                   'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
@@ -67,24 +73,6 @@ const Calendar: React.FC<CalendarProps> = ({ isOpen, onClose, currentDate, toggl
     
     return days;
   };
-
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const handleClickOutside = (event: MouseEvent) => {
-        if (
-            menuRef.current && !menuRef.current.contains(event.target as Node) && 
-            toggleButtonRef.current && !toggleButtonRef.current.contains(event.target as Node)
-        ) {
-            onClose(); // Ferme le menu si l'on clique en dehors
-        }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
