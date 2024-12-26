@@ -66,7 +66,7 @@ const SoundButton: React.FC = () => {
       <Tooltip content={`Volume ${volume}%`}>
         <button
           ref={toggleButtonRef}
-          className="flex items-center justify-center size-7 hover:bg-accent rounded"
+          className="flex items-center justify-center size-7 hover:bg-accent transition rounded"
           aria-label="Volume settings"
           onClick={toggleSoundMenu}
         >

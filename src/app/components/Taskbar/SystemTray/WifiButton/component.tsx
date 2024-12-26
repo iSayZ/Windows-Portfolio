@@ -17,7 +17,7 @@ const WifiButton: React.FC = () => {
       <Tooltip content="Wifi connected">
         <button
           ref={toggleButtonRef}
-          className="flex items-center justify-center size-7 hover:bg-accent rounded"
+          className="flex items-center justify-center size-7 hover:bg-accent transition rounded"
           aria-label="Wifi settings"
           onClick={toggleWifiMenu}
         >

@@ -18,7 +18,7 @@ const BatteryButton: React.FC = () => {
       <Tooltip content={`Battery ${batteryPercentage}%`}>
         <button
           ref={toggleButtonRef}
-          className="flex items-center justify-center size-7 hover:bg-accent rounded"
+          className="flex items-center justify-center size-7 hover:bg-accent transition rounded"
           aria-label="Battery settings"
           onClick={toggleBatteryMenu}
         >

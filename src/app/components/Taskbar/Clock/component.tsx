@@ -36,7 +36,7 @@ const Clock: React.FC = () => {
     return (
         <>
             <div 
-                className="flex flex-col items-end justify-center px-2 hover:bg-background rounded-custom-sm h-full cursor-pointer"
+                className="flex flex-col items-end justify-center px-2 hover:bg-background transition rounded-custom-sm h-full cursor-pointer"
                 ref={toggleButtonRef}
                 onClick={() => setIsCalendarOpen(!isCalendarOpen)}
             >

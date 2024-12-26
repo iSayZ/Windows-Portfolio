@@ -59,7 +59,7 @@ const WifiMenu: React.FC<WifiMenuProps> = ({ isOpen, onClose, toggleButtonRef })
         {sortedWifiList.map((wifi, index) => (
           <div
             key={index}
-            className={`flex items-center gap-2 p-2 rounded hover:bg-accent cursor-pointer ${
+            className={`flex items-center gap-2 p-2 rounded hover:bg-accent transition cursor-pointer ${
               wifi.name === currentWiFi ? "bg-accent/50 text-blue-500" : ""
             }`}
             onClick={() => handleConnect(wifi.name)}

@@ -61,7 +61,7 @@ const Calendar: React.FC<CalendarProps> = ({ isOpen, onClose, currentDate, toggl
       days.push(
         <button
           key={i}
-          className={`relative h-8 w-8 rounded-full hover:bg-blue-400 focus:outline-none
+          className={`relative h-8 w-8 rounded-full hover:bg-blue-400 focus:outline-none transition
             ${isCurrentDay ? 'bg-blue-600' : ''}
             ${isSelectedDay ? 'bg-blue-600' : ''}`}
           onClick={() => setSelectedDate(new Date(viewDate.getFullYear(), viewDate.getMonth(), i))}
@@ -81,7 +81,7 @@ const Calendar: React.FC<CalendarProps> = ({ isOpen, onClose, currentDate, toggl
       <div className="flex justify-between items-center mb-4">
         <button 
           onClick={() => navigateMonth(-1)}
-          className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+          className="p-2 hover:bg-gray-100 transition rounded-full transition-colors"
         >
           <ChevronLeft className="h-4 w-4" />
         </button>
@@ -92,7 +92,7 @@ const Calendar: React.FC<CalendarProps> = ({ isOpen, onClose, currentDate, toggl
         
         <button 
           onClick={() => navigateMonth(1)}
-          className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+          className="p-2 hover:bg-gray-100 transition rounded-full transition-colors"
         >
           <ChevronRight className="h-4 w-4" />
         </button>

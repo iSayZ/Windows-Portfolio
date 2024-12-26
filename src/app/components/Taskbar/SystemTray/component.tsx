@@ -1,8 +1,6 @@
 "use client";
 
 import React from "react";
-import { Wifi } from "lucide-react";
-import { Tooltip } from "../../Tooltip";
 import { SoundButton } from "./SoundButton";
 import { BatteryButton } from "./BatteryButton";
 import { WifiButton } from "./WifiButton";
