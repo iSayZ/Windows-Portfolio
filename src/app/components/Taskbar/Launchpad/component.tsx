@@ -4,7 +4,7 @@ import { WindowsButton } from "./WindowsButton";
 
 const Launchpad: React.FC = () => {
     return (
-        <>
+        <div className="m-auto lg:absolute lg:left-[50%] lg:-translate-x-[50%] p-1 flex gap-2">
             <WindowsButton />
             
             <button
@@ -52,7 +52,7 @@ const Launchpad: React.FC = () => {
             </div>
             </button>
             <ThemeToggle />
-        </>
+        </div>
     )
 }
 

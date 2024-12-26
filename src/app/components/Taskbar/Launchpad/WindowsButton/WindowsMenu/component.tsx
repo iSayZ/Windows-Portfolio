@@ -4,7 +4,11 @@ import { WindowsMenuProps } from './types';
 import useClickOutside from '@/app/hooks/useClickOutside';
 import Image from 'next/image';
 
-const WindowsMenu: React.FC<WindowsMenuProps> = ({ isOpen, onClose, toggleButtonRef }) => {
+const WindowsMenu: React.FC<WindowsMenuProps> = ({
+  isOpen,
+  onClose,
+  toggleButtonRef,
+}) => {
   const pinnedApps = [
     { name: 'Edge', icon: '🌐' },
     { name: 'Word', icon: '📝' },
@@ -17,28 +21,29 @@ const WindowsMenu: React.FC<WindowsMenuProps> = ({ isOpen, onClose, toggleButton
     { name: 'OneNote', icon: '📓' },
     { name: 'Phone', icon: '📱' },
     { name: 'To Do', icon: '✓' },
-    { name: 'LinkedIn', icon: '💼' }
+    { name: 'LinkedIn', icon: '💼' },
   ];
 
   const recommendedItems = [
     { name: 'Get Started', desc: 'Welcome to Windows', icon: '🚀' },
     { name: 'Brand Guidelines', desc: '2h ago', icon: '📄' },
     { name: 'Travel Itinerary', desc: '17h ago', icon: '✈️' },
-    { name: 'Expense Worksheet', desc: '12h ago', icon: '📊' }
+    { name: 'Expense Worksheet', desc: '12h ago', icon: '📊' },
   ];
 
   const menuRef = useRef<HTMLDivElement | null>(null);
   useClickOutside({
     isOpen,
     onClose,
-    refs: [toggleButtonRef, menuRef]
+    refs: [toggleButtonRef, menuRef],
   });
 
   return (
-    <div 
+    <div
       ref={menuRef}
       className="absolute bottom-12 m-4 left-1/2 -translate-x-1/2 w-[640px] bg-background backdrop-blur-2xl rounded-lg shadow-lg overflow-hidden"
     >
+      {/* Search Section */}
       <div className="p-4">
         <div className="flex items-center gap-2 p-2 mb-4 bg-white/90 rounded-md">
           <Search size={20} className="text-gray-500" />
@@ -49,14 +54,20 @@ const WindowsMenu: React.FC<WindowsMenuProps> = ({ isOpen, onClose, toggleButton
           />
         </div>
 
+        {/* Pinned Section */}
         <div className="mb-6 p-2">
           <div className="flex justify-between items-center mb-2">
             <span className="text-md font-extrabold">Pinned</span>
-            <button className="text-sm bg-accent px-1 rounded-sm shadow-sm">All apps &gt;</button>
+            <button className="text-sm bg-accent px-1 rounded-sm shadow-sm">
+              All apps &gt;
+            </button>
           </div>
           <div className="grid grid-cols-6">
             {pinnedApps.map((app, i) => (
-              <button key={i} className="flex flex-col items-center gap-1 p-2 rounded-sm hover:bg-accent">
+              <button
+                key={i}
+                className="flex flex-col items-center gap-1 p-2 rounded-sm hover:bg-accent"
+              >
                 <span className="text-2xl">{app.icon}</span>
                 <span className="text-xs">{app.name}</span>
               </button>
@@ -64,14 +75,20 @@ const WindowsMenu: React.FC<WindowsMenuProps> = ({ isOpen, onClose, toggleButton
           </div>
         </div>
 
+        {/* Recommended Section */}
         <div>
           <div className="flex justify-between items-center mb-2 p-2">
             <span className="text-md font-extrabold">Recommended</span>
-            <button className="text-sm bg-accent px-1 rounded-sm shadow-sm">More &gt;</button>
+            <button className="text-sm bg-accent px-1 rounded-sm shadow-sm">
+              More &gt;
+            </button>
           </div>
           <div className="grid grid-cols-2">
             {recommendedItems.map((item, i) => (
-              <button key={i} className="flex items-center gap-3 p-2 rounded-sm hover:bg-accent">
+              <button
+                key={i}
+                className="flex items-center gap-3 p-2 rounded-sm hover:bg-accent"
+              >
                 <span className="text-2xl">{item.icon}</span>
                 <div className="text-left">
                   <div className="text-sm">{item.name}</div>
@@ -83,7 +100,9 @@ const WindowsMenu: React.FC<WindowsMenuProps> = ({ isOpen, onClose, toggleButton
         </div>
       </div>
 
+      {/* Bottom Section */}
       <div className="bg-accent flex justify-between items-center px-4 py-2">
+        {/* User Profile */}
         <div className="flex items-center gap-2">
           <div className="relative overflow-hidden w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
             <Image
@@ -96,6 +115,7 @@ const WindowsMenu: React.FC<WindowsMenuProps> = ({ isOpen, onClose, toggleButton
           </div>
           <span className="text-sm">Alexis Estrine</span>
         </div>
+        {/* Power Button */}
         <button className="p-2 rounded-md hover:bg-accent">
           <Power size={20} className="text-foreground" />
         </button>
