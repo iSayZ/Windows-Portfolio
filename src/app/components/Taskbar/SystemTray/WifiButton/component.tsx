@@ -5,7 +5,7 @@ import { WifiMenu } from './WifiMenu';
 import { Wifi } from 'lucide-react';
 
 const WifiButton: React.FC = () => {
-  const [isWifiMenuOpen, setIsWifiMenuOpen] = useState(false);
+  const [isWifiMenuOpen, setIsWifiMenuOpen] = useState<boolean>(false);
 
   const toggleWifiMenu = () => setIsWifiMenuOpen(!isWifiMenuOpen);
 

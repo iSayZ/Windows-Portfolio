@@ -5,7 +5,7 @@ import { BatteryMenu } from "./BatteryMenu";
 import { BatteryMedium } from "lucide-react";
 
 const BatteryButton: React.FC = () => {
-  const [isBatteryMenuOpen, setIsBatteryMenuOpen] = useState(false);
+  const [isBatteryMenuOpen, setIsBatteryMenuOpen] = useState<boolean>(false);
   const batteryPercentage = 72; // Fixed battery percentage
 
   const toggleBatteryMenu = () => setIsBatteryMenuOpen(!isBatteryMenuOpen);

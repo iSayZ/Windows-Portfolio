@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { TooltipProps } from "./types";
 
 const Tooltip: React.FC<TooltipProps> = ({ content, children }) => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
   const [position, setPosition] = useState<{ top: number; left: number }>({ top: 0, left: 0 });
   
   const tooltipRef = useRef<HTMLDivElement | null>(null);

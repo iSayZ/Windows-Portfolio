@@ -7,13 +7,13 @@ import { playlist } from "./constants";
 
 const SoundButton: React.FC = () => {
   const [volume, setVolume] = useState<number>(0); 
-  const [isSoundMenuOpen, setIsSoundMenuOpen] = useState(false);
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false); // Track if audio is playing
+  const [isSoundMenuOpen, setIsSoundMenuOpen] = useState<boolean>(false);
+  const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false); // Track if audio is playing
 
   const toggleButtonRef = useRef<HTMLButtonElement | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const [currentSongIndex, setCurrentSongIndex] = useState(0);
+  const [currentSongIndex, setCurrentSongIndex] = useState<number>(0);
 
   const toggleSoundMenu = () => setIsSoundMenuOpen(!isSoundMenuOpen);
 
