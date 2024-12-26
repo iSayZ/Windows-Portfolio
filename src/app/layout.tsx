@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Background } from './components/Background';
-import { ThemeToggle } from './components/ThemeToggle';
 import { ThemeProvider } from './context/ThemeContext';
 import { Taskbar } from './components/Taskbar';
 import { Desktop } from './components/Desktop';
@@ -22,7 +21,6 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <Background />
-          <ThemeToggle />
           {children}
           <Desktop />
           <Taskbar />

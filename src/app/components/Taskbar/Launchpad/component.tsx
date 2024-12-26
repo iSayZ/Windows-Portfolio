@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { ThemeToggle } from "./ThemeToggle";
 
 const Launchpad: React.FC = () => {
     return (
@@ -93,20 +94,7 @@ const Launchpad: React.FC = () => {
           </div>
         </button> */}
 
-        <button
-          className="flex items-center justify-center p-1 rounded-sm hover:bg-accent transition"
-          onClick={() => alert('Dark !')}
-        >
-          <div className="relative w-8 h-8">
-            <Image
-              src="/assets/images/app-icons/taskbar/moon.png"
-              alt="Moon Logo"
-              layout="fill"
-              objectFit="contain"
-              className="rounded-sm"
-            />
-          </div>
-        </button>
+            <ThemeToggle />
         </>
     )
 }
