@@ -9,7 +9,7 @@ const AppIcon: React.FC<AppIconProps> = ({ icon, name, onClick }) => {
     >
       <div className="h-8 w-16 rounded-full flex items-center justify-center text-foreground">
         {/* <img src={icon} alt={name} className="h-10 w-10" /> */}
-        <p className='text-4xl'>{icon}</p>
+        <p className="text-4xl">{icon}</p>
       </div>
       <span className="text-xs mt-2">{name}</span>
     </div>

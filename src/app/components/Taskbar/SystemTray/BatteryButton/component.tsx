@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
-import { Tooltip } from "@/app/components/Tooltip";
-import { MenuPortal } from "../../MenuPortal";
-import { BatteryMenu } from "./BatteryMenu";
-import { BatteryMedium } from "lucide-react";
+import React, { useRef, useState } from 'react';
+import { Tooltip } from '@/app/components/Tooltip';
+import { MenuPortal } from '../../MenuPortal';
+import { BatteryMenu } from './BatteryMenu';
+import { BatteryMedium } from 'lucide-react';
 
 const BatteryButton: React.FC = () => {
   const [isBatteryMenuOpen, setIsBatteryMenuOpen] = useState<boolean>(false);
@@ -27,11 +27,8 @@ const BatteryButton: React.FC = () => {
       </Tooltip>
 
       {/* Battery Menu */}
-      <MenuPortal 
-        isOpen={isBatteryMenuOpen}
-        onClose={toggleBatteryMenu}
-      >
-        <BatteryMenu 
+      <MenuPortal isOpen={isBatteryMenuOpen} onClose={toggleBatteryMenu}>
+        <BatteryMenu
           batteryPercentage={batteryPercentage}
           isOpen={isBatteryMenuOpen}
           onClose={toggleBatteryMenu}

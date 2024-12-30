@@ -1,6 +1,6 @@
-import { JSX } from "react";
+import { JSX } from 'react';
 
 export interface TooltipProps {
-    content: string | JSX.Element;
-    children: React.ReactNode;
+  content: string | JSX.Element;
+  children: React.ReactNode;
 }

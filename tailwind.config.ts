@@ -11,6 +11,7 @@ export default {
     extend: {
       colors: {
         background: 'var(--primary-background)',
+        'secondary-bg': 'var(--secondary-background)',
         foreground: 'var(--primary-foreground)',
         accent: 'var(--primary-accent)',
       },

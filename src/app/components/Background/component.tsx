@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React from 'react';
 import Image from 'next/image';
@@ -11,7 +11,7 @@ const Background: React.FC = () => {
     <div className="absolute -z-10 inset-0">
       {/* Background Image */}
       <Image
-        src={`/assets/images/background/bg-windows-${isDarkMode ? "dark" : "light"}.jpg`}
+        src={`/assets/images/background/bg-windows-${isDarkMode ? 'dark' : 'light'}.jpg`}
         alt="Background"
         layout="fill"
         objectFit="cover"
@@ -20,9 +20,7 @@ const Background: React.FC = () => {
       />
 
       {/* Black Overlay */}
-      <div
-        className="absolute inset-0 bg-black/10"
-      />
+      <div className="absolute inset-0 bg-black/10" />
     </div>
   );
 };

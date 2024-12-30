@@ -1,12 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Tooltip } from "@/app/components/Tooltip";
-import { MenuPortal } from "../../MenuPortal";
-import { SoundMenu } from "./SoundMenu";
-import { Volume, Volume1, Volume2, VolumeX } from "lucide-react";
-import { playlist } from "./constants";
+import React, { useState, useRef, useEffect } from 'react';
+import { Tooltip } from '@/app/components/Tooltip';
+import { MenuPortal } from '../../MenuPortal';
+import { SoundMenu } from './SoundMenu';
+import { Volume, Volume1, Volume2, VolumeX } from 'lucide-react';
+import { playlist } from './constants';
 
 const SoundButton: React.FC = () => {
-  const [volume, setVolume] = useState<number>(0); 
+  const [volume, setVolume] = useState<number>(0);
   const [isSoundMenuOpen, setIsSoundMenuOpen] = useState<boolean>(false);
   const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false); // Track if audio is playing
 
@@ -32,7 +32,7 @@ const SoundButton: React.FC = () => {
       if (newVolume > 0 && audioRef.current.paused) {
         // Play audio if it's paused
         audioRef.current.play().catch((error) => {
-          console.error("Error playing audio:", error);
+          console.error('Error playing audio:', error);
         });
         setIsAudioPlaying(true); // Track that audio is now playing
       }
@@ -48,7 +48,7 @@ const SoundButton: React.FC = () => {
       audioRef.current.src = playlist[currentSongIndex];
       if (isAudioPlaying) {
         audioRef.current.play().catch((error) => {
-          console.error("Error playing audio:", error);
+          console.error('Error playing audio:', error);
         });
       }
     }
@@ -76,7 +76,7 @@ const SoundButton: React.FC = () => {
 
       {/* SoundMenu */}
       <MenuPortal isOpen={isSoundMenuOpen} onClose={toggleSoundMenu}>
-        <SoundMenu 
+        <SoundMenu
           volume={volume}
           onVolumeChange={handleVolumeChange}
           isOpen={isSoundMenuOpen}
@@ -89,7 +89,7 @@ const SoundButton: React.FC = () => {
       <audio
         ref={audioRef}
         controls
-        style={{ display: "none" }}
+        style={{ display: 'none' }}
         onEnded={handleSongEnd}
       >
         <source src={playlist[currentSongIndex]} type="audio/mp3" />
@@ -100,4 +100,3 @@ const SoundButton: React.FC = () => {
 };
 
 export default SoundButton;
-

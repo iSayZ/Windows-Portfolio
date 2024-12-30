@@ -4,14 +4,20 @@ import { SoundMenuProps } from './types';
 import useAudioOutput from './hooks/useAudioOutpout';
 import useClickOutside from '@/app/hooks/useClickOutside';
 
-const SoundMenu: React.FC<SoundMenuProps> = ({ volume, onVolumeChange, isOpen, onClose, toggleButtonRef }) => {
+const SoundMenu: React.FC<SoundMenuProps> = ({
+  volume,
+  onVolumeChange,
+  isOpen,
+  onClose,
+  toggleButtonRef,
+}) => {
   const audioOutput = useAudioOutput();
 
   const menuRef = useRef<HTMLDivElement | null>(null);
   useClickOutside({
     isOpen,
     onClose,
-    refs: [toggleButtonRef, menuRef]
+    refs: [toggleButtonRef, menuRef],
   });
 
   const getVolumeIcon = () => {

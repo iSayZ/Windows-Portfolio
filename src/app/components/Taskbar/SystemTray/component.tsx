@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import React from "react";
-import { SoundButton } from "./SoundButton";
-import { BatteryButton } from "./BatteryButton";
-import { WifiButton } from "./WifiButton";
+import React from 'react';
+import { SoundButton } from './SoundButton';
+import { BatteryButton } from './BatteryButton';
+import { WifiButton } from './WifiButton';
 
 const SystemTray: React.FC = () => {
   return (

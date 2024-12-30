@@ -3,7 +3,12 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { CalendarProps } from './types';
 import useClickOutside from '@/app/hooks/useClickOutside';
 
-const Calendar: React.FC<CalendarProps> = ({ isOpen, onClose, currentDate, toggleButtonRef }) => {
+const Calendar: React.FC<CalendarProps> = ({
+  isOpen,
+  onClose,
+  currentDate,
+  toggleButtonRef,
+}) => {
   const [viewDate, setViewDate] = useState(() => {
     const [day, month, year] = currentDate.split('/').map(Number);
     return new Date(year, month - 1, day);
@@ -14,13 +19,26 @@ const Calendar: React.FC<CalendarProps> = ({ isOpen, onClose, currentDate, toggl
   useClickOutside({
     isOpen,
     onClose,
-    refs: [toggleButtonRef, menuRef]
+    refs: [toggleButtonRef, menuRef],
   });
-  
-  const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 
-                  'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
 
-  const getDaysInMonth = (year: number, month: number) => new Date(year, month + 1, 0).getDate();
+  const months = [
+    'Janvier',
+    'Février',
+    'Mars',
+    'Avril',
+    'Mai',
+    'Juin',
+    'Juillet',
+    'Août',
+    'Septembre',
+    'Octobre',
+    'Novembre',
+    'Décembre',
+  ];
+
+  const getDaysInMonth = (year: number, month: number) =>
+    new Date(year, month + 1, 0).getDate();
   const getFirstDayOfMonth = (year: number, month: number) => {
     const day = new Date(year, month, 1).getDay();
     return day === 0 ? 6 : day - 1;
@@ -32,65 +50,90 @@ const Calendar: React.FC<CalendarProps> = ({ isOpen, onClose, currentDate, toggl
   };
 
   const isToday = (year: number, month: number, day: number) => {
-    const [currentDay, currentMonth, currentYear] = currentDate.split('/').map(Number);
-    return year === currentYear && month === currentMonth - 1 && day === currentDay;
+    const [currentDay, currentMonth, currentYear] = currentDate
+      .split('/')
+      .map(Number);
+    return (
+      year === currentYear && month === currentMonth - 1 && day === currentDay
+    );
   };
 
   const isSelected = (year: number, month: number, day: number) => {
-    return selectedDate &&
-           year === selectedDate.getFullYear() && 
-           month === selectedDate.getMonth() && 
-           day === selectedDate.getDate();
+    return (
+      selectedDate &&
+      year === selectedDate.getFullYear() &&
+      month === selectedDate.getMonth() &&
+      day === selectedDate.getDate()
+    );
   };
 
   const renderCalendar = () => {
-    const daysInMonth = getDaysInMonth(viewDate.getFullYear(), viewDate.getMonth());
-    const firstDay = getFirstDayOfMonth(viewDate.getFullYear(), viewDate.getMonth());
+    const daysInMonth = getDaysInMonth(
+      viewDate.getFullYear(),
+      viewDate.getMonth(),
+    );
+    const firstDay = getFirstDayOfMonth(
+      viewDate.getFullYear(),
+      viewDate.getMonth(),
+    );
     const days = [];
-    
+
     for (let i = 0; i < firstDay; i++) {
-      days.push(
-        <div key={`empty-${i}`} className="h-8 w-8" />
-      );
+      days.push(<div key={`empty-${i}`} className="h-8 w-8" />);
     }
-    
+
     for (let i = 1; i <= daysInMonth; i++) {
-      const isCurrentDay = isToday(viewDate.getFullYear(), viewDate.getMonth(), i);
-      const isSelectedDay = isSelected(viewDate.getFullYear(), viewDate.getMonth(), i);
-      
+      const isCurrentDay = isToday(
+        viewDate.getFullYear(),
+        viewDate.getMonth(),
+        i,
+      );
+      const isSelectedDay = isSelected(
+        viewDate.getFullYear(),
+        viewDate.getMonth(),
+        i,
+      );
+
       days.push(
         <button
           key={i}
           className={`relative h-8 w-8 rounded-full hover:bg-blue-400 focus:outline-none transition
             ${isCurrentDay ? 'bg-blue-600' : ''}
             ${isSelectedDay ? 'bg-blue-600' : ''}`}
-          onClick={() => setSelectedDate(new Date(viewDate.getFullYear(), viewDate.getMonth(), i))}
+          onClick={() =>
+            setSelectedDate(
+              new Date(viewDate.getFullYear(), viewDate.getMonth(), i),
+            )
+          }
         >
           {i}
-        </button>
+        </button>,
       );
     }
-    
+
     return days;
   };
 
   if (!isOpen) return null;
 
   return (
-    <div ref={menuRef} className="absolute right-0 bottom-12 mt-2 bg-background backdrop-blur-xl rounded-md p-4 m-4">
+    <div
+      ref={menuRef}
+      className="absolute right-0 bottom-12 mt-2 bg-background backdrop-blur-xl rounded-md p-4 m-4"
+    >
       <div className="flex justify-between items-center mb-4">
-        <button 
+        <button
           onClick={() => navigateMonth(-1)}
           className="p-2 hover:bg-gray-100 transition rounded-full transition-colors"
         >
           <ChevronLeft className="h-4 w-4" />
         </button>
-        
+
         <span className="font-semibold">
           {months[viewDate.getMonth()]} {viewDate.getFullYear()}
         </span>
-        
-        <button 
+
+        <button
           onClick={() => navigateMonth(1)}
           className="p-2 hover:bg-gray-100 transition rounded-full transition-colors"
         >
@@ -99,7 +142,7 @@ const Calendar: React.FC<CalendarProps> = ({ isOpen, onClose, currentDate, toggl
       </div>
 
       <div className="grid grid-cols-7 gap-1 text-center mb-2">
-        {['Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa', 'Di'].map(day => (
+        {['Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa', 'Di'].map((day) => (
           <div key={day} className="h-8 w-8 font-medium">
             {day}
           </div>

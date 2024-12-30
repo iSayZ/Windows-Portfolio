@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
@@ -18,13 +18,15 @@ export const useTheme = (): ThemeContextType => {
 };
 
 // ThemeProvider that manages the theme state
-export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => { 
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   useEffect(() => {
     // If no preference is saved, apply dark mode by default
     const savedTheme = localStorage.getItem('theme');
-    
+
     // If a theme is saved, apply it
     if (savedTheme === 'dark') {
       setIsDarkMode(true);
@@ -42,7 +44,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   // Function to toggle between themes
   const toggleTheme = () => {
-    setIsDarkMode(prevMode => {
+    setIsDarkMode((prevMode) => {
       const newMode = !prevMode;
       if (newMode) {
         document.body.classList.add('dark-theme');

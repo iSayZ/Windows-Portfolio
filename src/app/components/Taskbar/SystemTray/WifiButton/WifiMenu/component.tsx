@@ -1,12 +1,23 @@
-import React, { useRef, useState } from "react";
-import { WifiLow, WifiHigh, Wifi, Loader, LockKeyhole, WifiOff } from "lucide-react";
-import useClickOutside from "@/app/hooks/useClickOutside";
-import { WifiMenuProps } from "./types";
-import { wifiList } from "./constants";
+import React, { useRef, useState } from 'react';
+import {
+  WifiLow,
+  WifiHigh,
+  Wifi,
+  Loader,
+  LockKeyhole,
+  WifiOff,
+} from 'lucide-react';
+import useClickOutside from '@/app/hooks/useClickOutside';
+import { WifiMenuProps } from './types';
+import { wifiList } from './constants';
 
-const WifiMenu: React.FC<WifiMenuProps> = ({ isOpen, onClose, toggleButtonRef }) => {
+const WifiMenu: React.FC<WifiMenuProps> = ({
+  isOpen,
+  onClose,
+  toggleButtonRef,
+}) => {
   const [connecting, setConnecting] = useState<string | null>(null);
-  const [currentWiFi, setCurrentWiFi] = useState<string>("WifiAndChill");
+  const [currentWiFi, setCurrentWiFi] = useState<string>('WifiAndChill');
 
   const menuRef = useRef<HTMLDivElement | null>(null);
 
@@ -36,8 +47,10 @@ const WifiMenu: React.FC<WifiMenuProps> = ({ isOpen, onClose, toggleButtonRef })
   };
 
   // Find the current Wi-Fi in the list to get its strength
-  const currentWiFiDetails = wifiList.find(wifi => wifi.name === currentWiFi);
-  const currentWiFiStrength = currentWiFiDetails ? currentWiFiDetails.strength : 0;
+  const currentWiFiDetails = wifiList.find((wifi) => wifi.name === currentWiFi);
+  const currentWiFiStrength = currentWiFiDetails
+    ? currentWiFiDetails.strength
+    : 0;
 
   return (
     <div
@@ -60,7 +73,7 @@ const WifiMenu: React.FC<WifiMenuProps> = ({ isOpen, onClose, toggleButtonRef })
           <div
             key={index}
             className={`flex items-center gap-2 p-2 rounded hover:bg-accent transition cursor-pointer ${
-              wifi.name === currentWiFi ? "bg-accent/50 text-blue-500" : ""
+              wifi.name === currentWiFi ? 'bg-accent/50 text-blue-500' : ''
             }`}
             onClick={() => handleConnect(wifi.name)}
           >
@@ -68,21 +81,30 @@ const WifiMenu: React.FC<WifiMenuProps> = ({ isOpen, onClose, toggleButtonRef })
             {renderSignalIcon(wifi.strength)}
 
             {/* Wi-Fi name */}
-            <p className={`text-sm flex-1 ${wifi.name === currentWiFi ? "text-blue-500" : "text-foreground"}`}>
-                {wifi.name} {wifi.secured && '(secured)'}
+            <p
+              className={`text-sm flex-1 ${wifi.name === currentWiFi ? 'text-blue-500' : 'text-foreground'}`}
+            >
+              {wifi.name} {wifi.secured && '(secured)'}
             </p>
 
             {/* Lock icon for secured networks */}
             {wifi.secured && (
-              <LockKeyhole 
-                size={16} 
-                className={wifi.name === currentWiFi ? "text-blue-500" : "text-foreground"} 
+              <LockKeyhole
+                size={16}
+                className={
+                  wifi.name === currentWiFi
+                    ? 'text-blue-500'
+                    : 'text-foreground'
+                }
               />
             )}
 
             {/* Spinner if connecting */}
             {connecting === wifi.name && (
-              <Loader size={16} className="animate-spin text-foreground text-blue-500" />
+              <Loader
+                size={16}
+                className="animate-spin text-foreground text-blue-500"
+              />
             )}
           </div>
         ))}
