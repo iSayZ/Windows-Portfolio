@@ -14,7 +14,7 @@ export const useWindowDrag = (
     (e: React.MouseEvent) => {
       if (!window || !desktopRef.current) return;
 
-      // Seulement si on clique sur la barre de titre
+      // Only if you click on the title bar
       if (!(e.target as HTMLElement).closest('.window-titlebar')) return;
 
       bringToFront(windowId);
@@ -41,7 +41,7 @@ export const useWindowDrag = (
       const newX = dragState.originalX + deltaX;
       const newY = dragState.originalY + deltaY;
 
-      // Contraindre la position dans les limites du desktop
+      // Constrain position within desktop limits
       updatePosition(windowId, {
         x: Math.max(0, Math.min(newX, rect.width - window.size.width)),
         y: Math.max(0, Math.min(newY, rect.height - window.size.height)),

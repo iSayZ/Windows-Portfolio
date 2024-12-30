@@ -1,4 +1,3 @@
-// Window.tsx
 import React, { useEffect } from 'react';
 import { WindowTitleBar } from '../WindowTitleBar';
 import { useWindowDrag } from '../../hooks/useWindowDrag';
@@ -66,6 +65,7 @@ export const Window: React.FC<WindowProps> = ({ window, desktopRef }) => {
         onMouseDown={!window.isMaximized ? handleMouseDown : undefined}
       >
         <WindowTitleBar
+          icon={window.icon}
           title={window.title}
           onClose={() => removeWindow(window.id)}
           onMaximize={() => toggleMaximize(window.id, desktopRef)}

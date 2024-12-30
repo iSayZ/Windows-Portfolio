@@ -1,22 +1,17 @@
-'use client';
+"use client";
 
-import { useRef } from 'react';
+import { apps } from './apps/appsList';
 import { AppIcon } from '../AppIcon';
 import { useWindowsStore, WindowManager } from '../Window';
-import { Calculator } from './calculator';
-import apps from './constants';
 import { calculateCenteredPosition } from '../Window/utils';
+import { useRef } from 'react';
+import { AppDefinition } from './apps';
 
 const Desktop: React.FC = () => {
   const addWindow = useWindowsStore((state) => state.addWindow);
-
   const desktopRef = useRef<HTMLDivElement | null>(null);
 
-  const openCalculator = () => {
-    // Définir la taille de la fenêtre
-    const windowSize = { width: 300, height: 400 };
-
-    // Obtenir la taille du desktop
+  const openApp = (app: AppDefinition) => {
     const desktopSize = desktopRef.current
       ? {
           width: desktopRef.current.clientWidth,
@@ -24,15 +19,15 @@ const Desktop: React.FC = () => {
         }
       : { width: window.innerWidth, height: window.innerHeight };
 
-    // Calculer la position centrée
-    const centeredPosition = calculateCenteredPosition(windowSize, desktopSize);
+    const centeredPosition = calculateCenteredPosition(app.defaultSize, desktopSize);
 
     addWindow({
       id: crypto.randomUUID(),
-      title: 'Calculatrice',
-      component: Calculator,
+      icon: app.icon,
+      title: app.name,
+      component: app.component,
       position: centeredPosition,
-      size: windowSize,
+      size: app.defaultSize,
       isMaximized: false,
       isMinimized: false,
     });
@@ -46,10 +41,10 @@ const Desktop: React.FC = () => {
       >
         {apps.map((app) => (
           <AppIcon
-            key={app.name}
+            key={app.shortname}
             icon={app.icon}
-            name={app.name}
-            onClick={openCalculator}
+            name={app.shortname}
+            onClick={() => openApp(app)}
           />
         ))}
       </div>

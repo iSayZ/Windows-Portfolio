@@ -15,6 +15,7 @@ export interface PreviousState {
 
 export interface Window {
   id: string;
+  icon: string;
   title: string;
   component: React.ComponentType;
   position: Position;
