@@ -1,6 +1,7 @@
 import { VsCode } from './VsCode';
 import { Chrome } from './Chrome';
 import { PdfViewer, PdfViewerProps } from './PdfViewer';
+import { Calculator } from './Calculator/component';
 import { AppDefinition } from './types';
 
 export const apps: AppDefinition[] = [
@@ -36,5 +37,15 @@ export const apps: AppDefinition[] = [
     defaultProps: {
       pdfUrl: '/assets/documents/cv.pdf'
     } as PdfViewerProps
+  },
+  {
+    icon: '/assets/images/app-icons/desktop/calculator.png',
+    shortname: 'Calculator',
+    name: 'Calculator',
+    component: Calculator,
+    defaultSize: {
+      width: 300,
+      height: 550
+    }
   },
 ];
