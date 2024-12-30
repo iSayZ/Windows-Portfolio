@@ -21,11 +21,16 @@ const Desktop: React.FC = () => {
 
     const centeredPosition = calculateCenteredPosition(app.defaultSize, desktopSize);
 
+    const ComponentWithProps = () => {
+      const Component = app.component;
+      return <Component {...app.defaultProps} />;
+    };
+
     addWindow({
       id: crypto.randomUUID(),
       icon: app.icon,
       title: app.name,
-      component: app.component,
+      component: ComponentWithProps,
       position: centeredPosition,
       size: app.defaultSize,
       isMaximized: false,

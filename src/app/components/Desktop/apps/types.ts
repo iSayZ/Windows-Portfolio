@@ -3,10 +3,11 @@ export interface WindowSize {
     height: number;
   }
   
-  export interface AppDefinition {
+  export interface AppDefinition<T = any> {
     icon: string;
     shortname: string;
     name: string;
-    component: React.ComponentType;
+    component: React.ComponentType<T>;
     defaultSize: WindowSize;
+    defaultProps?: T;
   }
