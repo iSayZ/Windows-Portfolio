@@ -1,5 +1,6 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { MenuPortalProps } from './types';
 
 const MenuPortal: React.FC<MenuPortalProps> = ({
@@ -7,19 +8,31 @@ const MenuPortal: React.FC<MenuPortalProps> = ({
   onClose,
   children,
 }) => {
-  if (typeof window === 'undefined' || !isOpen) return null;
+  if (typeof window === 'undefined') return null;
 
-  const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    event.stopPropagation();
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (onClose) {
       onClose();
     }
   };
 
   return createPortal(
-    <div onClick={handleBackdropClick}>
-      <div onClick={(e) => e.stopPropagation()}>{children}</div>
-    </div>,
+    <AnimatePresence>
+      {isOpen && (
+        <div onClick={handleBackdropClick}>
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 50, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {children}
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>,
     document.body,
   );
 };
