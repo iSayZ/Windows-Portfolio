@@ -5,7 +5,7 @@ import { useWindowResize } from '../../hooks/useWindowResize';
 import { useWindowsStore } from '../../store/windowsStore';
 import { WindowProps, ResizeHandlePosition } from './types';
 import { getMaximizedStyles } from './utils';
-import { getResizeHandleClassName, getWindowStyles } from './styles';
+import { getResizeHandleClassName, getWindowContentStyles, getWindowStyles } from './styles';
 
 export const Window: React.FC<WindowProps> = ({ window, desktopRef }) => {
   const { removeWindow, toggleMaximize } = useWindowsStore();
@@ -61,7 +61,9 @@ export const Window: React.FC<WindowProps> = ({ window, desktopRef }) => {
     >
       {resizeHandles}
       <div 
-        className="window-titlebar cursor-move"
+        className={`window-titlebar cursor-move${
+          !window.isMaximized ? ' rounded-t-lg' : ''
+        }`}
         onMouseDown={!window.isMaximized ? handleMouseDown : undefined}
       >
         <WindowTitleBar
@@ -69,9 +71,10 @@ export const Window: React.FC<WindowProps> = ({ window, desktopRef }) => {
           title={window.title}
           onClose={() => removeWindow(window.id)}
           onMaximize={() => toggleMaximize(window.id, desktopRef)}
+          isMaximized={window.isMaximized}
         />
       </div>
-      <div className="relative h-[calc(100%-2rem)] cursor-default">
+      <div className={getWindowContentStyles(window.isMaximized)}>
         <window.component />
       </div>
     </div>

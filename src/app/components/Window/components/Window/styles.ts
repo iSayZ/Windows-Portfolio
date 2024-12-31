@@ -17,6 +17,11 @@ export const getResizeHandleClassName = (position: ResizeHandlePosition): string
 };
 
 export const getWindowStyles = (isMaximized: boolean): string => 
-  `bg-white shadow-xl overflow-hidden relative${
+  `bg-white shadow-xl relative${
     isMaximized ? '' : ' rounded-lg'
+  }`;
+
+export const getWindowContentStyles = (isMaximized: boolean): string => 
+  `relative h-[calc(100%-2rem)] cursor-default overflow-hidden${
+    isMaximized ? '' : ' rounded-b-lg'
   }`;

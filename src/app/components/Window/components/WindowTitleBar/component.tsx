@@ -7,8 +7,11 @@ export const WindowTitleBar: React.FC<WindowTitleBarProps> = ({
   title,
   onClose,
   onMaximize,
+  isMaximized
 }) => (
-  <div className="flex items-center justify-between h-8 px-2 bg-secondary-bg text-foreground">
+  <div className={`flex items-center justify-between h-8 px-2 bg-secondary-bg text-foreground${
+    !isMaximized ? ' rounded-t-lg' : ''
+  }`}>
     {/* Header */}
     <div className="flex items-center gap-1">
       {/* Icon on the left side with slight gap */}

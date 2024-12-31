@@ -3,6 +3,7 @@ import { Chrome } from './Chrome';
 import { PdfViewer, PdfViewerProps } from './PdfViewer';
 import { Calculator } from './Calculator/component';
 import { AppDefinition } from './types';
+import { Terminal } from './Terminal';
 
 export const apps: AppDefinition[] = [
   {
@@ -46,6 +47,16 @@ export const apps: AppDefinition[] = [
     defaultSize: {
       width: 300,
       height: 550
+    }
+  },
+  {
+    icon: '/assets/images/app-icons/desktop/terminal.png',
+    shortname: 'Terminal',
+    name: 'Terminal',
+    component: Terminal,
+    defaultSize: {
+      width: 700,
+      height: 400
     }
   },
 ];
