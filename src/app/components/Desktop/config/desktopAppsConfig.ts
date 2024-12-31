@@ -1,9 +1,12 @@
-import { VsCode } from './VsCode';
-import { Chrome } from './Chrome';
-import { PdfViewer, PdfViewerProps } from './PdfViewer';
-import { Calculator } from './Calculator/component';
-import { AppDefinition } from './types';
-import { Terminal } from './Terminal';
+import { 
+  VsCode, 
+  Chrome, 
+  PdfViewer, 
+  Calculator, 
+  Terminal,
+  type PdfViewerProps,
+  type AppDefinition 
+} from '@/app/components/apps';
 
 export const apps: AppDefinition[] = [
   {

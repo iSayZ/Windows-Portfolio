@@ -1,11 +1,11 @@
 "use client";
 
-import { apps } from './apps/appsList';
-import { AppIcon } from '../AppIcon';
+import { apps } from './config/desktopAppsConfig';
+import { AppIcon } from './AppIcon';
 import { useWindowsStore, WindowManager } from '../Window';
 import { calculateCenteredPosition } from '../Window/utils';
 import { useRef } from 'react';
-import { AppDefinition } from './apps';
+import { AppDefinition } from '../apps';
 
 const Desktop: React.FC = () => {
   const addWindow = useWindowsStore((state) => state.addWindow);
