@@ -1,5 +1,4 @@
-export { VsCode } from './VsCode';
-export { Chrome } from './Chrome';
+export { WebView } from './WebView';
 export { Terminal } from './Terminal';
 export { Calculator } from './Calculator/component';
 export { PdfViewer } from './PdfViewer';

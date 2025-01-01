@@ -1,1 +1,0 @@
-export { Chrome } from './component';

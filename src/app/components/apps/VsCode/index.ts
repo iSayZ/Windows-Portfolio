@@ -1,1 +1,0 @@
-export { VsCode } from './component';

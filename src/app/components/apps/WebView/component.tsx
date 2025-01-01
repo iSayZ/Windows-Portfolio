@@ -1,12 +1,11 @@
-import React from 'react';
+import { WebViewProps } from "./styles";
 
-export const VsCode: React.FC = () => {
+export const WebView: React.FC<WebViewProps> = ({ url }) => {
   return (
     <div className="w-full h-full">
       <iframe
-        src="https://github1s.com/iSayZ/Windows-Portfolio"
+        src={url}
         className="w-full h-full border-none"
-        title="VS Code"
         sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
         loading="lazy"
       />

@@ -1,6 +1,5 @@
 import { 
-  VsCode, 
-  Chrome, 
+  WebView, 
   PdfViewer, 
   Calculator, 
   Terminal,
@@ -13,20 +12,26 @@ export const apps: AppDefinition[] = [
     icon: '/assets/images/app-icons/desktop/vscode.svg',
     shortname: 'VsCode',
     name: 'Visual Studio Code',
-    component: VsCode,
+    component: WebView,
     defaultSize: {
       width: 800,
       height: 400
+    },
+    defaultProps: {
+      url: 'https://github1s.com/iSayZ/Windows-Portfolio'
     }
   },
   {
     icon: '/assets/images/app-icons/desktop/chrome.svg',
     shortname: 'Chrome',
     name: 'Google Chrome',
-    component: Chrome,
+    component: WebView,
     defaultSize: {
       width: 900,
       height: 550
+    },
+    defaultProps: {
+      url: 'https://www.google.fr/webhp?igu=1'
     }
   },
   {
