@@ -4,7 +4,6 @@ import { PdfViewerProps } from './types';
 export const PdfViewer: React.FC<PdfViewerProps> = ({ 
   pdfUrl
 }) => {
-  console.log(pdfUrl)
   return (
     <div className="w-full h-full bg-white">
       <object

@@ -9,13 +9,6 @@ export const Chrome: React.FC = () => {
         title="Chrome"
         sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
         loading="lazy"
-        style={{
-          border: 'none',
-          margin: 0,
-          padding: 0,
-          position: 'absolute',
-          inset: 0
-        }}
       />
     </div>
   );

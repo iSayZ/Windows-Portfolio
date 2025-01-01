@@ -10,6 +10,7 @@ const MenuPortal: React.FC<MenuPortalProps> = ({
 }) => {
   if (typeof window === 'undefined') return null;
 
+  // Close the menu when clicking outside of it (on the backdrop)
   const handleBackdropClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (onClose) {
@@ -33,7 +34,7 @@ const MenuPortal: React.FC<MenuPortalProps> = ({
         </div>
       )}
     </AnimatePresence>,
-    document.body,
+    document.body, // Use a portal to render the menu outside the current DOM hierarchy
   );
 };
 
