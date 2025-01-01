@@ -62,4 +62,26 @@ export const apps: AppDefinition[] = [
       height: 400
     }
   },
+  {
+    icon: '/assets/images/app-icons/desktop/github.svg',
+    shortname: 'GitHub',
+    name: 'GitHub',
+    component: () => null,
+    defaultSize: {
+      width: 0,
+      height: 0
+    },
+    externalUrl: 'https://github.com/iSayZ'
+  },
+  {
+    icon: '/assets/images/app-icons/desktop/linkedin.svg',
+    shortname: 'LinkedIn',
+    name: 'LinkedIn',
+    component: () => null,
+    defaultSize: {
+      width: 0,
+      height: 0
+    },
+    externalUrl: 'https://www.linkedin.com/in/alexis-estrine/'
+  },
 ];

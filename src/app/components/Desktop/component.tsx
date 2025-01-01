@@ -12,6 +12,11 @@ const Desktop: React.FC = () => {
   const desktopRef = useRef<HTMLDivElement | null>(null);
 
   const openApp = (app: AppDefinition) => {
+    if (app.externalUrl) {
+      window.open(app.externalUrl, '_blank');
+      return;
+    }
+    
     const desktopSize = desktopRef.current
       ? {
           width: desktopRef.current.clientWidth,

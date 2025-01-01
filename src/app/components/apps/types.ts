@@ -10,4 +10,5 @@ export interface WindowSize {
     component: React.ComponentType<T>;
     defaultSize: WindowSize;
     defaultProps?: T;
+    externalUrl?: string;
   }
