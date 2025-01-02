@@ -1,10 +1,5 @@
-// components/apps/Notepad/component.tsx
 import React, { useState, useEffect } from 'react';
-
-interface NotepadProps {
-  filePath?: string;
-  realPath?: string;
-}
+import { NotepadProps } from './types';
 
 export const Notepad: React.FC<NotepadProps> = ({ filePath, realPath }) => {
   const [content, setContent] = useState<string>('');

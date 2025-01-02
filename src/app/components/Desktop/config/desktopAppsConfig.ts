@@ -5,6 +5,7 @@ import {
   Terminal,
   FileExplorer,
   Notepad,
+  ImageViewer,
   type PdfViewerProps,
   type AppDefinition,
 } from '@/app/components/apps';
@@ -109,6 +110,16 @@ export const apps: AppDefinition[] = [
     defaultSize: {
       width: 600,
       height: 400,
+    }
+  },
+  {
+    icon: '/assets/images/app-icons/desktop/image-viewer.png',
+    shortname: 'ImageViewer',
+    name: 'ImageViewer',
+    component: ImageViewer,
+    defaultSize: {
+      width: 400,
+      height: 500,
     }
   },
 ];

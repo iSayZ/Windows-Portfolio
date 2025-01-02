@@ -43,6 +43,15 @@ export const FileExplorer: React.FC<FileExplorerProps> = ({
               realPath: item.realPath
             }
           });
+        // If the file type is image open with ImageViewer
+        } else if (item.type === 'image' && app.shortname === 'ImageViewer') {
+          openApp({
+            ...app,
+            defaultProps: {
+              realPath: item.realPath
+            }
+          });
+
         } else {
           // For other app, open with her app
           openApp(app);
