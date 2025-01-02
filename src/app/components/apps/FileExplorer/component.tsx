@@ -51,7 +51,15 @@ export const FileExplorer: React.FC<FileExplorerProps> = ({
               realPath: item.realPath
             }
           });
-
+        // If the file type is video open with YouTubeViewer
+        } else if (item.type === 'video' && app.shortname === 'YouTube') {
+          openApp({
+            ...app,
+            defaultProps: {
+              url: item.realPath,
+              unmute: true,
+            }
+          });
         } else {
           // For other app, open with her app
           openApp(app);

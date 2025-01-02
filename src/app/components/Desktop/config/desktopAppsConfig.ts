@@ -8,6 +8,7 @@ import {
   ImageViewer,
   type PdfViewerProps,
   type AppDefinition,
+  YouTubeViewer,
 } from '@/app/components/apps';
 
 export const apps: AppDefinition[] = [
@@ -50,7 +51,7 @@ export const apps: AppDefinition[] = [
   {
     icon: '/assets/images/app-icons/desktop/pdf.svg',
     shortname: 'CV',
-    name: 'CV Estrine Alexis - JS Developper',
+    name: 'CV Estrine Alexis - JS Developer',
     component: PdfViewer,
     defaultSize: {
       width: 800,
@@ -120,6 +121,23 @@ export const apps: AppDefinition[] = [
     defaultSize: {
       width: 400,
       height: 500,
+    },
+    defaultProps: {
+      realPath: '',
+    }
+  },
+  {
+    icon: '/assets/images/app-icons/desktop/youtube.svg',
+    shortname: 'YouTube',
+    name: 'YouTube',
+    component: YouTubeViewer,
+    defaultSize: {
+      width: 889,
+      height: 500
+    },
+    defaultProps: {
+      url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      unmute: true,
     }
   },
 ];

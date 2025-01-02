@@ -286,13 +286,14 @@ export const defaultFileSystem = (
     isSystem: true,
   },
   {
-    id: 'video',
-    name: 'vacation.mp4',
+    id: 'developer-life',
+    name: 'developer-life.mp4',
     type: 'video',
     parentId: 'videos',
-    path: 'This PC/Videos/vacation.mp4',
+    path: 'This PC/Videos/developer-life.mp4',
+    realPath: 'https://www.youtube.com/watch?v=ynUHE4OFg9E&t=3s',
     isSystem: false,
-    openWith: 'Media Player',
+    openWith: 'YouTube',
   },
   // Downloads with a text file
   {
