@@ -4,6 +4,7 @@ import {
   Calculator,
   Terminal,
   FileExplorer,
+  Notepad,
   type PdfViewerProps,
   type AppDefinition,
 } from '@/app/components/apps';
@@ -99,5 +100,15 @@ export const apps: AppDefinition[] = [
       height: 0,
     },
     externalUrl: 'https://www.linkedin.com/in/alexis-estrine/',
+  },
+  {
+    icon: '/assets/images/app-icons/desktop/notepad.png',
+    shortname: 'Notepad',
+    name: 'Notepad',
+    component: Notepad,
+    defaultSize: {
+      width: 600,
+      height: 400,
+    }
   },
 ];

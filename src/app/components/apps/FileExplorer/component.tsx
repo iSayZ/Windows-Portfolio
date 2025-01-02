@@ -14,7 +14,7 @@ export const FileExplorer: React.FC<FileExplorerProps> = ({
   initialFileSystem = defaultFileSystem,
 }) => {
   const fileSystem = defaultFileSystem(apps);
-  const openApp = useOpenApp(); // Ajout de useOpenApp
+  const openApp = useOpenApp();
 
   const {
     currentPath,
@@ -35,7 +35,18 @@ export const FileExplorer: React.FC<FileExplorerProps> = ({
     } else if (!item.isSystem && item.openWith) {
       const app = apps.find((app) => app.shortname === item.openWith);
       if (app) {
-        openApp(app);
+        // If the file type is text open with Notepad
+        if (item.type === 'text' && app.shortname === 'Notepad') {
+          openApp({
+            ...app,
+            defaultProps: {
+              realPath: item.realPath
+            }
+          });
+        } else {
+          // For other app, open with her app
+          openApp(app);
+        }
       }
     }
   };

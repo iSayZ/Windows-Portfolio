@@ -7,11 +7,11 @@ export const generateDesktopShortcuts = (
   return desktopApps.map((app) => ({
     id: `desktop-${app.shortname.toLowerCase()}`,
     name: `${app.shortname}`,
-    type: 'shortcut', // Nouveau type pour les raccourcis
+    type: 'shortcut',
     parentId: 'desktop',
     path: `This PC/Desktop/${app.shortname}`,
     isSystem: false,
     openWith: app.shortname,
-    icon: app.icon, // Utiliser directement l'icône de l'app
+    icon: app.icon,
   }));
 };

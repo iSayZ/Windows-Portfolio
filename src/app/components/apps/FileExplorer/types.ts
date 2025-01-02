@@ -14,6 +14,7 @@ export interface FileSystemItem {
   type: FileType;
   parentId: string | null;
   path: string;
+  realPath?: string;
   icon?: string;
   extension?: string;
   size?: string;
