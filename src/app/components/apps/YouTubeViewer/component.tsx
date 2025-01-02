@@ -1,5 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { YouTubeViewerProps } from './types';
+import { useAudio } from '@/app/context/AudioContext';
+
+declare global {
+  interface Window {
+    YT: {
+      Player: new (
+        elementId: string | HTMLElement,
+        options: {
+          videoId: string;
+          events: {
+            onReady: (event: { target: any }) => void;
+          };
+          playerVars: {
+            autoplay: number;
+            mute: number;
+          };
+        }
+      ) => any;
+    };
+    onYouTubeIframeAPIReady: () => void;
+  }
+}
 
 export const YouTubeViewer: React.FC<YouTubeViewerProps> = ({ url, unmute = false }) => {
   const [videoSource, setVideoSource] = useState<{
@@ -7,37 +29,93 @@ export const YouTubeViewer: React.FC<YouTubeViewerProps> = ({ url, unmute = fals
     id: string | null;
   }>({ type: 'youtube', id: null });
   const [error, setError] = useState<string | null>(null);
+  const [player, setPlayer] = useState<any>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const playerContainerRef = useRef<HTMLDivElement>(null);
+  const { volume, isMuted, registerAudio } = useAudio();
+
+  // Load YouTube API
+  useEffect(() => {
+    if (!window.YT) {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+
+      window.onYouTubeIframeAPIReady = () => {
+        initializePlayer();
+      };
+    } else {
+      initializePlayer();
+    }
+  }, [videoSource.id]);
+
+  // Initialize YouTube player
+  const initializePlayer = () => {
+    if (videoSource.type === 'youtube' && videoSource.id && window.YT && playerContainerRef.current) {
+      // We ignore the returned player instance as we use the event.target in onReady
+      new window.YT.Player(playerContainerRef.current, {
+        videoId: videoSource.id,
+        events: {
+          onReady: (event) => {
+            setPlayer(event.target);
+            // Initialize volume
+            event.target.setVolume(volume);
+            if (isMuted) {
+              event.target.mute();
+            }
+          },
+        },
+        playerVars: {
+          autoplay: 1,
+          mute: unmute ? 0 : 1,
+        },
+      });
+    }
+  };
+
+  // Synchronize volume with AudioContext
+  useEffect(() => {
+    if (player && videoSource.type === 'youtube') {
+      if (isMuted) {
+        player.mute();
+      } else {
+        player.unMute();
+        player.setVolume(volume);
+      }
+    }
+  }, [volume, isMuted, player]);
+
+  // Register local video in AudioContext
+  useEffect(() => {
+    if (videoSource.type === 'local' && videoRef.current) {
+      registerAudio(videoRef.current);
+    }
+  }, [videoSource.type, registerAudio]);
 
   useEffect(() => {
-    // Extract YouTube video ID from various URL formats
     const extractYouTubeVideoId = (inputUrl: string) => {
       try {
         const urlObj = new URL(inputUrl);
         
-        // Check if it's a local file video
         const localVideoExtensions = ['mp4', 'webm', 'ogg', 'mov', 'avi', 'mkv'];
         const fileExtension = inputUrl.split('.').pop()?.toLowerCase();
         
         if (fileExtension && localVideoExtensions.includes(fileExtension)) {
-          // Local video file
           setVideoSource({ type: 'local', id: inputUrl });
           return;
         }
 
-        // YouTube URL handling
         if (urlObj.hostname === 'youtu.be') {
-          // Shortened URL format
           setVideoSource({ type: 'youtube', id: urlObj.pathname.slice(1) });
           return;
         } else if (urlObj.hostname === 'www.youtube.com' || urlObj.hostname === 'youtube.com') {
-          // Long URL formats
           const videoIdParam = urlObj.searchParams.get('v');
           if (videoIdParam) {
             setVideoSource({ type: 'youtube', id: videoIdParam });
             return;
           }
           
-          // Handle embed URLs
           const pathParts = urlObj.pathname.split('/');
           const embedIndex = pathParts.indexOf('embed');
           if (embedIndex !== -1 && pathParts[embedIndex + 1]) {
@@ -76,16 +154,10 @@ export const YouTubeViewer: React.FC<YouTubeViewerProps> = ({ url, unmute = fals
     <div className="w-full h-full flex items-center justify-center bg-black">
       <div className="aspect-video w-full h-full">
         {videoSource.type === 'youtube' ? (
-          <iframe
-            src={`https://www.youtube.com/embed/${videoSource.id}?autoplay=1${unmute ? '&mute=0' : '&mute=1'}`}
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            className="w-full h-full"
-            allowFullScreen
-          />
+          <div ref={playerContainerRef} className="w-full h-full" />
         ) : (
           <video
+            ref={videoRef}
             src={videoSource.id}
             autoPlay
             controls

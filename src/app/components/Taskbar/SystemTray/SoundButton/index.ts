@@ -1,2 +1,1 @@
-export { default as SoundButton } from './component';
-export * from './constants';
+export { SoundButton } from './component';

@@ -65,7 +65,6 @@ export const FileExplorer: React.FC<FileExplorerProps> = ({
         } else if (item.type === 'audio' && app.shortname === 'MusicPlayer') {
           openApp({
             ...app,
-            name: `MusicPlayer - ${item.name}`,
             defaultProps: {
               realPath: item.realPath,
               unmute: true,

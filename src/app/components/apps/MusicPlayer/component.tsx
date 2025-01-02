@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { MusicPlayerProps } from './types';
 import Image from 'next/image';
+import { useAudio, useAudioElement } from '@/app/context/AudioContext';
 
 export const MusicPlayer: React.FC<MusicPlayerProps> = ({ realPath }) => {
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
@@ -18,16 +19,18 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ realPath }) => {
   
   // Audio player states
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [volume, setVolume] = useState(1);
 
   // Refs
   const audioRef = useRef<HTMLAudioElement>(null);
   const progressRef = useRef<HTMLInputElement>(null);
 
-  const audioName = realPath ? realPath.split('/').pop() : 'Music Player'
+  // use global AudioContext
+  const { volume, isMuted, toggleMute } = useAudio();
+  useAudioElement(audioRef);
+
+  const audioName = realPath ? realPath.split('/').pop() : 'Music Player';
 
   useEffect(() => {
     const loadAudio = async () => {
@@ -60,7 +63,6 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ realPath }) => {
 
     loadAudio();
 
-    // Cleanup function to revoke object URL
     return () => {
       if (audioUrl) {
         URL.revokeObjectURL(audioUrl);
@@ -73,7 +75,6 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ realPath }) => {
     if (audioRef.current) {
       setCurrentTime(audioRef.current.currentTime);
       
-      // Update progress bar
       if (progressRef.current) {
         const progress = (audioRef.current.currentTime / audioRef.current.duration) * 100;
         progressRef.current.value = progress.toString();
@@ -96,24 +97,6 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ realPath }) => {
         audioRef.current.play();
       }
       setIsPlaying(!isPlaying);
-    }
-  };
-
-  // Toggle mute
-  const toggleMute = () => {
-    if (audioRef.current) {
-      audioRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
-  };
-
-  // Volume change
-  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newVolume = parseFloat(e.target.value);
-    if (audioRef.current) {
-      audioRef.current.volume = newVolume;
-      setVolume(newVolume);
-      setIsMuted(newVolume === 0);
     }
   };
 
@@ -151,11 +134,11 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ realPath }) => {
 
   return (
     <div className="w-full h-full bg-background backdrop-blur-2xl flex flex-col">
-      {/* Zone principale avec icône et titre */}
+      {/* Content with sound image / name */}
       <div className="flex-1 flex flex-col items-center justify-center">
         <Image
           src="/assets/images/app-icons/desktop/music-player.svg"
-          alt="Description de l'image"
+          alt="Music Player"
           width={100}
           height={100}
           priority
@@ -165,7 +148,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ realPath }) => {
         </h2>
       </div>
 
-      {/* Barre de contrôle en bas style Windows 11 */}
+      {/* Bottom Control Bar */}
       <div className="w-full bg-secondary-bg border-t border-secondary p-4">
         {/* Audio element */}
         {audioUrl && (
@@ -202,52 +185,36 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ realPath }) => {
         </div>
 
         {/* Controls */}
-          {/* Contrôles centraux */}
-          <div className="flex items-center justify-between relative">
-            {/* Contrôle gauche : Shuffle */}
-            <button className="text-foreground hover:text-foreground">
-              <Shuffle size={20} />
-            </button>
+        <div className="flex items-center justify-between relative">
+          {/* Left control : Shuffle */}
+          <button className="text-foreground hover:text-foreground">
+            <Shuffle size={20} />
+          </button>
 
-            {/* Contrôle droite : Volume */}
-            <div className="flex items-center space-x-2">
-              <button 
-                onClick={toggleMute}
-                className="text-foreground hover:text-foreground"
-              >
-                {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
-              </button>
-              <input
-                type="range"
-                min="0"
-                max="1"
-                step="0.1"
-                value={volume}
-                onChange={handleVolumeChange}
-                className="w-20 h-1 bg-gray-500 rounded-full appearance-none cursor-pointer
-                  [&::-webkit-slider-thumb]:appearance-none
-                  [&::-webkit-slider-thumb]:w-3
-                  [&::-webkit-slider-thumb]:h-3
-                  [&::-webkit-slider-thumb]:rounded-full
-                  [&::-webkit-slider-thumb]:bg-foreground
-                  hover:[&::-webkit-slider-thumb]:bg-blue-500"
-              />
-            </div>
-            <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 space-x-4'>
-              <button className="text-foreground hover:text-foreground">
-                <SkipBack size={24} />
-              </button>
-              <button 
-                onClick={togglePlay} 
-                className="bg-foreground text-background p-2 rounded-full hover:bg-blue-500 transition-colors"
-              >
-                {isPlaying ? <Pause size={24} /> : <Play size={24} />}
-              </button>
-              <button className="text-foreground hover:text-foreground">
-                <SkipForward size={24} />
-              </button>
-            </div>
+          {/* Rigth control : Volume */}
+          <button 
+            onClick={toggleMute}
+            className="text-foreground hover:text-foreground"
+          >
+            {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+          </button>
+
+          {/* Centered control : Prev, Play, Next */}
+          <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 space-x-4'>
+            <button className="text-foreground hover:text-foreground">
+              <SkipBack size={24} />
+            </button>
+            <button 
+              onClick={togglePlay} 
+              className="bg-foreground text-background p-2 rounded-full hover:bg-blue-500 transition-colors"
+            >
+              {isPlaying ? <Pause size={24} /> : <Play size={24} />}
+            </button>
+            <button className="text-foreground hover:text-foreground">
+              <SkipForward size={24} />
+            </button>
           </div>
+        </div>
       </div>
     </div>
   );

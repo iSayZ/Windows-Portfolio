@@ -1,19 +1,24 @@
 import React, { useRef } from 'react';
 import { Volume, Volume1, Volume2, VolumeX } from 'lucide-react';
-import { SoundMenuProps } from './types';
 import useAudioOutput from './hooks/useAudioOutpout';
 import useClickOutside from '@/app/hooks/useClickOutside';
+import { useAudio } from '@/app/context/AudioContext';
+
+interface SoundMenuProps {
+  isOpen: boolean;
+  onClose: () => void;
+  toggleButtonRef: React.RefObject<HTMLButtonElement | null>;
+}
 
 const SoundMenu: React.FC<SoundMenuProps> = ({
-  volume,
-  onVolumeChange,
   isOpen,
   onClose,
   toggleButtonRef,
 }) => {
   const audioOutput = useAudioOutput();
+  const { volume, isMuted, setVolume, toggleMute } = useAudio();
 
-  const menuRef = useRef<HTMLDivElement | null>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
   useClickOutside({
     isOpen,
     onClose,
@@ -21,7 +26,7 @@ const SoundMenu: React.FC<SoundMenuProps> = ({
   });
 
   const getVolumeIcon = () => {
-    if (volume === 0) return <VolumeX size={24} />;
+    if (isMuted || volume === 0) return <VolumeX size={24} />;
     if (volume < 33) return <Volume size={24} />;
     if (volume < 66) return <Volume1 size={24} />;
     return <Volume2 size={24} />;
@@ -36,15 +41,20 @@ const SoundMenu: React.FC<SoundMenuProps> = ({
         Speaker/Headphones : {audioOutput}
       </p>
       <div className="flex items-center gap-4">
-        {/* Dynamic icon */}
-        <div className="text-primary">{getVolumeIcon()}</div>
-        {/* Volume slider */}
+        {/* Icône de volume cliquable pour mute/unmute */}
+        <button 
+          onClick={toggleMute}
+          className="text-primary hover:text-primary/80 transition-colors"
+        >
+          {getVolumeIcon()}
+        </button>
+        {/* Slider de volume */}
         <input
           type="range"
           min="0"
           max="100"
           value={volume}
-          onChange={(e) => onVolumeChange(Number(e.target.value))}
+          onChange={(e) => setVolume(Number(e.target.value))}
           className="w-full cursor-pointer"
         />
         <p className="text-center text-lg font-bold">{volume}</p>

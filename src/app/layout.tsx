@@ -4,6 +4,7 @@ import { Background } from './components/Background';
 import { ThemeProvider } from './context/ThemeContext';
 import { Taskbar } from './components/Taskbar';
 import { Desktop } from './components/Desktop';
+import { AudioProvider } from './context/AudioContext';
 
 export const metadata: Metadata = {
   title: 'Windows Portfolio - Alexis Estrine',
@@ -20,10 +21,12 @@ export default function RootLayout({
     <html lang="fr">
       <body className="overflow-hidden">
         <ThemeProvider>
-          <Background />
-          {children}
-          <Desktop />
-          <Taskbar />
+          <AudioProvider>
+            <Background />
+            {children}
+            <Desktop />
+            <Taskbar />
+          </AudioProvider>
         </ThemeProvider>
       </body>
     </html>
