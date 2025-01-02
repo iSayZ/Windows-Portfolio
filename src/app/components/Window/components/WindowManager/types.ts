@@ -1,5 +1,5 @@
-import { RefObject } from 'react';
+import { DesktopRef } from '../../store';
 
 export interface WindowManagerTypes {
-  desktopRef: RefObject<HTMLDivElement | null>;
+  desktopRef: DesktopRef;
 }

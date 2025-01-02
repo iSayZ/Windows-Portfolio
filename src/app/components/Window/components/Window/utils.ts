@@ -1,8 +1,8 @@
-import { RefObject } from 'react';
 import { WindowStyles } from './types';
+import { DesktopRef } from '../../store';
 
 export const getMaximizedStyles = (
-  desktopRef: RefObject<HTMLDivElement | null>,
+  desktopRef: DesktopRef,
 ): Partial<WindowStyles> => {
   if (!desktopRef.current) return {};
   const rect = desktopRef.current.getBoundingClientRect();

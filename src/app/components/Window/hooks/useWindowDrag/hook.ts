@@ -1,10 +1,10 @@
 import { RefObject, useCallback, useState } from 'react';
-import { useWindowsStore } from '../../store/windowsStore';
+import { DesktopRef, useWindowsStore } from '../../store/windowsStore';
 import { DragState } from './types';
 
 export const useWindowDrag = (
   windowId: string,
-  desktopRef: RefObject<HTMLDivElement | null>,
+  desktopRef: DesktopRef,
 ) => {
   const { updatePosition, bringToFront, windows } = useWindowsStore();
   const window = windows.find((w) => w.id === windowId);

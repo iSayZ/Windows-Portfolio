@@ -1,9 +1,10 @@
 import { RefObject } from 'react';
 import { Window as WindowType } from '../../types';
+import { DesktopRef } from '../../store';
 
 export interface WindowProps {
   window: WindowType;
-  desktopRef: RefObject<HTMLDivElement>;
+  desktopRef: DesktopRef;
 }
 
 export interface WindowStyles {
