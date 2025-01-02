@@ -47,6 +47,7 @@ export const FileExplorer: React.FC<FileExplorerProps> = ({
         } else if (item.type === 'image' && app.shortname === 'ImageViewer') {
           openApp({
             ...app,
+            name: `ImageViewer - ${item.name}`,
             defaultProps: {
               realPath: item.realPath
             }
@@ -57,6 +58,16 @@ export const FileExplorer: React.FC<FileExplorerProps> = ({
             ...app,
             defaultProps: {
               url: item.realPath,
+              unmute: true,
+            }
+          });
+        // If the file type is audio open with MusicPlayer
+        } else if (item.type === 'audio' && app.shortname === 'MusicPlayer') {
+          openApp({
+            ...app,
+            name: `MusicPlayer - ${item.name}`,
+            defaultProps: {
+              realPath: item.realPath,
               unmute: true,
             }
           });
