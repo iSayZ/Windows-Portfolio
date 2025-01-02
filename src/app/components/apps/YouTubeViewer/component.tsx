@@ -1,4 +1,3 @@
-// components/apps/YouTubeViewer/YouTubeViewer.tsx
 import React, { useState, useEffect } from 'react';
 import { YouTubeViewerProps } from './types';
 

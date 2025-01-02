@@ -9,6 +9,7 @@ import {
   type PdfViewerProps,
   type AppDefinition,
   YouTubeViewer,
+  MusicPlayer,
 } from '@/app/components/apps';
 
 export const apps: AppDefinition[] = [
@@ -138,6 +139,19 @@ export const apps: AppDefinition[] = [
     defaultProps: {
       url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
       unmute: true,
+    }
+  },
+  {
+    icon: '/assets/images/app-icons/desktop/music-player.svg',
+    shortname: 'MusicPlayer',
+    name: 'MusicPlayer',
+    component: MusicPlayer,
+    defaultSize: {
+      width: 500,
+      height: 300,
+    },
+    defaultProps: {
+      realPath: '/assets/audios/free-fall.mp3',
     }
   },
 ];
