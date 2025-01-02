@@ -16,7 +16,7 @@ const ThemeToggle: React.FC = () => {
         <div className="relative w-8 h-8">
           {isDarkMode ? (
             <Image
-              src="/assets/images/app-icons/taskbar/sun.svg"
+              src="/assets/images/app-icons/apps/sun.svg"
               alt="Sun Logo"
               layout="fill"
               objectFit="contain"
@@ -24,7 +24,7 @@ const ThemeToggle: React.FC = () => {
             />
           ) : (
             <Image
-              src="/assets/images/app-icons/taskbar/moon.png"
+              src="/assets/images/app-icons/apps/moon.png"
               alt="Moon Logo"
               layout="fill"
               objectFit="contain"

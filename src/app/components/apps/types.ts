@@ -5,6 +5,7 @@ export interface WindowSize {
 
 export interface AppDefinition<T = any> {
   icon: string;
+  iconSize?: string;
   shortname: string;
   name: string;
   component: React.ComponentType<T>;

@@ -21,7 +21,7 @@ const WindowsButton: React.FC = () => {
         >
           <div className="relative w-8 h-8">
             <Image
-              src="/assets/images/app-icons/taskbar/windows.svg"
+              src="/assets/images/app-icons/apps/windows.svg"
               alt="Windows Logo"
               layout="fill"
               objectFit="contain"

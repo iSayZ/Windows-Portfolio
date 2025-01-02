@@ -1,20 +1,20 @@
 import {
-  WebView,
-  PdfViewer,
-  Calculator,
-  Terminal,
-  FileExplorer,
-  Notepad,
-  ImageViewer,
-  type PdfViewerProps,
   type AppDefinition,
-  YouTubeViewer,
+  Calculator,
+  FileExplorer,
+  ImageViewer,
   MusicPlayer,
+  Notepad,
+  PdfViewer,
+  type PdfViewerProps,
+  Terminal,
+  WebView,
+  YouTubeViewer,
 } from '@/app/components/apps';
 
 export const apps: AppDefinition[] = [
   {
-    icon: '/assets/images/app-icons/taskbar/explorer.svg',
+    icon: '/assets/images/app-icons/apps/explorer.svg',
     shortname: 'File Explorer',
     name: 'File Explorer',
     component: FileExplorer,
@@ -24,7 +24,7 @@ export const apps: AppDefinition[] = [
     },
   },
   {
-    icon: '/assets/images/app-icons/desktop/vscode.svg',
+    icon: '/assets/images/app-icons/apps/vscode.svg',
     shortname: 'VsCode',
     name: 'Visual Studio Code',
     component: WebView,
@@ -37,7 +37,7 @@ export const apps: AppDefinition[] = [
     },
   },
   {
-    icon: '/assets/images/app-icons/desktop/chrome.svg',
+    icon: '/assets/images/app-icons/apps/chrome.svg',
     shortname: 'Chrome',
     name: 'Google Chrome',
     component: WebView,
@@ -50,7 +50,20 @@ export const apps: AppDefinition[] = [
     },
   },
   {
-    icon: '/assets/images/app-icons/desktop/pdf.svg',
+    icon: '/assets/images/app-icons/apps/edge.svg',
+    shortname: 'Edge',
+    name: 'Microsoft Edge',
+    component: WebView,
+    defaultSize: {
+      width: 900,
+      height: 550,
+    },
+    defaultProps: {
+      url: 'https://www.google.fr/webhp?igu=1',
+    },
+  },
+  {
+    icon: '/assets/images/app-icons/apps/pdf.svg',
     shortname: 'CV',
     name: 'CV Estrine Alexis - JS Developer',
     component: PdfViewer,
@@ -63,7 +76,7 @@ export const apps: AppDefinition[] = [
     } as PdfViewerProps,
   },
   {
-    icon: '/assets/images/app-icons/desktop/calculator.png',
+    icon: '/assets/images/app-icons/apps/calculator.png',
     shortname: 'Calculator',
     name: 'Calculator',
     component: Calculator,
@@ -73,7 +86,7 @@ export const apps: AppDefinition[] = [
     },
   },
   {
-    icon: '/assets/images/app-icons/desktop/terminal.png',
+    icon: '/assets/images/app-icons/apps/terminal.png',
     shortname: 'Terminal',
     name: 'Terminal',
     component: Terminal,
@@ -83,7 +96,7 @@ export const apps: AppDefinition[] = [
     },
   },
   {
-    icon: '/assets/images/app-icons/desktop/github.svg',
+    icon: '/assets/images/app-icons/apps/github.svg',
     shortname: 'GitHub',
     name: 'GitHub',
     component: () => null,
@@ -94,7 +107,7 @@ export const apps: AppDefinition[] = [
     externalUrl: 'https://github.com/iSayZ',
   },
   {
-    icon: '/assets/images/app-icons/desktop/linkedin.svg',
+    icon: '/assets/images/app-icons/apps/linkedin.svg',
     shortname: 'LinkedIn',
     name: 'LinkedIn',
     component: () => null,
@@ -105,7 +118,7 @@ export const apps: AppDefinition[] = [
     externalUrl: 'https://www.linkedin.com/in/alexis-estrine/',
   },
   {
-    icon: '/assets/images/app-icons/desktop/notepad.png',
+    icon: '/assets/images/app-icons/apps/notepad.png',
     shortname: 'Notepad',
     name: 'Notepad',
     component: Notepad,
@@ -115,7 +128,7 @@ export const apps: AppDefinition[] = [
     }
   },
   {
-    icon: '/assets/images/app-icons/desktop/image-viewer.png',
+    icon: '/assets/images/app-icons/apps/image-viewer.png',
     shortname: 'ImageViewer',
     name: 'ImageViewer',
     component: ImageViewer,
@@ -128,7 +141,7 @@ export const apps: AppDefinition[] = [
     }
   },
   {
-    icon: '/assets/images/app-icons/desktop/youtube.svg',
+    icon: '/assets/images/app-icons/apps/youtube.svg',
     shortname: 'YouTube',
     name: 'YouTube',
     component: YouTubeViewer,
@@ -142,7 +155,7 @@ export const apps: AppDefinition[] = [
     }
   },
   {
-    icon: '/assets/images/app-icons/desktop/music-player.svg',
+    icon: '/assets/images/app-icons/apps/music-player.svg',
     shortname: 'MusicPlayer',
     name: 'MusicPlayer',
     component: MusicPlayer,

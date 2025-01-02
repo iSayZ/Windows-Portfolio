@@ -1,16 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { 
-  Play, 
+import { useAudio, useAudioElement } from '@/app/context/AudioContext';
+import {
   Pause,
-  SkipBack, 
+  Play,
+  Shuffle,
+  SkipBack,
   SkipForward,
   Volume2,
   VolumeX,
-  Shuffle,
 } from 'lucide-react';
-import { MusicPlayerProps } from './types';
 import Image from 'next/image';
-import { useAudio, useAudioElement } from '@/app/context/AudioContext';
+import React, { useEffect, useRef, useState } from 'react';
+import { MusicPlayerProps } from './types';
 
 export const MusicPlayer: React.FC<MusicPlayerProps> = ({ realPath }) => {
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
@@ -137,7 +137,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ realPath }) => {
       {/* Content with sound image / name */}
       <div className="flex-1 flex flex-col items-center justify-center">
         <Image
-          src="/assets/images/app-icons/desktop/music-player.svg"
+          src="/assets/images/app-icons/apps/music-player.svg"
           alt="Music Player"
           width={100}
           height={100}
