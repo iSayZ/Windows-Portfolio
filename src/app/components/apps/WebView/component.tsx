@@ -1,4 +1,4 @@
-import { WebViewProps } from "./styles";
+import { WebViewProps } from './styles';
 
 export const WebView: React.FC<WebViewProps> = ({ url }) => {
   return (

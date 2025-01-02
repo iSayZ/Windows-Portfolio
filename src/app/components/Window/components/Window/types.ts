@@ -3,7 +3,7 @@ import { Window as WindowType } from '../../types';
 
 export interface WindowProps {
   window: WindowType;
-  desktopRef: RefObject<HTMLDivElement | null>;
+  desktopRef: RefObject<HTMLDivElement>;
 }
 
 export interface WindowStyles {
@@ -14,4 +14,12 @@ export interface WindowStyles {
   height: number;
 }
 
-export type ResizeHandlePosition = 'nw' | 'ne' | 'sw' | 'se' | 'n' | 's' | 'w' | 'e';
+export type ResizeHandlePosition =
+  | 'nw'
+  | 'ne'
+  | 'sw'
+  | 'se'
+  | 'n'
+  | 's'
+  | 'w'
+  | 'e';

@@ -7,23 +7,25 @@ export const WindowTitleBar: React.FC<WindowTitleBarProps> = ({
   title,
   onClose,
   onMaximize,
-  isMaximized
+  isMaximized,
 }) => (
-  <div className={`flex items-center justify-between h-8 px-2 bg-secondary-bg text-foreground${
-    !isMaximized ? ' rounded-t-lg' : ''
-  }`}>
+  <div
+    className={`flex items-center justify-between h-8 px-2 bg-secondary-bg text-foreground${
+      !isMaximized ? ' rounded-t-lg' : ''
+    }`}
+  >
     {/* Header */}
-    <div className="flex items-center gap-1">
+    <div className="flex items-center gap-2">
       {/* Icon on the left side with slight gap */}
       <div className="flex items-center justify-center w-6 h-6">
-      <Image 
-        src={icon} 
-        alt={title} 
-        width={30}
-        height={30}
-        className=""
-        priority
-      />
+        <Image
+          src={icon}
+          alt={title}
+          width={30}
+          height={30}
+          className=""
+          priority
+        />
       </div>
 
       {/* Title with slight gap to the right of the icon */}

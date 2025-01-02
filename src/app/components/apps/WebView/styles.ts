@@ -1,3 +1,3 @@
 export interface WebViewProps {
-    url: string;
+  url: string;
 }

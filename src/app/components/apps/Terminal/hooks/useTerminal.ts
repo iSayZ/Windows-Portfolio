@@ -16,20 +16,25 @@ export const useTerminal = () => {
   const [state, setState] = useState<TerminalState>({
     history: [
       { content: ASCII_ART, type: 'output' },
-      { content: 'Welcome to the portfolio terminal! Type "help" for available commands.', type: 'output' }
+      {
+        content:
+          'Welcome to the portfolio terminal! Type "help" for available commands.',
+        type: 'output',
+      },
     ],
     currentCommand: '',
     isMatrixMode: false,
-    isBSODMode: false
+    isBSODMode: false,
   });
 
   const easterEggs: Record<string, string> = {
-    'mario': 'Its me, Mario! 🍄',
-    'konami': '↑↑↓↓←→←→BA - Cheat code activated! 🎮',
-    'matrix': 'Wake up, Neo... ⏰',
-    '42': "The Answer to the Ultimate Question of Life, the Universe, and Everything 🌌",
-    'hack-the-matrix': 'Initiating Matrix protocol...\nHacking the mainframe...\nAccess granted!',
-    'crash': `
+    mario: 'Its me, Mario! 🍄',
+    konami: '↑↑↓↓←→←→BA - Cheat code activated! 🎮',
+    matrix: 'Wake up, Neo... ⏰',
+    '42': 'The Answer to the Ultimate Question of Life, the Universe, and Everything 🌌',
+    'hack-the-matrix':
+      'Initiating Matrix protocol...\nHacking the mainframe...\nAccess granted!',
+    crash: `
 😱 SYSTEM ERROR - Your portfolio has encountered a burst of creativity
 
 Error Code: 0xCAFE_BABE
@@ -46,7 +51,7 @@ STOP: 0x00000BAD (0xC0FFEE, 0xDEAD, 0xBEEF, 0x0BAD)
 Collecting error information...
 Checking for solution...
 Just kidding, this is just an easter egg! 
-`
+`,
   };
 
   const startMatrixEffect = () => {
@@ -54,17 +59,23 @@ Just kidding, this is just an easter egg!
       clearInterval(matrixInterval.current);
     }
 
-    setState(prev => ({
+    setState((prev) => ({
       ...prev,
       isMatrixMode: true,
-      history: [...prev.history, { content: easterEggs['hack-the-matrix'], type: 'matrix' }]
+      history: [
+        ...prev.history,
+        { content: easterEggs['hack-the-matrix'], type: 'matrix' },
+      ],
     }));
 
     let count = 0;
     matrixInterval.current = setInterval(() => {
-      setState(prev => ({
+      setState((prev) => ({
         ...prev,
-        history: [...prev.history, { content: generateMatrixRain(), type: 'matrix' }]
+        history: [
+          ...prev.history,
+          { content: generateMatrixRain(), type: 'matrix' },
+        ],
       }));
 
       count++;
@@ -81,41 +92,42 @@ Just kidding, this is just an easter egg!
     let rain = '';
     for (let i = 0; i < 5; i++) {
       const length = Math.floor(Math.random() * 15) + 5;
-      const line = Array(length).fill(0).map(() => 
-        chars[Math.floor(Math.random() * chars.length)]
-      ).join('');
+      const line = Array(length)
+        .fill(0)
+        .map(() => chars[Math.floor(Math.random() * chars.length)])
+        .join('');
       rain += line + '\n';
     }
     return rain;
   };
 
   const startBSODEffect = () => {
-    setState(prev => ({
+    setState((prev) => ({
       ...prev,
       isBSODMode: true,
       history: [
-        ...prev.history, 
-        { content: easterEggs['crash'], type: 'bsod' }
-      ]
+        ...prev.history,
+        { content: easterEggs['crash'], type: 'bsod' },
+      ],
     }));
   };
 
   const rebootSystem = () => {
-    setState(prev => ({
+    setState((prev) => ({
       ...prev,
       history: [
         ...prev.history,
         { content: 'Rebooting system...', type: 'output' },
         { content: 'Loading portfolio components...', type: 'output' },
-        { content: 'System restored successfully!', type: 'output' }
+        { content: 'System restored successfully!', type: 'output' },
       ],
-      isBSODMode: false
+      isBSODMode: false,
     }));
   };
 
   const commands: Record<string, (args: string[]) => string> = {
-    help: () => 
-`Available commands:
+    help: () =>
+      `Available commands:
 
 help      - Show this help message
 clear     - Clear terminal
@@ -127,30 +139,30 @@ cd [dir]  - Change directory (simulation)
 cat [file]- Show file content (simulation)
 
 Try some special commands for surprises! 🎁`,
-    
+
     clear: () => {
-      setState(prev => ({ 
-        ...prev, 
+      setState((prev) => ({
+        ...prev,
         history: [],
         isMatrixMode: false,
-        isBSODMode: false
+        isBSODMode: false,
       }));
       return '';
     },
-    
+
     echo: (args) => args.join(' '),
     date: () => new Date().toLocaleString(),
     whoami: () => 'alexis@portfolio',
-    
-    ls: () => 
-`Documents/
+
+    ls: () =>
+      `Documents/
 Pictures/
 Projects/
 portfolio.txt
 readme.md`,
-    
+
     cat: (args) => {
-      switch(args[0]) {
+      switch (args[0]) {
         case 'readme.md':
           return 'Welcome to my portfolio! Feel free to explore.';
         case 'portfolio.txt':
@@ -159,10 +171,10 @@ readme.md`,
           return `cat: ${args[0]}: No such file or directory`;
       }
     },
-    
+
     cd: (args) => {
       const validDirs = ['Documents', 'Pictures', 'Projects'];
-      return validDirs.includes(args[0]) 
+      return validDirs.includes(args[0])
         ? `Changed directory to ${args[0]}`
         : `cd: ${args[0]}: No such directory`;
     },
@@ -172,16 +184,16 @@ readme.md`,
         rebootSystem();
       }
       return '';
-    }
+    },
   };
 
   const executeCommand = (commandLine: string) => {
     const args = commandLine.trim().split(' ');
     const command = args[0].toLowerCase();
-    
-    setState(prev => ({
+
+    setState((prev) => ({
       ...prev,
-      history: [...prev.history, { content: commandLine, type: 'input' }]
+      history: [...prev.history, { content: commandLine, type: 'input' }],
     }));
 
     if (command === 'hack-the-matrix') {
@@ -200,9 +212,12 @@ readme.md`,
     }
 
     if (easterEggs[command]) {
-      setState(prev => ({
+      setState((prev) => ({
         ...prev,
-        history: [...prev.history, { content: easterEggs[command], type: 'output' }]
+        history: [
+          ...prev.history,
+          { content: easterEggs[command], type: 'output' },
+        ],
       }));
       return;
     }
@@ -210,18 +225,21 @@ readme.md`,
     if (commands[command]) {
       const output = commands[command](args.slice(1));
       if (output) {
-        setState(prev => ({
+        setState((prev) => ({
           ...prev,
-          history: [...prev.history, { content: output, type: 'output' }]
+          history: [...prev.history, { content: output, type: 'output' }],
         }));
       }
     } else {
-      setState(prev => ({
+      setState((prev) => ({
         ...prev,
-        history: [...prev.history, { 
-          content: `Command not found: ${command}. Type 'help' for available commands.`,
-          type: 'error'
-        }]
+        history: [
+          ...prev.history,
+          {
+            content: `Command not found: ${command}. Type 'help' for available commands.`,
+            type: 'error',
+          },
+        ],
       }));
     }
   };
@@ -229,19 +247,19 @@ readme.md`,
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && state.currentCommand.trim()) {
       executeCommand(state.currentCommand);
-      setState(prev => ({ ...prev, currentCommand: '' }));
+      setState((prev) => ({ ...prev, currentCommand: '' }));
     }
   };
 
   const handleInputChange = (value: string) => {
-    setState(prev => ({ ...prev, currentCommand: value }));
+    setState((prev) => ({ ...prev, currentCommand: value }));
   };
 
   return {
     state,
     handlers: {
       handleKeyDown,
-      handleInputChange
-    }
+      handleInputChange,
+    },
   };
 };

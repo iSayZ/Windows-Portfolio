@@ -5,18 +5,23 @@ import { useWindowResize } from '../../hooks/useWindowResize';
 import { useWindowsStore } from '../../store/windowsStore';
 import { WindowProps, ResizeHandlePosition } from './types';
 import { getMaximizedStyles } from './utils';
-import { getResizeHandleClassName, getWindowContentStyles, getWindowStyles } from './styles';
+import {
+  getResizeHandleClassName,
+  getWindowContentStyles,
+  getWindowStyles,
+} from './styles';
 
 export const Window: React.FC<WindowProps> = ({ window, desktopRef }) => {
   const { removeWindow, toggleMaximize } = useWindowsStore();
-  const { handleMouseDown, handleMouseMove, handleMouseUp, isDragging } = useWindowDrag(window.id, desktopRef);
+  const { handleMouseDown, handleMouseMove, handleMouseUp, isDragging } =
+    useWindowDrag(window.id, desktopRef);
   const { handleResizeStart } = useWindowResize(window.id, desktopRef);
 
   useEffect(() => {
     if (isDragging) {
       globalThis.window.addEventListener('mousemove', handleMouseMove);
       globalThis.window.addEventListener('mouseup', handleMouseUp);
-      
+
       return () => {
         globalThis.window.removeEventListener('mousemove', handleMouseMove);
         globalThis.window.removeEventListener('mouseup', handleMouseUp);
@@ -26,7 +31,7 @@ export const Window: React.FC<WindowProps> = ({ window, desktopRef }) => {
 
   if (window.isMinimized) return null;
 
-  const styles = window.isMaximized 
+  const styles = window.isMaximized
     ? getMaximizedStyles(desktopRef)
     : {
         position: 'absolute' as const,
@@ -36,7 +41,16 @@ export const Window: React.FC<WindowProps> = ({ window, desktopRef }) => {
         height: window.size.height,
       };
 
-  const resizePositions: ResizeHandlePosition[] = ['nw', 'ne', 'sw', 'se', 'n', 's', 'w', 'e'];
+  const resizePositions: ResizeHandlePosition[] = [
+    'nw',
+    'ne',
+    'sw',
+    'se',
+    'n',
+    's',
+    'w',
+    'e',
+  ];
 
   const resizeHandles = !window.isMaximized && (
     <>
@@ -60,7 +74,7 @@ export const Window: React.FC<WindowProps> = ({ window, desktopRef }) => {
       className={getWindowStyles(window.isMaximized)}
     >
       {resizeHandles}
-      <div 
+      <div
         className={`window-titlebar cursor-move${
           !window.isMaximized ? ' rounded-t-lg' : ''
         }`}

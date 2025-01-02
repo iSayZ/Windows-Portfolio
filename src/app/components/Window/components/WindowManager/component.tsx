@@ -1,4 +1,4 @@
-import React, { RefObject } from 'react';
+import React from 'react';
 import { useWindowsStore } from '../../store/windowsStore';
 import { Window } from '../Window';
 import { WindowManagerTypes } from './types';

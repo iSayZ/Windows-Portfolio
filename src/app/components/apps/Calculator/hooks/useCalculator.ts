@@ -5,14 +5,18 @@ export const useCalculator = () => {
   const [state, setState] = useState<CalculatorState>({
     display: '0',
     memory: '',
-    isNewNumber: true
+    isNewNumber: true,
   });
 
   const handleNumber = (num: string) => {
-    setState(prev => ({
+    setState((prev) => ({
       ...prev,
-      display: prev.isNewNumber ? num : (prev.display === '0' ? num : prev.display + num),
-      isNewNumber: false
+      display: prev.isNewNumber
+        ? num
+        : prev.display === '0'
+          ? num
+          : prev.display + num,
+      isNewNumber: false,
     }));
   };
 
@@ -20,10 +24,10 @@ export const useCalculator = () => {
     if (state.memory && !state.isNewNumber) {
       calculate();
     }
-    setState(prev => ({
+    setState((prev) => ({
       ...prev,
       memory: prev.display + ' ' + op + ' ',
-      isNewNumber: true
+      isNewNumber: true,
     }));
   };
 
@@ -33,12 +37,12 @@ export const useCalculator = () => {
       setState({
         display: String(result),
         memory: '',
-        isNewNumber: true
+        isNewNumber: true,
       });
     } catch (error) {
-      setState(prev => ({
+      setState((prev) => ({
         ...prev,
-        display: 'Error'
+        display: 'Error',
       }));
     }
   };
@@ -47,57 +51,57 @@ export const useCalculator = () => {
     setState({
       display: '0',
       memory: '',
-      isNewNumber: true
+      isNewNumber: true,
     });
   };
 
   const clearEntry = () => {
-    setState(prev => ({
+    setState((prev) => ({
       ...prev,
       display: '0',
-      isNewNumber: true
+      isNewNumber: true,
     }));
   };
 
   const toggleSign = () => {
-    setState(prev => ({
+    setState((prev) => ({
       ...prev,
-      display: String(-parseFloat(prev.display))
+      display: String(-parseFloat(prev.display)),
     }));
   };
 
   const handlePercent = () => {
-    setState(prev => {
+    setState((prev) => {
       if (prev.memory) {
         const baseNumber = parseFloat(prev.memory);
         const percentage = (baseNumber * parseFloat(prev.display)) / 100;
         return {
           ...prev,
           display: String(percentage),
-          isNewNumber: true
+          isNewNumber: true,
         };
       }
       return {
         ...prev,
         display: String(parseFloat(prev.display) / 100),
-        isNewNumber: true
+        isNewNumber: true,
       };
     });
   };
 
   const handleDecimal = () => {
-    setState(prev => {
+    setState((prev) => {
       if (prev.isNewNumber) {
         return {
           ...prev,
           display: '0.',
-          isNewNumber: false
+          isNewNumber: false,
         };
       }
       if (!prev.display.includes('.')) {
         return {
           ...prev,
-          display: prev.display + '.'
+          display: prev.display + '.',
         };
       }
       return prev;
@@ -114,7 +118,7 @@ export const useCalculator = () => {
       clearEntry,
       toggleSign,
       handlePercent,
-      handleDecimal
-    }
+      handleDecimal,
+    },
   };
 };

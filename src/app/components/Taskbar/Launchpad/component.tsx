@@ -28,7 +28,7 @@ const Launchpad: React.FC = () => {
       >
         <div className="relative w-7 h-7">
           <Image
-            src="/assets/images/app-icons/taskbar/folder.svg"
+            src="/assets/images/app-icons/taskbar/explorer.svg"
             alt="Folder Logo"
             layout="fill"
             objectFit="contain"

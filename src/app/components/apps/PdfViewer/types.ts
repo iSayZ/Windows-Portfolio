@@ -1,3 +1,3 @@
 export interface PdfViewerProps {
-    pdfUrl?: string;
-  }
+  pdfUrl?: string;
+}

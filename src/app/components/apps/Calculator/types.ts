@@ -1,5 +1,5 @@
 export interface CalculatorState {
-    display: string;
-    memory: string;
-    isNewNumber: boolean;
-  }
+  display: string;
+  memory: string;
+  isNewNumber: boolean;
+}

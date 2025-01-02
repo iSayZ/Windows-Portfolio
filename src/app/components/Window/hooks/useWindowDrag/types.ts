@@ -1,7 +1,7 @@
 export interface DragState {
-    isDragging: boolean;
-    initialX: number;
-    initialY: number;
-    originalX: number;
-    originalY: number;
-  }
+  isDragging: boolean;
+  initialX: number;
+  initialY: number;
+  originalX: number;
+  originalY: number;
+}
