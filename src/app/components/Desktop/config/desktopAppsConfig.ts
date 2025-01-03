@@ -5,6 +5,7 @@ import {
   ImageViewer,
   MusicPlayer,
   Notepad,
+  Paint,
   PdfViewer,
   type PdfViewerProps,
   Terminal,
@@ -166,5 +167,15 @@ export const apps: AppDefinition[] = [
     defaultProps: {
       realPath: '/assets/audios/free-fall.mp3',
     }
+  },
+  {
+    icon: '/assets/images/app-icons/apps/paint.svg',
+    shortname: 'Paint',
+    name: 'Paint',
+    component: Paint,
+    defaultSize: {
+      width: 700,
+      height: 500,
+    },
   },
 ];
