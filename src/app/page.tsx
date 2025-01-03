@@ -1,5 +1,15 @@
+"use client";
+
+import { HackerScreen, useHackerScreenStore } from "./components/HackerScreen";
+
 const Home = () => {
-  return <></>;
+  const { isOpen, setIsOpen } = useHackerScreenStore();
+
+  return (
+    <>
+      {isOpen && <HackerScreen onClose={() => setIsOpen(false)} />}
+    </>
+  );
 };
 
 export default Home;

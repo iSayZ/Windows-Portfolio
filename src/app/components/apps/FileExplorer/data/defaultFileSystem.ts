@@ -328,10 +328,9 @@ export const defaultFileSystem = (
   {
     id: 'virus',
     name: 'virus.exe',
-    type: 'text',
+    type: 'virus',
     parentId: 'downloads',
-    path: 'This PC/Downloads/downloaded-file.txt',
-    realPath: '/assets/documents/fake-files/explorer/downloads/virus.txt',
+    path: 'This PC/Downloads/virus.exe',
     icon: '/assets/images/app-icons/explorer/virus.png',
     isSystem: false,
     openWith: 'Notepad',

@@ -6,7 +6,8 @@ export type FileType =
   | 'text'
   | 'drive'
   | 'document'
-  | 'shortcut';
+  | 'shortcut'
+  | 'virus';
 
 export interface FileSystemItem {
   id: string;

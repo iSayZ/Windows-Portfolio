@@ -5,6 +5,9 @@ import { useFileExplorer } from './hook/useFileExplorer';
 import { FileSystemItem } from './types';
 import { apps } from '../../Desktop/config/desktopAppsConfig';
 import { useOpenApp } from '@/app/hooks/useOpenApp';
+import { useState } from 'react';
+import { HackerScreen } from '../../HackerScreen/component';
+import { useHackerScreenStore } from '../../HackerScreen';
 
 interface FileExplorerProps {
   initialFileSystem?: FileSystemItem[];
@@ -28,6 +31,9 @@ export const FileExplorer: React.FC<FileExplorerProps> = ({
     navigateTo,
     handleSearch,
   } = useFileExplorer(fileSystem);
+
+  // To show HackerScreen
+  const { setIsOpen } = useHackerScreenStore();
 
   const handleFileOpen = (item: FileSystemItem) => {
     if (item.type === 'folder' || item.type === 'drive') {
@@ -70,6 +76,9 @@ export const FileExplorer: React.FC<FileExplorerProps> = ({
               unmute: true,
             }
           });
+        // If the file is the fake virus open HackerScreen
+        }  else if (item.type === 'virus') {
+          setIsOpen(true);
         } else {
           // For other app, open with her app
           openApp(app);

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { getUserPreferences, formatTime, formatDate } from './utils/time';
 import { MenuPortal } from '../MenuPortal';
 import { Calendar } from './Calendar';
+import { Tooltip } from '../../Tooltip';
 
 const Clock: React.FC = () => {
   const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);

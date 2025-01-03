@@ -27,3 +27,30 @@ body {
   font-family: 'Segoe UI Variable', sans-serif;
   color: var(--primary-foreground);
 }
+
+@keyframes glitch-text {
+  0% {
+    clip-path: inset(40% 0 61% 0);
+    transform: skew(0.15deg);
+  }
+  20% {
+    clip-path: inset(75% 0 28% 0);
+    transform: skew(0.3deg);
+  }
+  40% {
+    clip-path: inset(48% 0 43% 0);
+    transform: skew(-0.1deg);
+  }
+  60% {
+    clip-path: inset(13% 0 78% 0);
+    transform: skew(0.4deg);
+  }
+  80% {
+    clip-path: inset(33% 0 66% 0);
+    transform: skew(-0.2deg);
+  }
+  100% {
+    clip-path: inset(40% 0 61% 0);
+    transform: skew(0.15deg);
+  }
+}
