@@ -6,7 +6,7 @@ export type FileType =
   | 'text'
   | 'drive'
   | 'document'
-  | 'shortcut'
+  | 'application'
   | 'virus';
 
 export interface FileSystemItem {

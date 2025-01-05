@@ -1,6 +1,6 @@
 import { AppDefinition, AppsConfig } from '../../types';
 import { FileSystemItem } from '../types';
-import { generateDesktopShortcuts, generateProgramFiles } from '../utils/generateFileSystem';
+import { generateDesktopapplications, generateProgramFiles } from '../utils/generateFileSystem';
 
 export const defaultFileSystem = (
   desktopApps: AppDefinition[],
@@ -41,6 +41,7 @@ export const defaultFileSystem = (
     path: 'This PC/Local Disk (C:)/Program Files (x86)',
     isSystem: true,
   },
+  // To generate all apps into Program Files and fake files associated
   ...generateProgramFiles(allApps),
   // Windows
   {
@@ -191,7 +192,7 @@ export const defaultFileSystem = (
     isSystem: true,
   },
   // To generate all desktop apps
-  ...generateDesktopShortcuts(desktopApps),
+  ...generateDesktopapplications(desktopApps),
   // Documents with a text file
   {
     id: 'documents',

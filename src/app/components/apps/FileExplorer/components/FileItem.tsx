@@ -49,7 +49,7 @@ const getIconPath = (type: FileType, name: string, customIcon?: string) => {
       return `${basePath}/text.png`;
     case 'document':
       return `${basePath}/document.png`;
-    case 'shortcut':
+    case 'application':
       return `${basePath}/document.png`;
     case 'drive':
       return `${basePath}/disk.png`;

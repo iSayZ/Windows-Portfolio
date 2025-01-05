@@ -1,13 +1,13 @@
-import { FileSystemItem, FileType } from '../types';
 import { AppDefinition, AppsConfig } from '../../types';
+import { FileSystemItem, FileType } from '../types';
 
-export const generateDesktopShortcuts = (
+export const generateDesktopapplications = (
   desktopApps: AppDefinition[],
 ): FileSystemItem[] => {
   return desktopApps.map((app) => ({
     id: `desktop-${app.shortname.toLowerCase()}`,
     name: `${app.shortname}`,
-    type: 'shortcut' as FileType,
+    type: 'application' as FileType,
     parentId: 'desktop',
     path: `This PC/Desktop/${app.shortname}`,
     isSystem: false,
@@ -26,7 +26,7 @@ export const generateAppFiles = (
     {
       id: `${parentFolderId}-uninstall`,
       name: 'uninstall.exe',
-      type: 'shortcut' as FileType,
+      type: 'application' as FileType,
       parentId: parentFolderId,
       path: `${programFilesPath}/${app.name}/uninstall.exe`,
       isSystem: true,
@@ -189,10 +189,10 @@ export const generateProgramFiles = (allApps: AppsConfig): FileSystemItem[] => {
       items.push({
         id: `program-files-${key}-exe`,
         name: `${app.shortname}.exe`,
-        type: 'shortcut',
+        type: 'application',
         parentId: folderId,
         path: `This PC/Local Disk (C:)/Program Files/${app.name}/${app.shortname}.exe`,
-        isSystem: true,
+        isSystem: false,
         openWith: app.shortname,
         icon: app.icon,
       });
@@ -218,10 +218,10 @@ export const generateProgramFiles = (allApps: AppsConfig): FileSystemItem[] => {
       items.push({
         id: `program-files-x86-${key}-exe`,
         name: `${app.shortname} (x86).exe`,
-        type: 'shortcut',
+        type: 'application',
         parentId: folderId,
         path: `This PC/Local Disk (C:)/Program Files (x86)/${app.name}/${app.shortname} (x86).exe`,
-        isSystem: true,
+        isSystem: false,
         openWith: app.shortname,
         icon: app.icon,
       });
