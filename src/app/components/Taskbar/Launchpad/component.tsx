@@ -4,7 +4,7 @@ import { useOpenApp } from '@/app/hooks/useOpenApp';
 import Image from 'next/image';
 import { ThemeToggle } from './ThemeToggle';
 import { WindowsButton } from './WindowsButton';
-import { launchpadApps } from './config/launchpadAppsConfig';
+import { launchpadApps } from '../../apps/config/launchpadAppsConfig';
 import { Tooltip } from '../../Tooltip';
 
 const Launchpad: React.FC = () => {

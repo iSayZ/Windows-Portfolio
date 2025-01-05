@@ -3,10 +3,8 @@ import { FileList } from './components/FileList';
 import { defaultFileSystem } from './data/defaultFileSystem';
 import { useFileExplorer } from './hook/useFileExplorer';
 import { FileSystemItem } from './types';
-import { apps } from '../../Desktop/config/desktopAppsConfig';
+import { apps } from '../config/desktopAppsConfig';
 import { useOpenApp } from '@/app/hooks/useOpenApp';
-import { useState } from 'react';
-import { HackerScreen } from '../../HackerScreen/component';
 import { useHackerScreenStore } from '../../HackerScreen';
 
 interface FileExplorerProps {

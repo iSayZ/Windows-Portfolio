@@ -13,3 +13,23 @@ export interface AppDefinition<T = any> {
   defaultProps?: T;
   externalUrl?: string;
 }
+
+export type AppName = 
+    | 'fileExplorer'
+    | 'vscode'
+    | 'chrome'
+    | 'edge'
+    | 'cv'
+    | 'calculator'
+    | 'terminal'
+    | 'github'
+    | 'linkedin'
+    | 'notepad'
+    | 'imageViewer'
+    | 'youtube'
+    | 'musicPlayer'
+    | 'paint';
+  
+export type AppsConfig = {
+  [K in AppName]: AppDefinition;
+};

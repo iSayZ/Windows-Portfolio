@@ -1,6 +1,6 @@
 'use client';
 
-import { apps } from './config/desktopAppsConfig';
+import { apps } from '../apps/config/desktopAppsConfig';
 import { AppIcon } from './AppIcon';
 import { useWindowsStore, WindowManager } from '../Window';
 import { RefObject, useEffect, useRef } from 'react';
