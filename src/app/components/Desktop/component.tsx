@@ -1,6 +1,6 @@
 'use client';
 
-import { apps } from '../apps/config/desktopAppsConfig';
+import { desktopApps } from '../apps/config/desktopAppsConfig';
 import { AppIcon } from './AppIcon';
 import { useWindowsStore, WindowManager } from '../Window';
 import { RefObject, useEffect, useRef } from 'react';
@@ -21,7 +21,7 @@ const Desktop: React.FC = () => {
         ref={desktopRef}
         className="h-[calc(100vh-3rem)] w-full p-6 flex flex-col flex-wrap gap-2 content-start"
       >
-        {apps.map((app) => (
+        {desktopApps.map((app) => (
           <AppIcon
             key={app.shortname}
             icon={app.icon}

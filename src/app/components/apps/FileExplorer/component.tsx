@@ -3,9 +3,10 @@ import { FileList } from './components/FileList';
 import { defaultFileSystem } from './data/defaultFileSystem';
 import { useFileExplorer } from './hook/useFileExplorer';
 import { FileSystemItem } from './types';
-import { apps } from '../config/desktopAppsConfig';
+import { desktopApps } from '../config/desktopAppsConfig';
 import { useOpenApp } from '@/app/hooks/useOpenApp';
 import { useHackerScreenStore } from '../../HackerScreen';
+import { allApps } from '../config/appsConfig';
 
 interface FileExplorerProps {
   initialFileSystem?: FileSystemItem[];
@@ -14,7 +15,7 @@ interface FileExplorerProps {
 export const FileExplorer: React.FC<FileExplorerProps> = ({
   initialFileSystem = defaultFileSystem,
 }) => {
-  const fileSystem = defaultFileSystem(apps);
+  const fileSystem = defaultFileSystem(desktopApps, allApps);
   const openApp = useOpenApp();
 
   const {
@@ -37,7 +38,7 @@ export const FileExplorer: React.FC<FileExplorerProps> = ({
     if (item.type === 'folder' || item.type === 'drive') {
       navigateTo(item);
     } else if (!item.isSystem && item.openWith) {
-      const app = apps.find((app) => app.shortname === item.openWith);
+      const app = desktopApps.find((app) => app.shortname === item.openWith);
       if (app) {
         // If the file type is text open with Notepad
         if (item.type === 'text' && app.shortname === 'Notepad') {

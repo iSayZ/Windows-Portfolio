@@ -1,9 +1,10 @@
-import { AppDefinition } from '../../types';
+import { AppDefinition, AppsConfig } from '../../types';
 import { FileSystemItem } from '../types';
-import { generateDesktopShortcuts } from '../utils/generateFileSystem';
+import { generateDesktopShortcuts, generateProgramFiles } from '../utils/generateFileSystem';
 
 export const defaultFileSystem = (
   desktopApps: AppDefinition[],
+  allApps: AppsConfig,
 ): FileSystemItem[] => [
   // Root
   {
@@ -40,6 +41,7 @@ export const defaultFileSystem = (
     path: 'This PC/Local Disk (C:)/Program Files (x86)',
     isSystem: true,
   },
+  ...generateProgramFiles(allApps),
   // Windows
   {
     id: 'windows',

@@ -1,7 +1,7 @@
 import { AppDefinition } from '../types';
 import { allApps } from './appsConfig';
 
-export const apps: AppDefinition[] = [
+export const desktopApps: AppDefinition[] = [
   allApps.fileExplorer,
   allApps.vscode,
   allApps.chrome,
