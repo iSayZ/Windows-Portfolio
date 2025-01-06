@@ -1,4 +1,4 @@
-import { RefObject, useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { DesktopRef, useWindowsStore } from '../../store/windowsStore';
 import { ResizeDirection, ResizeState } from './types';
 

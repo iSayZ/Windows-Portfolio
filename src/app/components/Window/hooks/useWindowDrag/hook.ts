@@ -1,4 +1,4 @@
-import { RefObject, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { DesktopRef, useWindowsStore } from '../../store/windowsStore';
 import { DragState } from './types';
 

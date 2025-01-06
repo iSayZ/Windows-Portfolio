@@ -1,5 +1,5 @@
 import { useState, KeyboardEvent, useRef } from 'react';
-import { TerminalState, TerminalLine } from '../types';
+import { TerminalState } from '../types';
 
 export const useTerminal = () => {
   const ASCII_ART = `

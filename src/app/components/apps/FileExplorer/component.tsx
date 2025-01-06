@@ -79,7 +79,6 @@ export const FileExplorer: React.FC<FileExplorerProps> = ({
         } else if (item.type === 'virus') {
           setIsOpen(true);
         } else {
-          console.log(app);
           // For other app, open with her app
           openApp(app);
         }

@@ -1,4 +1,3 @@
-import { RefObject } from 'react';
 import { Window as WindowType } from '../../types';
 import { DesktopRef } from '../../store';
 

@@ -27,7 +27,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ realPath }) => {
   const progressRef = useRef<HTMLInputElement>(null);
 
   // use global AudioContext
-  const { volume, isMuted, toggleMute } = useAudio();
+  const { isMuted, toggleMute } = useAudio();
   useAudioElement(audioRef);
 
   const audioName = realPath ? realPath.split('/').pop() : 'Music Player';

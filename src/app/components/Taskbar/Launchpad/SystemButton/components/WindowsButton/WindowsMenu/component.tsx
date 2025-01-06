@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Search, Power } from 'lucide-react';
+import { Power } from 'lucide-react';
 import { WindowsMenuProps } from './types';
 import useClickOutside from '@/app/hooks/useClickOutside';
 import Image from 'next/image';
