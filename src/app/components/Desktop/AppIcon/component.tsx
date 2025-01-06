@@ -2,10 +2,17 @@ import React from 'react';
 import Image from 'next/image';
 import { AppIconProps } from './types';
 
-const AppIcon: React.FC<AppIconProps> = ({ icon, name, onClick }) => {
+const AppIcon: React.FC<AppIconProps> = ({ 
+  icon, 
+  name, 
+  onClick, 
+  className = '', 
+  'data-app-name': dataAppName 
+}) => {
   return (
     <div
-      className="p-2 rounded-sm flex flex-col items-center cursor-pointer hover:bg-accent transition active:scale-95"
+      data-app-name={dataAppName}
+      className={`p-2 rounded-sm flex flex-col items-center cursor-pointer hover:bg-accent transition active:scale-95 app-icon ${className}`}
       onClick={onClick}
     >
       <div className="h-8 w-16 rounded-full flex items-center justify-center text-foreground">

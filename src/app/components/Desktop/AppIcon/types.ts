@@ -1,5 +1,7 @@
 export interface AppIconProps {
   icon: string;
   name: string;
-  onClick: () => void;
+  onClick?: () => void;
+  className?: string;
+  'data-app-name'?: string;
 }
