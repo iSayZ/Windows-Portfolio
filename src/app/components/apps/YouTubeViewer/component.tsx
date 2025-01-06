@@ -16,14 +16,17 @@ declare global {
             autoplay: number;
             mute: number;
           };
-        }
+        },
       ) => any;
     };
     onYouTubeIframeAPIReady: () => void;
   }
 }
 
-export const YouTubeViewer: React.FC<YouTubeViewerProps> = ({ url, unmute = false }) => {
+export const YouTubeViewer: React.FC<YouTubeViewerProps> = ({
+  url,
+  unmute = false,
+}) => {
   const [videoSource, setVideoSource] = useState<{
     type: 'youtube' | 'local';
     id: string | null;
@@ -52,7 +55,12 @@ export const YouTubeViewer: React.FC<YouTubeViewerProps> = ({ url, unmute = fals
 
   // Initialize YouTube player
   const initializePlayer = () => {
-    if (videoSource.type === 'youtube' && videoSource.id && window.YT && playerContainerRef.current) {
+    if (
+      videoSource.type === 'youtube' &&
+      videoSource.id &&
+      window.YT &&
+      playerContainerRef.current
+    ) {
       // We ignore the returned player instance as we use the event.target in onReady
       new window.YT.Player(playerContainerRef.current, {
         videoId: videoSource.id,
@@ -97,10 +105,17 @@ export const YouTubeViewer: React.FC<YouTubeViewerProps> = ({ url, unmute = fals
     const extractYouTubeVideoId = (inputUrl: string) => {
       try {
         const urlObj = new URL(inputUrl);
-        
-        const localVideoExtensions = ['mp4', 'webm', 'ogg', 'mov', 'avi', 'mkv'];
+
+        const localVideoExtensions = [
+          'mp4',
+          'webm',
+          'ogg',
+          'mov',
+          'avi',
+          'mkv',
+        ];
         const fileExtension = inputUrl.split('.').pop()?.toLowerCase();
-        
+
         if (fileExtension && localVideoExtensions.includes(fileExtension)) {
           setVideoSource({ type: 'local', id: inputUrl });
           return;
@@ -109,13 +124,16 @@ export const YouTubeViewer: React.FC<YouTubeViewerProps> = ({ url, unmute = fals
         if (urlObj.hostname === 'youtu.be') {
           setVideoSource({ type: 'youtube', id: urlObj.pathname.slice(1) });
           return;
-        } else if (urlObj.hostname === 'www.youtube.com' || urlObj.hostname === 'youtube.com') {
+        } else if (
+          urlObj.hostname === 'www.youtube.com' ||
+          urlObj.hostname === 'youtube.com'
+        ) {
           const videoIdParam = urlObj.searchParams.get('v');
           if (videoIdParam) {
             setVideoSource({ type: 'youtube', id: videoIdParam });
             return;
           }
-          
+
           const pathParts = urlObj.pathname.split('/');
           const embedIndex = pathParts.indexOf('embed');
           if (embedIndex !== -1 && pathParts[embedIndex + 1]) {
@@ -123,10 +141,12 @@ export const YouTubeViewer: React.FC<YouTubeViewerProps> = ({ url, unmute = fals
             return;
           }
         }
-        
+
         throw new Error('Invalid URL');
       } catch (err) {
-        setError('Invalid URL. Please provide a valid YouTube video link or local video file.');
+        setError(
+          'Invalid URL. Please provide a valid YouTube video link or local video file.',
+        );
         setVideoSource({ type: 'youtube', id: null });
       }
     };

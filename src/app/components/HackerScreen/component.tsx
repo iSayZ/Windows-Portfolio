@@ -2,27 +2,28 @@
 
 import React, { useEffect, useState } from 'react';
 
-const glitchChars = "!@#$%^&*()_+-=[]{}|;:,.<>?`~ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+const glitchChars =
+  '!@#$%^&*()_+-=[]{}|;:,.<>?`~ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
 const commands = [
-  "SECURITY BREACH DETECTED!",
-  "Virus detected in system...",
-  "Initializing virus module v2.0...",
-  "Scanning system files...",
-  "Corrupting data...",
-  "Encrypting files...",
-  "Installing malware...",
-  "Sending system data...",
-  "Hijacking controls...",
-  "SYSTEM COMPROMISED",
-  "Press ESC to attempt system recovery..."
+  'SECURITY BREACH DETECTED!',
+  'Virus detected in system...',
+  'Initializing virus module v2.0...',
+  'Scanning system files...',
+  'Corrupting data...',
+  'Encrypting files...',
+  'Installing malware...',
+  'Sending system data...',
+  'Hijacking controls...',
+  'SYSTEM COMPROMISED',
+  'Press ESC to attempt system recovery...',
 ];
 
 export function HackerScreen({ onClose }: { onClose: () => void }) {
   const [displayedLines, setDisplayedLines] = useState<string[]>([]);
   const [isComplete, setIsComplete] = useState(false);
   const [isRecovering, setIsRecovering] = useState(false);
-  const [glitchText, setGlitchText] = useState("");
+  const [glitchText, setGlitchText] = useState('');
 
   useEffect(() => {
     let currentLineIndex = 0;
@@ -36,15 +37,18 @@ export function HackerScreen({ onClose }: { onClose: () => void }) {
       }
 
       const currentCommand = commands[currentLineIndex];
-      
+
       if (currentCharIndex === 0) {
-        setDisplayedLines(prev => [...prev, '']);
+        setDisplayedLines((prev) => [...prev, '']);
       }
 
       if (currentCharIndex < currentCommand.length) {
-        setDisplayedLines(prev => {
+        setDisplayedLines((prev) => {
           const newLines = [...prev];
-          newLines[currentLineIndex] = currentCommand.slice(0, currentCharIndex + 1);
+          newLines[currentLineIndex] = currentCommand.slice(
+            0,
+            currentCharIndex + 1,
+          );
           return newLines;
         });
         currentCharIndex++;
@@ -82,11 +86,11 @@ export function HackerScreen({ onClose }: { onClose: () => void }) {
     const glitchInterval = setInterval(() => {
       setGlitchText(getRandomGlitchText(Math.floor(Math.random() * 100) + 50));
       glitchCount++;
-      
+
       if (glitchCount >= totalGlitches) {
         clearInterval(glitchInterval);
         setTimeout(() => {
-          setGlitchText("");
+          setGlitchText('');
           onClose();
         }, 500);
       }
@@ -94,16 +98,30 @@ export function HackerScreen({ onClose }: { onClose: () => void }) {
   };
 
   return (
-    <div className={`fixed inset-0 bg-black z-50 overflow-hidden flex items-center justify-center
-      ${isRecovering ? 'animate-[glitch_0.3s_ease-in-out_infinite]' : ''}`}>
+    <div
+      className={`fixed inset-0 bg-black z-50 overflow-hidden flex items-center justify-center
+      ${isRecovering ? 'animate-[glitch_0.3s_ease-in-out_infinite]' : ''}`}
+    >
       <style jsx global>{`
         @keyframes glitch {
-          0% { transform: translate(0) }
-          20% { transform: translate(-5px, 5px) }
-          40% { transform: translate(-5px, -5px) }
-          60% { transform: translate(5px, 5px) }
-          80% { transform: translate(5px, -5px) }
-          100% { transform: translate(0) }
+          0% {
+            transform: translate(0);
+          }
+          20% {
+            transform: translate(-5px, 5px);
+          }
+          40% {
+            transform: translate(-5px, -5px);
+          }
+          60% {
+            transform: translate(5px, 5px);
+          }
+          80% {
+            transform: translate(5px, -5px);
+          }
+          100% {
+            transform: translate(0);
+          }
         }
       `}</style>
       <pre className="font-mono text-xl text-red-500 whitespace-pre-wrap p-8">

@@ -1,4 +1,4 @@
 export interface YouTubeViewerProps {
-    url: string;
-    unmute?: boolean;
+  url: string;
+  unmute?: boolean;
 }

@@ -49,7 +49,7 @@ const Launchpad: React.FC = () => {
           </button>
         </Tooltip>
       ))}
-      
+
       <ThemeToggle />
     </div>
   );

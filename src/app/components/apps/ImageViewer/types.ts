@@ -1,4 +1,4 @@
 export interface ImageViewerProps {
-    filePath?: string;
-    realPath?: string;
+  filePath?: string;
+  realPath?: string;
 }

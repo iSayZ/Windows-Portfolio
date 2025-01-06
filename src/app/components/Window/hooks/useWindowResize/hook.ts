@@ -2,10 +2,7 @@ import { RefObject, useCallback, useEffect, useState } from 'react';
 import { DesktopRef, useWindowsStore } from '../../store/windowsStore';
 import { ResizeDirection, ResizeState } from './types';
 
-export const useWindowResize = (
-  windowId: string,
-  desktopRef: DesktopRef,
-) => {
+export const useWindowResize = (windowId: string, desktopRef: DesktopRef) => {
   const { updateSize, updatePosition, windows } = useWindowsStore();
   const window = windows.find((w) => w.id === windowId);
   const [resizeState, setResizeState] = useState<ResizeState | null>(null);

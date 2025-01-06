@@ -42,7 +42,7 @@ const SoundMenu: React.FC<SoundMenuProps> = ({
       </p>
       <div className="flex items-center gap-4">
         {/* Icône de volume cliquable pour mute/unmute */}
-        <button 
+        <button
           onClick={toggleMute}
           className="text-primary hover:text-primary/80 transition-colors"
         >

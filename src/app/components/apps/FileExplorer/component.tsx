@@ -45,41 +45,41 @@ export const FileExplorer: React.FC<FileExplorerProps> = ({
           openApp({
             ...app,
             defaultProps: {
-              realPath: item.realPath
-            }
+              realPath: item.realPath,
+            },
           });
-        // If the file type is image open with ImageViewer
+          // If the file type is image open with ImageViewer
         } else if (item.type === 'image' && app.shortname === 'ImageViewer') {
           openApp({
             ...app,
             name: `ImageViewer - ${item.name}`,
             defaultProps: {
-              realPath: item.realPath
-            }
+              realPath: item.realPath,
+            },
           });
-        // If the file type is video open with YouTubeViewer
+          // If the file type is video open with YouTubeViewer
         } else if (item.type === 'video' && app.shortname === 'YouTube') {
           openApp({
             ...app,
             defaultProps: {
               url: item.realPath,
               unmute: true,
-            }
+            },
           });
-        // If the file type is audio open with MusicPlayer
+          // If the file type is audio open with MusicPlayer
         } else if (item.type === 'audio' && app.shortname === 'MusicPlayer') {
           openApp({
             ...app,
             defaultProps: {
               realPath: item.realPath,
               unmute: true,
-            }
+            },
           });
-        // If the file is the fake virus open HackerScreen
-        }  else if (item.type === 'virus') {
+          // If the file is the fake virus open HackerScreen
+        } else if (item.type === 'virus') {
           setIsOpen(true);
         } else {
-          console.log(app)
+          console.log(app);
           // For other app, open with her app
           openApp(app);
         }

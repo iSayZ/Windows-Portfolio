@@ -1,4 +1,4 @@
 export interface MusicPlayerProps {
-    filePath?: string;
-    realPath?: string;
+  filePath?: string;
+  realPath?: string;
 }

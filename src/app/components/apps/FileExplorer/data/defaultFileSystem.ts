@@ -1,6 +1,9 @@
 import { AppDefinition, AppsConfig } from '../../types';
 import { FileSystemItem } from '../types';
-import { generateDesktopapplications, generateProgramFiles } from '../utils/generateFileSystem';
+import {
+  generateDesktopapplications,
+  generateProgramFiles,
+} from '../utils/generateFileSystem';
 
 export const defaultFileSystem = (
   desktopApps: AppDefinition[],
@@ -208,7 +211,8 @@ export const defaultFileSystem = (
     type: 'text',
     parentId: 'documents',
     path: 'This PC/Documents/my-life-plan.txt',
-    realPath: '/assets/documents/fake-files/explorer/documents/my-life-plan.txt',
+    realPath:
+      '/assets/documents/fake-files/explorer/documents/my-life-plan.txt',
     isSystem: false,
     openWith: 'Notepad',
   },
@@ -257,7 +261,8 @@ export const defaultFileSystem = (
     type: 'image',
     parentId: 'pictures',
     path: 'This PC/Pictures/my-next-tattoo.jpg',
-    realPath: '/assets/documents/fake-files/explorer/pictures/my-next-tattoo.jpg',
+    realPath:
+      '/assets/documents/fake-files/explorer/pictures/my-next-tattoo.jpg',
     isSystem: false,
     openWith: 'ImageViewer',
   },

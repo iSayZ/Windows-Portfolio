@@ -16,7 +16,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ realPath }) => {
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Audio player states
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -41,7 +41,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ realPath }) => {
           // Validate audio file extension
           const extension = realPath.split('.').pop()?.toLowerCase();
           const audioExtensions = ['mp3', 'wav', 'ogg', 'm4a', 'flac', 'aac'];
-          
+
           if (!extension || !audioExtensions.includes(extension)) {
             throw new Error('Unsupported audio type');
           }
@@ -74,9 +74,10 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ realPath }) => {
   const handleTimeUpdate = () => {
     if (audioRef.current) {
       setCurrentTime(audioRef.current.currentTime);
-      
+
       if (progressRef.current) {
-        const progress = (audioRef.current.currentTime / audioRef.current.duration) * 100;
+        const progress =
+          (audioRef.current.currentTime / audioRef.current.duration) * 100;
         progressRef.current.value = progress.toString();
       }
     }
@@ -103,7 +104,8 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ realPath }) => {
   // Progress bar interaction
   const handleProgressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (audioRef.current) {
-      const time = (parseFloat(e.target.value) / 100) * audioRef.current.duration;
+      const time =
+        (parseFloat(e.target.value) / 100) * audioRef.current.duration;
       audioRef.current.currentTime = time;
       setCurrentTime(time);
     }
@@ -143,9 +145,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ realPath }) => {
           height={100}
           priority
         />
-        <h2 className="text-lg text-foreground">
-          {audioName}
-        </h2>
+        <h2 className="text-lg text-foreground">{audioName}</h2>
       </div>
 
       {/* Bottom Control Bar */}
@@ -192,7 +192,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ realPath }) => {
           </button>
 
           {/* Rigth control : Volume */}
-          <button 
+          <button
             onClick={toggleMute}
             className="text-foreground hover:text-foreground"
           >
@@ -200,12 +200,12 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ realPath }) => {
           </button>
 
           {/* Centered control : Prev, Play, Next */}
-          <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 space-x-4'>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 space-x-4">
             <button className="text-foreground hover:text-foreground">
               <SkipBack size={24} />
             </button>
-            <button 
-              onClick={togglePlay} 
+            <button
+              onClick={togglePlay}
               className="bg-foreground text-background p-2 rounded-full hover:bg-blue-500 transition-colors"
             >
               {isPlaying ? <Pause size={24} /> : <Play size={24} />}

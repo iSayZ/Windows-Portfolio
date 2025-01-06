@@ -17,10 +17,10 @@ export const generateDesktopapplications = (
 };
 
 export const generateAppFiles = (
-  appKey: string, 
-  app: any, 
-  parentFolderId: string, 
-  programFilesPath: string
+  appKey: string,
+  app: any,
+  parentFolderId: string,
+  programFilesPath: string,
 ): FileSystemItem[] => {
   const commonFiles: FileSystemItem[] = [
     {
@@ -38,7 +38,7 @@ export const generateAppFiles = (
       parentId: parentFolderId,
       path: `${programFilesPath}/${app.name}/license.txt`,
       isSystem: true,
-    }
+    },
   ];
 
   const specificFiles: Record<string, FileSystemItem[]> = {
@@ -66,7 +66,7 @@ export const generateAppFiles = (
         parentId: parentFolderId,
         path: `${programFilesPath}/Visual Studio Code/argv.json`,
         isSystem: true,
-      }
+      },
     ],
     chrome: [
       {
@@ -92,7 +92,7 @@ export const generateAppFiles = (
         parentId: parentFolderId,
         path: `${programFilesPath}/${app.name}/chrome_elf.dll`,
         isSystem: true,
-      }
+      },
     ],
     edge: [
       {
@@ -118,7 +118,7 @@ export const generateAppFiles = (
         parentId: parentFolderId,
         path: `${programFilesPath}/${app.name}/msedge_elf.dll`,
         isSystem: true,
-      }
+      },
     ],
     paint: [
       {
@@ -136,7 +136,7 @@ export const generateAppFiles = (
         parentId: parentFolderId,
         path: `${programFilesPath}/${app.name}/Brushes`,
         isSystem: true,
-      }
+      },
     ],
     musicPlayer: [
       {
@@ -154,21 +154,24 @@ export const generateAppFiles = (
         parentId: parentFolderId,
         path: `${programFilesPath}/${app.name}/codecs`,
         isSystem: true,
-      }
-    ]
+      },
+    ],
   };
 
-  return [
-    ...commonFiles,
-    ...(specificFiles[appKey] || [])
-  ] as FileSystemItem[];
+  return [...commonFiles, ...(specificFiles[appKey] || [])] as FileSystemItem[];
 };
 
 export const generateProgramFiles = (allApps: AppsConfig): FileSystemItem[] => {
   const items: FileSystemItem[] = [];
-  
+
   const x64Apps = ['vscode', 'chrome', 'edge', 'github'];
-  const x86Apps = ['notepad', 'calculator', 'musicPlayer', 'imageViewer', 'paint'];
+  const x86Apps = [
+    'notepad',
+    'calculator',
+    'musicPlayer',
+    'imageViewer',
+    'paint',
+  ];
 
   // Program Files (64-bit)
   Object.entries(allApps)
@@ -198,7 +201,14 @@ export const generateProgramFiles = (allApps: AppsConfig): FileSystemItem[] => {
       });
 
       // Additional files
-      items.push(...generateAppFiles(key, app, folderId, 'This PC/Local Disk (C:)/Program Files'));
+      items.push(
+        ...generateAppFiles(
+          key,
+          app,
+          folderId,
+          'This PC/Local Disk (C:)/Program Files',
+        ),
+      );
     });
 
   // Program Files (x86)
@@ -227,8 +237,15 @@ export const generateProgramFiles = (allApps: AppsConfig): FileSystemItem[] => {
       });
 
       // Additional files specific to the x86 version
-      items.push(...generateAppFiles(key, app, folderId, 'This PC/Local Disk (C:)/Program Files (x86)'));
-      
+      items.push(
+        ...generateAppFiles(
+          key,
+          app,
+          folderId,
+          'This PC/Local Disk (C:)/Program Files (x86)',
+        ),
+      );
+
       // Adding a specific x86 manifest file
       items.push({
         id: `program-files-x86-${key}-manifest`,

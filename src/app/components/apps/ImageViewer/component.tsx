@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { 
-  RotateCcw, 
-  RotateCw, 
-  ZoomIn, 
-  ZoomOut, 
-  RefreshCcw 
-} from 'lucide-react';
+import { RotateCcw, RotateCw, ZoomIn, ZoomOut, RefreshCcw } from 'lucide-react';
 import { ImageViewerProps } from './types';
 
-export const ImageViewer: React.FC<ImageViewerProps> = ({ filePath, realPath }) => {
+export const ImageViewer: React.FC<ImageViewerProps> = ({
+  filePath,
+  realPath,
+}) => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Image manipulation states
   const [rotation, setRotation] = useState(0);
   const [zoom, setZoom] = useState(1);
@@ -26,8 +23,17 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({ filePath, realPath }) 
         try {
           // Validate image file extension
           const extension = realPath.split('.').pop()?.toLowerCase();
-          const imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'svg', 'tiff'];
-          
+          const imageExtensions = [
+            'jpg',
+            'jpeg',
+            'png',
+            'gif',
+            'bmp',
+            'webp',
+            'svg',
+            'tiff',
+          ];
+
           if (!extension || !imageExtensions.includes(extension)) {
             throw new Error('Unsupported image type');
           }
@@ -82,36 +88,36 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({ filePath, realPath }) 
     <div className="flex flex-col h-full bg-background backdrop-blur-2xl overflow-hidden">
       {/* Toolbar */}
       <div className="flex justify-center items-center p-1 bg-secondary-bg space-x-4">
-        <button 
-          onClick={handleRotateLeft} 
+        <button
+          onClick={handleRotateLeft}
           className="hover:bg-gray-200 p-2 rounded"
           title="Rotate Left"
         >
           <RotateCcw size={20} />
         </button>
-        <button 
-          onClick={handleRotateRight} 
+        <button
+          onClick={handleRotateRight}
           className="hover:bg-gray-200 p-2 rounded"
           title="Rotate Right"
         >
           <RotateCw size={20} />
         </button>
-        <button 
-          onClick={handleZoomIn} 
+        <button
+          onClick={handleZoomIn}
           className="hover:bg-gray-200 p-2 rounded"
           title="Zoom In"
         >
           <ZoomIn size={20} />
         </button>
-        <button 
-          onClick={handleZoomOut} 
+        <button
+          onClick={handleZoomOut}
           className="hover:bg-gray-200 p-2 rounded"
           title="Zoom Out"
         >
           <ZoomOut size={20} />
         </button>
-        <button 
-          onClick={handleReset} 
+        <button
+          onClick={handleReset}
           className="hover:bg-gray-200 p-2 rounded"
           title="Reset"
         >
@@ -130,17 +136,17 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({ filePath, realPath }) 
             {error}
           </div>
         ) : (
-          <div 
+          <div
             className="flex items-center justify-center transition-transform duration-300 ease-in-out"
             style={{
               transform: `rotate(${rotation}deg) scale(${zoom})`,
             }}
           >
             {imageUrl && (
-              <Image 
-                src={imageUrl} 
-                alt={filePath || 'Image'} 
-                width={500}  // Adjust as needed
+              <Image
+                src={imageUrl}
+                alt={filePath || 'Image'}
+                width={500} // Adjust as needed
                 height={500} // Adjust as needed
                 className="max-w-full max-h-full object-contain"
               />
