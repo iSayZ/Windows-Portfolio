@@ -53,7 +53,7 @@ const AllAppsMenu: React.FC<AllAppsMenuProps> = ({
     const edgeApp = {
       ...allApps.edge,
       defaultProps: {
-        url: `https://www.google.fr/search?q=${encodeURIComponent(searchQuery)}`,
+        url: `https://www.bing.com/search?q=${encodeURIComponent(searchQuery)}`,
       },
     };
     openApp(edgeApp);

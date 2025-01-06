@@ -5,8 +5,9 @@ import useClickOutside from '@/app/hooks/useClickOutside';
 import Image from 'next/image';
 import { pinnedApps } from '@/app/components/apps/config/pinnedAppsConfig';
 import { useOpenApp } from '@/app/hooks/useOpenApp';
-import { AllAppsMenu } from './components/allAppsMenu';
+import { AllAppsMenu } from '../../AllAppsMenu';
 import { useTheme } from '@/app/context/ThemeContext';
+import { SearchBar } from '../../SearchBar';
 
 const WindowsMenu: React.FC<WindowsMenuProps> = ({
   isOpen,
@@ -32,7 +33,7 @@ const WindowsMenu: React.FC<WindowsMenuProps> = ({
     { name: 'Expense Worksheet', desc: '12h ago', icon: '📊' },
   ];
 
-  // Afficher AllAppsMenu si on fait une recherche ou si on clique sur "All apps"
+  // Display AllAppsMenu if you do a search or click on “All apps”
   const shouldShowAllApps = showAllApps || searchQuery.length > 0;
 
   return (
@@ -42,16 +43,7 @@ const WindowsMenu: React.FC<WindowsMenuProps> = ({
     >
       {/* Search Section */}
       <div className="p-4">
-        <div className="flex items-center gap-2 p-2 mb-4 bg-white/90 rounded-md">
-          <Search size={20} className="text-gray-500" />
-          <input
-            type="text"
-            placeholder="Type here to search"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="bg-transparent w-full outline-none text-sm text-black"
-          />
-        </div>
+        <SearchBar value={searchQuery} onChange={setSearchQuery} />
 
         {shouldShowAllApps ? (
           <AllAppsMenu

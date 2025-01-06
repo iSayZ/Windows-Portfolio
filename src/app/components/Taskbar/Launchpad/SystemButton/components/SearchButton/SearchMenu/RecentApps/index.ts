@@ -1,0 +1,1 @@
+export { RecentApps } from './component';
