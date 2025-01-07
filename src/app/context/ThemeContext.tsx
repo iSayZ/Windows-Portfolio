@@ -24,7 +24,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   useEffect(() => {
-    // If no preference is saved, apply dark mode by default
+    // If no preference is saved, apply light mode by default
     const savedTheme = localStorage.getItem('theme');
 
     // If a theme is saved, apply it
@@ -36,9 +36,9 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
       document.body.classList.remove('dark-theme');
     } else {
       // Otherwise, apply dark mode by default
-      setIsDarkMode(true);
-      document.body.classList.add('dark-theme');
-      localStorage.setItem('theme', 'dark'); // Save the default preference
+      setIsDarkMode(false);
+      document.body.classList.remove('dark-theme');
+      localStorage.setItem('theme', 'light'); // Save the default preference
     }
   }, []);
 

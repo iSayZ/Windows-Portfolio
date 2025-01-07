@@ -1,1 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="60px" height="60px" fill-rule="nonzero"><g fill="#3f3f3f" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="translate(256.12389,0) rotate(90) scale(8.53333,8.53333)"><path d="M13,3c-5.511,0 -10,4.489 -10,10c0,5.511 4.489,10 10,10c2.39651,0 4.59738,-0.85101 6.32227,-2.26367l5.9707,5.9707c0.25082,0.26124 0.62327,0.36648 0.97371,0.27512c0.35044,-0.09136 0.62411,-0.36503 0.71547,-0.71547c0.09136,-0.35044 -0.01388,-0.72289 -0.27512,-0.97371l-5.9707,-5.9707c1.41266,-1.72488 2.26367,-3.92576 2.26367,-6.32227c0,-5.511 -4.489,-10 -10,-10zM13,5c4.43012,0 8,3.56988 8,8c0,4.43012 -3.56988,8 -8,8c-4.43012,0 -8,-3.56988 -8,-8c0,-4.43012 3.56988,-8 8,-8z"></path></g></g></svg>
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 512.006 512.006" xml:space="preserve">
+<path style="fill:#6790BF;" d="M0.003,200.348c0,110.472,89.876,200.348,200.348,200.348l22.261-200.348L200.35,0
+	C89.879,0,0.003,89.876,0.003,200.348z"/>
+<rect x="271.253" y="365.062" transform="matrix(0.7071 0.7071 -0.7071 0.7071 398.4518 -165.0426)" style="fill:#324860;" width="254.395" height="66.782"/>
+<path style="fill:#446080;" d="M200.35,0v400.696c110.472,0,200.348-89.876,200.348-200.348S310.822,0,200.35,0z"/>
+<path style="fill:#FFFFFF;" d="M44.524,200.348c0,85.922,69.904,155.826,155.826,155.826l22.261-155.826L200.35,44.522
+	C114.428,44.522,44.524,114.425,44.524,200.348z"/>
+<path style="fill:#BFDCFF;" d="M200.35,44.522v311.652c85.922,0,155.826-69.904,155.826-155.826S286.273,44.522,200.35,44.522z"/>
+</svg>

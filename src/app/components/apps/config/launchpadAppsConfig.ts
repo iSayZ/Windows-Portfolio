@@ -4,7 +4,7 @@ import { allApps } from './appsConfig';
 export const launchpadApps: AppDefinition[] = [
   {
     ...allApps.fileExplorer,
-    iconSize: 'size-7',
+    iconSize: 'size-8',
   },
   {
     ...allApps.edge,
