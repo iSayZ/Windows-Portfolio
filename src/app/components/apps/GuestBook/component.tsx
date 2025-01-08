@@ -1,70 +1,20 @@
+"use client";
+
 import React, { useState, useRef, useEffect } from 'react';
-import { BeanHead } from 'beanheads';
+import { AvatarProps, BeanHead } from 'beanheads';
 import { RandomAvatar } from './BeanheadAvatar';
 
 // Types
 type Message = {
-  id: number;
-  avatar: any;
+  _id: string;
+  avatar: AvatarProps;
   name: string;
   content: string;
   timestamp: Date;
 };
 
-// Mock data
-const mockMessages: Message[] = [
-  {
-    id: 1,
-    avatar: {
-      accessory: 'tinyGlasses',
-      body: 'chest',
-      hair: 'short',
-      hairColor: 'brown',
-      skinTone: 'light',
-      mouth: 'openSmile',
-      eyes: 'happy',
-    },
-    name: 'Sarah Johnson',
-    content:
-      'Amazing portfolio! Your work really showcases your talent and creativity. Keep it up!',
-    timestamp: new Date('2024-01-06'),
-  },
-  {
-    id: 2,
-    avatar: {
-      accessory: 'roundGlasses',
-      body: 'chest',
-      hair: 'long',
-      hairColor: 'black',
-      skinTone: 'brown',
-      mouth: 'grin',
-      eyes: 'normal',
-    },
-    name: 'David Chen',
-    content:
-      'The design is so clean and intuitive. I especially love the attention to detail in the animations.',
-    timestamp: new Date('2024-01-05'),
-  },
-  {
-    id: 3,
-    avatar: {
-      accessory: 'none',
-      body: 'chest',
-      hair: 'bun',
-      hairColor: 'blonde',
-      skinTone: 'light',
-      mouth: 'openSmile',
-      eyes: 'wink',
-    },
-    name: 'Emma Wilson',
-    content:
-      'Found your site through Twitter - really impressed with your projects!',
-    timestamp: new Date('2024-01-04'),
-  },
-];
-
 const MessageCard = ({ message }: { message: Message }) => (
-  <div className="flex-shrink-0 w-96 h-auto bg-secondary-bg rounded-lg shadow-lg mr-4">
+  <div className="flex-shrink-0 w-96 h-auto bg-secondary-bg rounded-lg shadow-lg mx-2">
     <div className="flex flex-col h-full p-6">
       <div className="flex items-start gap-4">
         <div className="w-16 h-16 flex-shrink-0 bg-background rounded-full">
@@ -75,7 +25,7 @@ const MessageCard = ({ message }: { message: Message }) => (
             {message.name}
           </h3>
           <span className="text-xs text-foreground opacity-70">
-            {message.timestamp.toLocaleDateString()}
+            {new Date(message.timestamp).toLocaleDateString()}
           </span>
         </div>
       </div>
@@ -93,7 +43,7 @@ const MessagesScroll = ({ messages }: { messages: Message[] }) => {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const lastScrollPosition = useRef(0);
-  const scrollSpeed = 1;
+  const scrollSpeed = 0.5;
 
   useEffect(() => {
     if (isPaused || !scrollRef.current || isDragging) return;
@@ -166,14 +116,14 @@ const MessagesScroll = ({ messages }: { messages: Message[] }) => {
     >
       <div className="flex py-2">
         {messages.map((message) => (
-          <MessageCard key={message.id} message={message} />
+          <MessageCard key={`original-${message._id}`} message={message} />
         ))}
         {messages.map((message) => (
-          <MessageCard key={`${message.id}-dup`} message={message} />
+          <MessageCard key={`duplicate-${message._id}`} message={message} />
         ))}
       </div>
     </div>
-  );
+);
 };
 
 type Step = 'messages' | 'create' | 'success';
@@ -186,12 +136,51 @@ const GuestBook = () => {
     avatar: null as any,
   });
 
-  const handleAvatarChange = (avatar: any) => {
+  const handleAvatarChange = (avatar: AvatarProps) => {
     setNewMessage((prev) => ({ ...prev, avatar }));
   };
 
-  const handleSubmit = () => {
-    setCurrentStep('success');
+  const [messages, setMessages] = useState<Message[]>([]);
+  
+  // Get all comments
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const response = await fetch('/api/comments');
+        const data = await response.json();
+        console.log("DATA :", data);
+        setMessages(data);
+      } catch (error) {
+        console.error('Failed to fetch comments:', error);
+      }
+    };
+
+    fetchComments();
+  }, []);
+
+  // Send a comment
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch('/api/comments', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: newMessage.name,
+          content: newMessage.content,
+          avatar: newMessage.avatar,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit comment');
+      }
+
+      setCurrentStep('success');
+    } catch (error) {
+      console.error('Error submitting comment:', error);
+    }
   };
 
   const renderStep = () => {
@@ -203,11 +192,11 @@ const GuestBook = () => {
               Guest Book
             </h1>
             <div className="flex-shrink-0 h-[200px] -mx-4">
-              <MessagesScroll messages={mockMessages} />
+              <MessagesScroll messages={messages} />
             </div>
             <button
               onClick={() => setCurrentStep('create')}
-              className="w-2/3 mx-auto py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-lg font-medium"
+              className="w-2/3 mx-auto mt-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-lg font-medium"
             >
               Leave a Message
             </button>
