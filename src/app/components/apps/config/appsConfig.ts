@@ -2,6 +2,7 @@ import {
   AppsConfig,
   Calculator,
   FileExplorer,
+  GuestBook,
   ImageViewer,
   MusicPlayer,
   Notepad,
@@ -176,6 +177,16 @@ export const allApps: AppsConfig = {
     defaultSize: {
       width: 700,
       height: 500,
+    },
+  },
+  guestBook: {
+    icon: '/assets/images/app-icons/apps/book.svg',
+    shortname: 'GuestBook',
+    name: 'Guest Book',
+    component: GuestBook,
+    defaultSize: {
+      width: 700,
+      height: 430,
     },
   },
 };

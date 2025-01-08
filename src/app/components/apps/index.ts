@@ -8,5 +8,6 @@ export { ImageViewer } from './ImageViewer';
 export { YouTubeViewer } from './YouTubeViewer';
 export { MusicPlayer } from './MusicPlayer';
 export { Paint } from './Paint';
+export { GuestBook } from './GuestBook';
 export type { PdfViewerProps } from './PdfViewer';
 export * from './types';

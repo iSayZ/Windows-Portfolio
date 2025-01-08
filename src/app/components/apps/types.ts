@@ -28,7 +28,8 @@ export type AppName =
   | 'imageViewer'
   | 'youtube'
   | 'musicPlayer'
-  | 'paint';
+  | 'paint'
+  | 'guestBook';
 
 export type AppsConfig = {
   [K in AppName]: AppDefinition;

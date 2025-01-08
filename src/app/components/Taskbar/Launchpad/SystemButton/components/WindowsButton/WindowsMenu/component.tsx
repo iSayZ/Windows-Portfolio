@@ -122,7 +122,12 @@ const WindowsMenu: React.FC<WindowsMenuProps> = ({
 
       {/* Bottom Section */}
       <div className="bg-accent flex justify-between items-center px-4 py-2">
-        <div className="flex items-center gap-2">
+        <button
+          className="flex items-center gap-2"
+          onClick={() =>
+            window.open('https://www.linkedin.com/in/alexis-estrine/', '_blank')
+          }
+        >
           <div className="relative overflow-hidden w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
             <Image
               src="/assets/images/profile/profile-alexis.png"
@@ -133,7 +138,7 @@ const WindowsMenu: React.FC<WindowsMenuProps> = ({
             />
           </div>
           <span className="text-sm">Alexis Estrine</span>
-        </div>
+        </button>
         <button className="p-2 rounded-md hover:bg-accent">
           <Power size={20} className="text-foreground" />
         </button>

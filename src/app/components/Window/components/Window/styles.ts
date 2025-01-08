@@ -22,6 +22,6 @@ export const getWindowStyles = (isMaximized: boolean): string =>
   `shadow-xl relative${isMaximized ? '' : ' rounded-lg'}`;
 
 export const getWindowContentStyles = (isMaximized: boolean): string =>
-  `relative h-[calc(100%-2rem)] cursor-default overflow-hidden${
+  `relative h-[calc(100%-2rem)] cursor-default overflow-x-auto overflow-y-auto${
     isMaximized ? '' : ' rounded-b-lg'
   }`;
