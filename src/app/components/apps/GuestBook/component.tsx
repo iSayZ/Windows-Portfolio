@@ -1,24 +1,33 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MessagesScroll } from './components/MessagesScroll';
 import { CreateMessage } from './components/CreateMessage';
 import { SuccessMessage } from './components/SuccessMessage';
-import { submitMessage } from './api';
+import { fetchMessages, submitMessage } from './api';
 import type { Message, NewMessage, Step } from './types';
 
-interface GuestBookProps {
-  initialMessages?: Message[];
-}
-
-const GuestBook = ({ initialMessages = [] }: GuestBookProps) => {
+const GuestBook = () => {
   const [currentStep, setCurrentStep] = useState<Step>('messages');
-  const [messages] = useState<Message[]>(initialMessages);
   const [newMessage, setNewMessage] = useState<NewMessage>({
     name: '',
     content: '',
     avatar: null,
   });
+  const [messages, setMessages] = useState<Message[]>([]);
+
+  useEffect(() => {
+    const getMessages = async () => {
+      try {
+        const data = await fetchMessages();
+        setMessages(data);
+      } catch (error) {
+        console.error('Failed to fetch messages:', error);
+      }
+    };
+
+    getMessages();
+  }, []);
 
   const handleSubmit = async () => {
     try {

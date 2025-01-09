@@ -1,19 +1,11 @@
 import type { Message, NewMessage } from './types';
 
 export const fetchMessages = async (): Promise<Message[]> => {
-  try {
-    const response = await fetch('/api/comments');
-    if (!response.ok) {
-      console.error('API Response not OK:', response.status);
-      return [];
-    }
-    const data = await response.json();
-    console.log('Fetched messages:', data);
-    return data;
-  } catch (error) {
-    console.error('Error fetching messages:', error);
-    return [];
+  const response = await fetch('/api/comments');
+  if (!response.ok) {
+    throw new Error('Failed to fetch comments');
   }
+  return response.json();
 };
 
 export const submitMessage = async (message: NewMessage): Promise<void> => {
