@@ -1,95 +1,14 @@
-'use client';
-
-import React, { useState, useEffect } from 'react';
-import { BeanHead } from 'beanheads';
+import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
+import { BeanHead } from 'beanheads';
+import { SelectOption } from './SelectOption';
+import { OPTIONS } from '../constants';
+import type { CustomizeModalProps } from '../types';
 
-const OPTIONS = {
-  accessory: ['none', 'roundGlasses', 'tinyGlasses', 'shades'],
-  body: ['chest', 'breasts'],
-  clothing: ['naked', 'shirt', 'dressShirt', 'vneck', 'tankTop', 'dress'],
-  clothingColor: ['white', 'blue', 'black', 'green', 'red'],
-  eyebrows: ['raised', 'leftLowered', 'serious', 'angry', 'concerned'],
-  eyes: [
-    'normal',
-    'leftTwitch',
-    'happy',
-    'content',
-    'squint',
-    'simple',
-    'dizzy',
-    'wink',
-    'heart',
-  ],
-  facialHair: ['none', 'stubble', 'mediumBeard'],
-  graphic: ['none', 'redwood', 'gatsby', 'vue', 'react', 'graphQL'],
-  hair: [
-    'none',
-    'long',
-    'bun',
-    'short',
-    'pixie',
-    'balding',
-    'buzz',
-    'afro',
-    'bob',
-  ],
-  hairColor: ['blonde', 'orange', 'black', 'white', 'brown', 'blue', 'pink'],
-  hat: ['none', 'beanie', 'turban'],
-  hatColor: ['white', 'blue', 'black', 'green', 'red'],
-  lipColor: ['red', 'purple', 'pink', 'turqoise', 'green'],
-  mouth: ['grin', 'sad', 'openSmile', 'lips', 'open', 'serious', 'tongue'],
-  skinTone: ['light', 'yellow', 'brown', 'dark', 'red', 'black'],
-  faceMaskColor: ['white', 'blue', 'black', 'green', 'red'],
-} as const;
-
-const getRandomOption = <T extends readonly string[]>(
-  options: T,
-): T[number] => {
-  return options[Math.floor(Math.random() * options.length)];
-};
-
-const SelectOption = ({
-  label,
-  options,
-  value,
-  onChange,
-}: {
-  label: string;
-  options: readonly string[];
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-}) => (
-  <div className="flex flex-col gap-1">
-    <label className="text-sm font-medium text-foreground capitalize">
-      {label.replace(/([A-Z])/g, ' $1').trim()}
-    </label>
-    <select
-      value={value}
-      onChange={onChange}
-      className="p-2 rounded bg-secondary-bg text-foreground border border-foreground hover:border-foreground focus:outline-none focus:ring-2 focus:ring-blue-500"
-    >
-      {options.map((option) => (
-        <option
-          key={option}
-          value={option}
-          className="bg-secondary-bg capitalize"
-        >
-          {option.replace(/([A-Z])/g, ' $1').trim()}
-        </option>
-      ))}
-    </select>
-  </div>
-);
-
-const CustomizeModal = ({
+export const CustomizeModal: React.FC<CustomizeModalProps> = ({
   avatar,
   handleChange,
   onClose,
-}: {
-  avatar: any;
-  handleChange: (key: string, value: string | boolean) => void;
-  onClose: () => void;
 }) => {
   const [activeTab, setActiveTab] = useState('appearance');
 
@@ -109,13 +28,13 @@ const CustomizeModal = ({
             <SelectOption
               label="Body"
               options={OPTIONS.body}
-              value={avatar.body}
+              value={avatar.body ?? OPTIONS.body[0]}
               onChange={(e) => handleChange('body', e.target.value)}
             />
             <SelectOption
               label="Skin tone"
               options={OPTIONS.skinTone}
-              value={avatar.skinTone}
+              value={avatar.skinTone ?? OPTIONS.skinTone[0]}
               onChange={(e) => handleChange('skinTone', e.target.value)}
             />
           </div>
@@ -127,13 +46,13 @@ const CustomizeModal = ({
               <SelectOption
                 label="Eyes"
                 options={OPTIONS.eyes}
-                value={avatar.eyes}
+                value={avatar.eyes ?? OPTIONS.eyes[0]}
                 onChange={(e) => handleChange('eyes', e.target.value)}
               />
               <SelectOption
                 label="Eyebrows"
                 options={OPTIONS.eyebrows}
-                value={avatar.eyebrows}
+                value={avatar.eyebrows ?? OPTIONS.eyebrows[0]}
                 onChange={(e) => handleChange('eyebrows', e.target.value)}
               />
             </div>
@@ -141,13 +60,13 @@ const CustomizeModal = ({
               <SelectOption
                 label="Mouth"
                 options={OPTIONS.mouth}
-                value={avatar.mouth}
+                value={avatar.mouth ?? OPTIONS.mouth[0]}
                 onChange={(e) => handleChange('mouth', e.target.value)}
               />
               <SelectOption
                 label="Lip color"
                 options={OPTIONS.lipColor}
-                value={avatar.lipColor}
+                value={avatar.lipColor ?? OPTIONS.lipColor[0]}
                 onChange={(e) => handleChange('lipColor', e.target.value)}
               />
             </div>
@@ -173,20 +92,20 @@ const CustomizeModal = ({
               <SelectOption
                 label="Style"
                 options={OPTIONS.hair}
-                value={avatar.hair}
+                value={avatar.hair ?? OPTIONS.hair[0]}
                 onChange={(e) => handleChange('hair', e.target.value)}
               />
               <SelectOption
                 label="Color"
                 options={OPTIONS.hairColor}
-                value={avatar.hairColor}
+                value={avatar.hairColor ?? OPTIONS.hairColor[0]}
                 onChange={(e) => handleChange('hairColor', e.target.value)}
               />
             </div>
             <SelectOption
               label="Facial hair"
               options={OPTIONS.facialHair}
-              value={avatar.facialHair}
+              value={avatar.facialHair ?? OPTIONS.facialHair[0]}
               onChange={(e) => handleChange('facialHair', e.target.value)}
             />
           </div>
@@ -198,20 +117,20 @@ const CustomizeModal = ({
               <SelectOption
                 label="Style"
                 options={OPTIONS.clothing}
-                value={avatar.clothing}
+                value={avatar.clothing ?? OPTIONS.clothing[0]}
                 onChange={(e) => handleChange('clothing', e.target.value)}
               />
               <SelectOption
                 label="Color"
                 options={OPTIONS.clothingColor}
-                value={avatar.clothingColor}
+                value={avatar.clothingColor ?? OPTIONS.clothingColor[0]}
                 onChange={(e) => handleChange('clothingColor', e.target.value)}
               />
             </div>
             <SelectOption
               label="Logo"
               options={OPTIONS.graphic}
-              value={avatar.graphic}
+              value={avatar.graphic ?? OPTIONS.graphic[0]}
               onChange={(e) => handleChange('graphic', e.target.value)}
             />
           </div>
@@ -222,20 +141,20 @@ const CustomizeModal = ({
             <SelectOption
               label="Glasses"
               options={OPTIONS.accessory}
-              value={avatar.accessory}
+              value={avatar.accessory ?? OPTIONS.accessory[0]}
               onChange={(e) => handleChange('accessory', e.target.value)}
             />
             <div className="grid grid-cols-2 gap-4">
               <SelectOption
                 label="Hat"
                 options={OPTIONS.hat}
-                value={avatar.hat}
+                value={avatar.hat ?? OPTIONS.hat[0]}
                 onChange={(e) => handleChange('hat', e.target.value)}
               />
               <SelectOption
                 label="Hat color"
                 options={OPTIONS.hatColor}
-                value={avatar.hatColor}
+                value={avatar.hatColor ?? OPTIONS.hatColor[0]}
                 onChange={(e) => handleChange('hatColor', e.target.value)}
               />
             </div>
@@ -248,7 +167,6 @@ const CustomizeModal = ({
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9999] overflow-y-auto">
       <div className="min-h-screen p-4 flex flex-col items-center">
         <div className="bg-secondary-bg rounded-lg shadow-lg w-full max-w-2xl p-6">
-          {/* Avatar and close button */}
           <div className="flex justify-between items-start mb-8">
             <div className="flex-1" />
             <div className="size-60 bg-secondary-bg rounded-lg p-4">
@@ -277,7 +195,6 @@ const CustomizeModal = ({
             </div>
           </div>
 
-          {/* Navigation */}
           <div className="flex border-b border-foreground/10 mb-6">
             {tabs.map((tab) => (
               <button
@@ -298,7 +215,6 @@ const CustomizeModal = ({
             ))}
           </div>
 
-          {/* Contenu */}
           <div className="p-4">{renderContent()}</div>
         </div>
       </div>
@@ -306,109 +222,3 @@ const CustomizeModal = ({
     document.body,
   );
 };
-
-interface RandomAvatarProps {
-  onAvatarChange?: (avatar: any) => void;
-}
-
-const RandomAvatar: React.FC<RandomAvatarProps> = ({ onAvatarChange }) => {
-  const [avatar, setAvatar] = useState({
-    accessory: getRandomOption(OPTIONS.accessory),
-    body: getRandomOption(OPTIONS.body),
-    circleColor: 'blue' as const,
-    clothing: getRandomOption(OPTIONS.clothing),
-    clothingColor: getRandomOption(OPTIONS.clothingColor),
-    eyebrows: getRandomOption(OPTIONS.eyebrows),
-    eyes: getRandomOption(OPTIONS.eyes),
-    facialHair: getRandomOption(OPTIONS.facialHair),
-    graphic: getRandomOption(OPTIONS.graphic),
-    hair: getRandomOption(OPTIONS.hair),
-    hairColor: getRandomOption(OPTIONS.hairColor),
-    hat: getRandomOption(OPTIONS.hat),
-    hatColor: getRandomOption(OPTIONS.hatColor),
-    lashes: false,
-    lipColor: getRandomOption(OPTIONS.lipColor),
-    mask: true,
-    faceMask: false,
-    mouth: getRandomOption(OPTIONS.mouth),
-    skinTone: getRandomOption(OPTIONS.skinTone),
-  });
-
-  const [isEditing, setIsEditing] = useState(false);
-
-  useEffect(() => {
-    if (onAvatarChange && avatar) {
-      const timeoutId = setTimeout(() => {
-        onAvatarChange(avatar);
-      }, 0);
-      return () => clearTimeout(timeoutId);
-    }
-  }, [avatar, onAvatarChange]);
-
-  const generateNewAvatar = () => {
-    const newAvatar = {
-      accessory: getRandomOption(OPTIONS.accessory),
-      body: getRandomOption(OPTIONS.body),
-      circleColor: 'blue' as const,
-      clothing: getRandomOption(OPTIONS.clothing),
-      clothingColor: getRandomOption(OPTIONS.clothingColor),
-      eyebrows: getRandomOption(OPTIONS.eyebrows),
-      eyes: getRandomOption(OPTIONS.eyes),
-      facialHair: getRandomOption(OPTIONS.facialHair),
-      graphic: getRandomOption(OPTIONS.graphic),
-      hair: getRandomOption(OPTIONS.hair),
-      hairColor: getRandomOption(OPTIONS.hairColor),
-      hat: getRandomOption(OPTIONS.hat),
-      hatColor: getRandomOption(OPTIONS.hatColor),
-      lashes: Math.random() > 0.5,
-      lipColor: getRandomOption(OPTIONS.lipColor),
-      mask: true,
-      faceMask: false,
-      mouth: getRandomOption(OPTIONS.mouth),
-      skinTone: getRandomOption(OPTIONS.skinTone),
-    };
-    setAvatar(newAvatar);
-  };
-
-  const handleChange = (key: string, value: string | boolean) => {
-    setAvatar((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-  };
-
-  return (
-    <div className="flex flex-col items-center gap-6">
-      <div className="flex-shrink-0">
-        <div className="w-64 h-64 bg-secondary-bg rounded-lg p-4">
-          <BeanHead {...avatar} />
-        </div>
-      </div>
-
-      <div className="flex gap-2 flex-shrink-0">
-        <button
-          onClick={generateNewAvatar}
-          className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-        >
-          Random
-        </button>
-        <button
-          onClick={() => setIsEditing(true)}
-          className="px-6 py-2 bg-secondary-bg text-foreground border border-foreground rounded-lg hover:bg-background transition-colors"
-        >
-          Customize
-        </button>
-      </div>
-
-      {isEditing && (
-        <CustomizeModal
-          avatar={avatar}
-          handleChange={handleChange}
-          onClose={() => setIsEditing(false)}
-        />
-      )}
-    </div>
-  );
-};
-
-export default RandomAvatar;

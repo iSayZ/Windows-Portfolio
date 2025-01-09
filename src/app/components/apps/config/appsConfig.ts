@@ -186,7 +186,7 @@ export const allApps: AppsConfig = {
     component: GuestBook,
     defaultSize: {
       width: 700,
-      height: 430,
+      height: 460,
     },
   },
 };
