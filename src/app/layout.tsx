@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Background } from './components/Background';
 import { ThemeProvider } from './context/ThemeContext';
-import { Taskbar } from './components/Taskbar';
-import { Desktop } from './components/Desktop';
 import { AudioProvider } from './context/AudioContext';
 
 export const metadata: Metadata = {
@@ -22,10 +19,7 @@ export default function RootLayout({
       <body className="overflow-hidden">
         <ThemeProvider>
           <AudioProvider>
-            <Background />
             {children}
-            <Desktop />
-            <Taskbar />
           </AudioProvider>
         </ThemeProvider>
       </body>

@@ -1,0 +1,1 @@
+export { ScreenSizeAlert } from './component';

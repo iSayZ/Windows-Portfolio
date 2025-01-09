@@ -78,7 +78,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
     if (!isLoading && isAnimationComplete) {
       const timer = setTimeout(() => {
         onLoadingComplete();
-      }, 400); // Délai de transition avant de montrer l'app
+      }, 400);
       return () => clearTimeout(timer);
     }
   }, [isLoading, isAnimationComplete, onLoadingComplete]);
