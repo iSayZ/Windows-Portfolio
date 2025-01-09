@@ -21,17 +21,17 @@ const getIconPath = (type: FileType, name: string, customIcon?: string) => {
     switch (name.toLowerCase()) {
       case 'pictures':
       case 'images':
-        return `${basePath}/folders/picture-folder.png`;
+        return `${basePath}/folders/picture-folder.ico`;
       case 'videos':
-        return `${basePath}/folders/video-folder.png`;
+        return `${basePath}/folders/video-folder.ico`;
       case 'music':
-        return `${basePath}/folders/audio-folder.png`;
+        return `${basePath}/folders/audio-folder.ico`;
       case 'documents':
-        return `${basePath}/folders/documents-folder.png`;
+        return `${basePath}/folders/documents-folder.ico`;
       case 'desktop':
-        return `${basePath}/folders/desktop-folder.png`;
+        return `${basePath}/folders/desktop-folder.ico`;
       case 'downloads':
-        return `${basePath}/folders/download-folder.png`;
+        return `${basePath}/folders/download-folder.ico`;
       default:
         return `${basePath}/folders/folder.svg`;
     }
@@ -40,21 +40,21 @@ const getIconPath = (type: FileType, name: string, customIcon?: string) => {
   // Other file types
   switch (type) {
     case 'image':
-      return `${basePath}/picture.svg`;
+      return `${basePath}/picture.ico`;
     case 'audio':
-      return `${basePath}/mp3.png`;
+      return `${basePath}/mp3.ico`;
     case 'video':
-      return `${basePath}/video.png`;
+      return `${basePath}/video.ico`;
     case 'text':
-      return `${basePath}/text.png`;
+      return `${basePath}/text.ico`;
     case 'document':
-      return `${basePath}/document.png`;
+      return `${basePath}/document.ico`;
     case 'application':
-      return `${basePath}/document.png`;
+      return `${basePath}/document.ico`;
     case 'drive':
-      return `${basePath}/disk.png`;
+      return `${basePath}/disk.ico`;
     default:
-      return `${basePath}/document.png`;
+      return `${basePath}/document.ico`;
   }
 };
 

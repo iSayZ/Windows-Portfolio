@@ -78,7 +78,7 @@ export const allApps: AppsConfig = {
     } as PdfViewerProps,
   },
   calculator: {
-    icon: '/assets/images/app-icons/apps/calculator.png',
+    icon: '/assets/images/app-icons/apps/calculator.svg',
     shortname: 'Calculator',
     name: 'Calculator',
     component: Calculator,
@@ -88,7 +88,7 @@ export const allApps: AppsConfig = {
     },
   },
   terminal: {
-    icon: '/assets/images/app-icons/apps/terminal.png',
+    icon: '/assets/images/app-icons/apps/terminal.svg',
     shortname: 'Terminal',
     name: 'Terminal',
     component: Terminal,
@@ -120,7 +120,7 @@ export const allApps: AppsConfig = {
     externalUrl: 'https://www.linkedin.com/in/alexis-estrine/',
   },
   notepad: {
-    icon: '/assets/images/app-icons/apps/notepad.png',
+    icon: '/assets/images/app-icons/apps/notepad.svg',
     shortname: 'Notepad',
     name: 'Notepad',
     component: Notepad,
@@ -130,7 +130,7 @@ export const allApps: AppsConfig = {
     },
   },
   imageViewer: {
-    icon: '/assets/images/app-icons/apps/image-viewer.png',
+    icon: '/assets/images/app-icons/apps/image-viewer.svg',
     shortname: 'ImageViewer',
     name: 'ImageViewer',
     component: ImageViewer,

@@ -24,7 +24,7 @@ const ThemeToggle: React.FC = () => {
             />
           ) : (
             <Image
-              src="/assets/images/app-icons/apps/moon.png"
+              src="/assets/images/app-icons/apps/moon.svg"
               alt="Moon Logo"
               layout="fill"
               objectFit="contain"
