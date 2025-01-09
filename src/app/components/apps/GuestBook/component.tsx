@@ -6,6 +6,7 @@ import { CreateMessage } from './components/CreateMessage';
 import { SuccessMessage } from './components/SuccessMessage';
 import { fetchMessages, submitMessage } from './api';
 import type { Message, NewMessage, Step } from './types';
+import { LoadingScreen } from '../components/LoadingScreen';
 
 const GuestBook = () => {
   const [currentStep, setCurrentStep] = useState<Step>('messages');
@@ -15,6 +16,8 @@ const GuestBook = () => {
     avatar: null,
   });
   const [messages, setMessages] = useState<Message[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [showApp, setShowApp] = useState(false);
 
   useEffect(() => {
     const getMessages = async () => {
@@ -23,6 +26,8 @@ const GuestBook = () => {
         setMessages(data);
       } catch (error) {
         console.error('Failed to fetch messages:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -80,6 +85,20 @@ const GuestBook = () => {
     }
   };
 
+  const handleLoadingComplete = () => {
+    setShowApp(true);
+  };
+
+  if (!showApp) {
+    return (
+      <LoadingScreen 
+        appName="Guest Book" 
+        isLoading={isLoading}
+        onLoadingComplete={handleLoadingComplete}
+      />
+    );
+  }
+  
   return (
     <div className="absolute inset-0 overflow-auto">
       <div className="min-h-full w-full bg-background backdrop-blur-2xl">
