@@ -41,7 +41,6 @@ export const useOpenApp = () => {
 
   return useCallback(
     (app: AppDefinition) => {
-      // Find app key and add to recent apps
       const appKey = (Object.keys(allApps) as AppName[]).find(
         (key) => allApps[key].shortname === app.shortname,
       );
@@ -49,7 +48,6 @@ export const useOpenApp = () => {
         addRecentApp(appKey);
       }
 
-      // Open an external link, if externalUrl exist
       if (app.externalUrl) {
         window.open(app.externalUrl, '_blank');
         return;
@@ -63,26 +61,37 @@ export const useOpenApp = () => {
           }
         : { width: window.innerWidth, height: window.innerHeight };
 
-      const centeredPosition = calculateCenteredPosition(
-        app.defaultSize,
-        desktopSize,
-      );
+      // Décider si l'app doit être maximisée
+      const shouldMaximize = desktopSize.width < 1000;
 
-      // Open an app component with her props
+      // Ajuster la taille de la fenêtre si nécessaire
+      let adjustedSize = {...app.defaultSize};
+      if (!shouldMaximize) {
+        // Ajouter une marge de sécurité pour la bordure de la fenêtre
+        const WINDOW_MARGIN = 50;
+        adjustedSize = {
+          width: Math.min(app.defaultSize.width, desktopSize.width - WINDOW_MARGIN),
+          height: Math.min(app.defaultSize.height, desktopSize.height - WINDOW_MARGIN),
+        };
+      }
+
+      const centeredPosition = shouldMaximize 
+        ? { x: 0, y: 0 }
+        : calculateCenteredPosition(adjustedSize, desktopSize);
+
       const ComponentWithProps = () => {
         const Component = app.component;
         return <Component {...app.defaultProps} />;
       };
 
-      // Open a window with app
       addWindow({
         id: crypto.randomUUID(),
         icon: app.icon,
         title: app.name,
         component: ComponentWithProps,
         position: centeredPosition,
-        size: app.defaultSize,
-        isMaximized: false,
+        size: adjustedSize,
+        isMaximized: shouldMaximize,
         isMinimized: false,
       });
     },

@@ -21,7 +21,7 @@ export const allApps: AppsConfig = {
     name: 'File Explorer',
     component: FileExplorer,
     defaultSize: {
-      width: 800,
+      width: 760,
       height: 500,
     },
   },
@@ -31,8 +31,8 @@ export const allApps: AppsConfig = {
     name: 'Visual Studio Code',
     component: WebView,
     defaultSize: {
-      width: 800,
-      height: 400,
+      width: 900,
+      height: 500,
     },
     defaultProps: {
       url: 'https://github1s.com/iSayZ/Windows-Portfolio',
@@ -175,7 +175,7 @@ export const allApps: AppsConfig = {
     name: 'Paint',
     component: Paint,
     defaultSize: {
-      width: 700,
+      width: 900,
       height: 500,
     },
   },
@@ -185,8 +185,8 @@ export const allApps: AppsConfig = {
     name: 'Guest Book',
     component: GuestBook,
     defaultSize: {
-      width: 700,
-      height: 460,
+      width: 900,
+      height: 500,
     },
   },
 };
