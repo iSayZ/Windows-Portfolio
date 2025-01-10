@@ -19,7 +19,7 @@ export const getResizeHandleClassName = (
 };
 
 export const getWindowStyles = (isMaximized: boolean): string =>
-  `shadow-xl relative${isMaximized ? '' : ' rounded-lg'}`;
+  `shadow-xl border border-gray-200 relative${isMaximized ? '' : ' rounded-lg'}`;
 
 export const getWindowContentStyles = (isMaximized: boolean): string =>
   `relative h-[calc(100%-2rem)] cursor-default overflow-x-auto overflow-y-auto${
