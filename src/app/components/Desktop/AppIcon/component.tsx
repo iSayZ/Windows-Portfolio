@@ -42,7 +42,7 @@ const AppIcon: React.FC<AppIconProps> = ({
     <div
       data-app-name={dataAppName}
       className={`${sizeClasses.container} rounded-sm flex flex-col items-center cursor-pointer hover:bg-accent transition active:scale-95 app-icon ${className}`}
-      onClick={onClick}
+      onDoubleClick={onClick}
     >
       <div
         className={`${sizeClasses.imageContainer} rounded-full flex items-center justify-center text-foreground`}
