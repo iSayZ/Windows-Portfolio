@@ -7,7 +7,8 @@ export type FileType =
   | 'drive'
   | 'document'
   | 'application'
-  | 'virus';
+  | 'virus'
+  | 'error';
 
 export interface FileSystemItem {
   id: string;

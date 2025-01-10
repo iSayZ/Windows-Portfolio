@@ -65,17 +65,23 @@ export const useOpenApp = () => {
       const shouldMaximize = desktopSize.width < 1000;
 
       // Ajuster la taille de la fenêtre si nécessaire
-      let adjustedSize = {...app.defaultSize};
+      let adjustedSize = { ...app.defaultSize };
       if (!shouldMaximize) {
         // Ajouter une marge de sécurité pour la bordure de la fenêtre
         const WINDOW_MARGIN = 50;
         adjustedSize = {
-          width: Math.min(app.defaultSize.width, desktopSize.width - WINDOW_MARGIN),
-          height: Math.min(app.defaultSize.height, desktopSize.height - WINDOW_MARGIN),
+          width: Math.min(
+            app.defaultSize.width,
+            desktopSize.width - WINDOW_MARGIN,
+          ),
+          height: Math.min(
+            app.defaultSize.height,
+            desktopSize.height - WINDOW_MARGIN,
+          ),
         };
       }
 
-      const centeredPosition = shouldMaximize 
+      const centeredPosition = shouldMaximize
         ? { x: 0, y: 0 }
         : calculateCenteredPosition(adjustedSize, desktopSize);
 

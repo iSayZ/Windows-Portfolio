@@ -5,11 +5,13 @@ import { Desktop } from '../Desktop';
 const translations = {
   en: {
     title: 'Screen not supported',
-    message: 'This application requires a screen width of at least 768px for an optimal experience. Please use a device with a larger screen.',
+    message:
+      'This application requires a screen width of at least 768px for an optimal experience. Please use a device with a larger screen.',
   },
   fr: {
     title: 'Écran non supporté',
-    message: "Cette application nécessite un écran d'au moins 768px de largeur pour une expérience optimale. Veuillez utiliser un appareil avec un écran plus large.",
+    message:
+      "Cette application nécessite un écran d'au moins 768px de largeur pour une expérience optimale. Veuillez utiliser un appareil avec un écran plus large.",
   },
 } as const;
 
@@ -17,7 +19,7 @@ export const ScreenSizeAlert = () => {
   const [language, setLanguage] = useState<'en' | 'fr'>('en');
 
   const toggleLanguage = () => {
-    setLanguage(prev => prev === 'en' ? 'fr' : 'en');
+    setLanguage((prev) => (prev === 'en' ? 'fr' : 'en'));
   };
 
   return (
@@ -38,9 +40,7 @@ export const ScreenSizeAlert = () => {
           <h2 className="text-xl font-bold text-foreground mb-4">
             {translations[language].title}
           </h2>
-          <p className="text-foreground/80">
-            {translations[language].message}
-          </p>
+          <p className="text-foreground/80">{translations[language].message}</p>
         </div>
       </div>
     </>

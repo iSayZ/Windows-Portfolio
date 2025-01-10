@@ -9,10 +9,18 @@ interface FileExplorerState {
   searchQuery: string;
 }
 
-export const useFileExplorer = (fileSystem: FileSystemItem[]) => {
+interface UseFileExplorerProps {
+  fileSystem: FileSystemItem[];
+  initialPath?: string[];
+}
+
+export const useFileExplorer = ({
+  fileSystem,
+  initialPath = ['This PC'],
+}: UseFileExplorerProps) => {
   const [state, setState] = useState<FileExplorerState>({
-    currentPath: ['This PC'],
-    history: [['This PC']],
+    currentPath: initialPath,
+    history: [initialPath],
     historyIndex: 0,
     selectedItems: [],
     searchQuery: '',

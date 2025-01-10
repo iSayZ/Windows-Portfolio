@@ -29,7 +29,8 @@ export type AppName =
   | 'youtube'
   | 'musicPlayer'
   | 'paint'
-  | 'guestBook';
+  | 'guestBook'
+  | 'bin';
 
 export type AppsConfig = {
   [K in AppName]: AppDefinition;

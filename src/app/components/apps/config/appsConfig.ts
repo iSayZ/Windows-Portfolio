@@ -13,8 +13,23 @@ import {
   WebView,
   YouTubeViewer,
 } from '@/app/components/apps';
+import { binFileSystem } from '../FileExplorer/data/binFileSystem';
 
 export const allApps: AppsConfig = {
+  bin: {
+    icon: '/assets/images/app-icons/apps/bin-full.ico',
+    shortname: 'Recycle Bin',
+    name: 'Recycle Bin',
+    component: FileExplorer,
+    defaultSize: {
+      width: 760,
+      height: 500,
+    },
+    defaultProps: {
+      customFileSystem: binFileSystem,
+      initialPath: ['This PC', 'Recycle Bin'],
+    },
+  },
   fileExplorer: {
     icon: '/assets/images/app-icons/apps/explorer.svg',
     shortname: 'File Explorer',
@@ -186,7 +201,7 @@ export const allApps: AppsConfig = {
     component: GuestBook,
     defaultSize: {
       width: 900,
-      height: 500,
+      height: 550,
     },
   },
 };

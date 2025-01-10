@@ -7,15 +7,22 @@ import { desktopApps } from '../config/desktopAppsConfig';
 import { useOpenApp } from '@/app/hooks/useOpenApp';
 import { useHackerScreenStore } from '../../HackerScreen';
 import { allApps } from '../config/appsConfig';
+import { useErrorDialogStore } from '../../ErrorDialog/store';
 
 interface FileExplorerProps {
-  initialFileSystem?: FileSystemItem[];
+  customFileSystem?: FileSystemItem[] | (() => FileSystemItem[]);
+  initialPath?: string[];
 }
 
 export const FileExplorer: React.FC<FileExplorerProps> = ({
-  initialFileSystem = defaultFileSystem,
+  customFileSystem,
+  initialPath,
 }) => {
-  const fileSystem = defaultFileSystem(desktopApps, allApps);
+  const fileSystem =
+    typeof customFileSystem === 'function'
+      ? customFileSystem()
+      : customFileSystem || defaultFileSystem(desktopApps, allApps);
+
   const openApp = useOpenApp();
 
   const {
@@ -29,7 +36,10 @@ export const FileExplorer: React.FC<FileExplorerProps> = ({
     navigateForward,
     navigateTo,
     handleSearch,
-  } = useFileExplorer(fileSystem);
+  } = useFileExplorer({
+    fileSystem,
+    initialPath,
+  });
 
   // To show HackerScreen
   const { setIsOpen } = useHackerScreenStore();
@@ -37,6 +47,13 @@ export const FileExplorer: React.FC<FileExplorerProps> = ({
   const handleFileOpen = (item: FileSystemItem) => {
     if (item.type === 'folder' || item.type === 'drive') {
       navigateTo(item);
+      // If the file is an error execute ErrorDialog
+    } else if (item.type === 'error') {
+      useErrorDialogStore.getState().showError({
+        filePath: item.path,
+        errorCode: '-214741639',
+        customMessage: 'This software is too obsolete to run on this system.',
+      });
     } else if (!item.isSystem && item.openWith) {
       const app = desktopApps.find((app) => app.shortname === item.openWith);
       if (app) {
@@ -78,6 +95,7 @@ export const FileExplorer: React.FC<FileExplorerProps> = ({
           // If the file is the fake virus open HackerScreen
         } else if (item.type === 'virus') {
           setIsOpen(true);
+          // If the file is an error open ErrorDialog
         } else {
           // For other app, open with her app
           openApp(app);

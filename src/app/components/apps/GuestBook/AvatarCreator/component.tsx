@@ -15,7 +15,9 @@ export const AvatarCreator: React.FC<AvatarCreatorProps> = ({
   onAvatarChange,
   className = '',
 }) => {
-  const [currentAvatar, setCurrentAvatar] = useState<AvatarProps | null>(initialAvatar ?? null);
+  const [currentAvatar, setCurrentAvatar] = useState<AvatarProps | null>(
+    initialAvatar ?? null,
+  );
 
   const handleAvatarChange = (newAvatar: AvatarProps) => {
     setCurrentAvatar(newAvatar);
@@ -24,9 +26,7 @@ export const AvatarCreator: React.FC<AvatarCreatorProps> = ({
 
   return (
     <div className={`avatar-creator ${className}`}>
-      <RandomAvatar 
-        onAvatarChange={handleAvatarChange}
-      />
+      <RandomAvatar onAvatarChange={handleAvatarChange} />
     </div>
   );
 };

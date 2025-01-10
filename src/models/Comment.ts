@@ -11,25 +11,26 @@ interface IComment extends Document {
 const CommentSchema = new Schema<IComment>({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   content: {
     type: String,
     required: true,
-    maxlength: 200
+    maxlength: 200,
   },
   avatar: {
     type: Object,
-    required: true
+    required: true,
   },
   timestamp: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
   isApproved: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
-export const Comment = models.Comment || model<IComment>('Comment', CommentSchema);
+export const Comment =
+  models.Comment || model<IComment>('Comment', CommentSchema);

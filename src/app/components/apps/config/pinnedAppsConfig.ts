@@ -3,15 +3,15 @@ import { allApps } from './appsConfig';
 
 export const pinnedApps: AppDefinition[] = [
   allApps.edge,
-  allApps.vscode,
-  allApps.github,
   allApps.chrome,
+  allApps.vscode,
   allApps.fileExplorer,
   allApps.terminal,
   allApps.paint,
   allApps.calculator,
   allApps.musicPlayer,
   allApps.youtube,
-  allApps.cv,
-  allApps.linkedin,
+  allApps.imageViewer,
+  allApps.notepad,
+  allApps.guestBook,
 ];

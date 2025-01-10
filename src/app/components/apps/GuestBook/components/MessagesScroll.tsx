@@ -14,7 +14,7 @@ export const MessagesScroll = ({ messages = [] }: MessagesScrollProps) => {
   const [scrollLeft, setScrollLeft] = useState(0);
   const lastScrollPosition = useRef(0);
   const scrollSpeed = 0.5;
-  
+
   useEffect(() => {
     if (isPaused || !scrollRef.current || isDragging) return;
 

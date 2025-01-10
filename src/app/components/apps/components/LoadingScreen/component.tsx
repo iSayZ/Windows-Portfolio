@@ -9,7 +9,7 @@ interface LoadingScreenProps {
 export const LoadingScreen: React.FC<LoadingScreenProps> = ({
   appName,
   isLoading,
-  onLoadingComplete
+  onLoadingComplete,
 }) => {
   const [displayProgress, setDisplayProgress] = useState(0);
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);
@@ -25,8 +25,9 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
     const animateLoading = (currentTime: number) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(
-        startProgress + ((targetProgress - startProgress) * elapsed) / initialDuration,
-        targetProgress
+        startProgress +
+          ((targetProgress - startProgress) * elapsed) / initialDuration,
+        targetProgress,
       );
 
       progressRef.current = progress;
@@ -48,8 +49,9 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
       const animateCompletion = (currentTime: number) => {
         const elapsed = currentTime - finalStartTime;
         const progress = Math.min(
-          finalStartProgress + ((finalTarget - finalStartProgress) * elapsed) / finalDuration,
-          finalTarget
+          finalStartProgress +
+            ((finalTarget - finalStartProgress) * elapsed) / finalDuration,
+          finalTarget,
         );
 
         progressRef.current = progress;
@@ -95,7 +97,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
           className="h-full bg-blue-500 transform-gpu"
           style={{
             width: `${displayProgress}%`,
-            transition: 'width 150ms ease-out'
+            transition: 'width 150ms ease-out',
           }}
         />
       </div>

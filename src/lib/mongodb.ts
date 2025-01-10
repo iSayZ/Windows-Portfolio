@@ -1,7 +1,9 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 if (!process.env.MONGODB_URI) {
-  throw new Error("Please define the MONGODB_URI environment variable inside .env.local");
+  throw new Error(
+    'Please define the MONGODB_URI environment variable inside .env.local',
+  );
 }
 
 // Étendre global pour inclure le cache mongoose
@@ -13,7 +15,10 @@ const globalWithMongoose = global as typeof globalThis & {
 };
 
 // Initialiser le cache global si nécessaire
-globalWithMongoose.mongoose = globalWithMongoose.mongoose || { conn: null, promise: null };
+globalWithMongoose.mongoose = globalWithMongoose.mongoose || {
+  conn: null,
+  promise: null,
+};
 const cached = globalWithMongoose.mongoose;
 
 async function dbConnect() {

@@ -55,7 +55,8 @@ const GuestBook = () => {
               <MessagesScroll messages={messages} />
             </div>
             <p className="mt-6 mx-auto">
-              🖐️ Drag and drop the comments to explore the reviews at your own pace.
+              🖐️ Drag and drop the comments to explore the reviews at your own
+              pace.
             </p>
             <button
               onClick={() => setCurrentStep('create')}
@@ -77,11 +78,7 @@ const GuestBook = () => {
         );
 
       case 'success':
-        return (
-          <SuccessMessage
-            onBack={() => setCurrentStep('messages')}
-          />
-        );
+        return <SuccessMessage onBack={() => setCurrentStep('messages')} />;
     }
   };
 
@@ -91,14 +88,14 @@ const GuestBook = () => {
 
   if (!showApp) {
     return (
-      <LoadingScreen 
-        appName="Guest Book" 
+      <LoadingScreen
+        appName="Guest Book"
         isLoading={isLoading}
         onLoadingComplete={handleLoadingComplete}
       />
     );
   }
-  
+
   return (
     <div className="absolute inset-0 overflow-auto">
       <div className="min-h-full w-full bg-background backdrop-blur-2xl">
