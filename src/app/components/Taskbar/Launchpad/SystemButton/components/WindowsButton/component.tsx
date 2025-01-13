@@ -16,7 +16,7 @@ const WindowsButton: React.FC = () => {
       <Tooltip content="Windows menu">
         <button
           ref={toggleButtonRef}
-          className="flex items-center justify-center p-1 rounded-sm hover:bg-accent transition"
+          className="flex items-center justify-center p-1 rounded-sm hover:bg-accent transition active:scale-95"
           onClick={toggleWindowsMenu}
         >
           <div className="relative w-8 h-8">

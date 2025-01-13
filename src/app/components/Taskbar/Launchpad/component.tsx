@@ -17,7 +17,7 @@ const Launchpad: React.FC = () => {
       {launchpadApps.map((app) => (
         <Tooltip key={app.shortname} content={app.name}>
           <button
-            className="flex items-center justify-center p-1 rounded-sm hover:bg-accent transition h-full"
+            className="flex items-center justify-center p-1 rounded-sm hover:bg-accent transition h-full transition active:scale-95 app-icon"
             onClick={() => openApp(app)}
           >
             <div className={`relative ${app.iconSize}`}>

@@ -15,7 +15,7 @@ const SearchButton: React.FC = () => {
       <Tooltip content="Search">
         <button
           ref={toggleButtonRef}
-          className="flex items-center justify-center p-1 rounded-sm hover:bg-accent transition h-full"
+          className="flex items-center justify-center p-1 rounded-sm hover:bg-accent transition active:scale-95 h-full"
           onClick={toggleSearchMenu}
         >
           <div className="relative w-7 h-7">

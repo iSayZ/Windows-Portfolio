@@ -10,7 +10,7 @@ const ThemeToggle: React.FC = () => {
   return (
     <Tooltip content={isDarkMode ? 'Light mode' : 'Dark mode'}>
       <button
-        className="flex items-center justify-center p-1 rounded-sm hover:bg-accent transition"
+        className="flex items-center justify-center p-1 rounded-sm hover:bg-accent transition active:scale-95"
         onClick={toggleTheme}
       >
         <div className="relative w-8 h-8">

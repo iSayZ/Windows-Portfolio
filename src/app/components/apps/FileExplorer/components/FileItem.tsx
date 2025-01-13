@@ -71,7 +71,7 @@ export const FileItem: React.FC<FileItemProps> = ({
       onClick={onClick}
       onDoubleClick={onDoubleClick}
       className={`
-        flex flex-col items-center p-2 rounded-sm cursor-pointer w-full
+        flex flex-col items-center p-2 rounded-sm cursor-pointer w-full transition active:scale-95
         ${isSelected ? 'bg-blue-500/20' : 'hover:bg-accent'}
       `}
     >
