@@ -37,7 +37,7 @@ export const RecentApps = ({ onClose }: RecentAppsProps) => {
               objectFit="contain"
             />
           </div>
-          <span className="text-sm">{app.name}</span>
+          <span className="text-sm text-ellipsis text-nowrap">{app.name}</span>
         </button>
       ))}
     </div>

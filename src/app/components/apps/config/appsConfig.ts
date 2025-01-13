@@ -148,14 +148,15 @@ export const allApps: AppsConfig = {
   imageViewer: {
     icon: '/assets/images/app-icons/apps/image-viewer.svg',
     shortname: 'ImageViewer',
-    name: 'ImageViewer',
+    name: 'ImageViewer - spider-mass.jpg',
     component: ImageViewer,
     defaultSize: {
       width: 400,
       height: 500,
     },
     defaultProps: {
-      realPath: '',
+      realPath: '/assets/documents/fake-files/explorer/pictures/spider-mass.jpg',
+      name: 'test',
     },
   },
   youtube: {
@@ -208,7 +209,7 @@ export const allApps: AppsConfig = {
   welcomeApp: {
     icon: '/assets/images/app-icons/apps/windows.svg',
     shortname: 'Welcome App',
-    name: 'Welcome into my Windows 11 Portfolio !',
+    name: 'Welcome to my Windows 11 Portfolio !',
     component: WelcomeApp,
     defaultSize: {
       width: 600,

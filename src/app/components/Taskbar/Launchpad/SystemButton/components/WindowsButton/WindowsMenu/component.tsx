@@ -8,6 +8,8 @@ import { useOpenApp } from '@/app/hooks/useOpenApp';
 import { AllAppsMenu } from '../../AllAppsMenu';
 import { useTheme } from '@/app/context/ThemeContext';
 import { SearchBar } from '../../SearchBar';
+import { allApps } from '@/app/components/apps/config/appsConfig';
+import { recommendedApps } from '@/app/components/apps/config/recommendedAppsConfig';
 
 const WindowsMenu: React.FC<WindowsMenuProps> = ({
   isOpen,
@@ -25,13 +27,6 @@ const WindowsMenu: React.FC<WindowsMenuProps> = ({
     onClose,
     refs: [toggleButtonRef, menuRef],
   });
-
-  const recommendedItems = [
-    { name: 'Get Started', desc: 'Welcome to Windows', icon: '🚀' },
-    { name: 'Brand Guidelines', desc: '2h ago', icon: '📄' },
-    { name: 'Travel Itinerary', desc: '17h ago', icon: '✈️' },
-    { name: 'Expense Worksheet', desc: '12h ago', icon: '📊' },
-  ];
 
   // Display AllAppsMenu if you do a search or click on “All apps”
   const shouldShowAllApps = showAllApps || searchQuery.length > 0;
@@ -102,19 +97,35 @@ const WindowsMenu: React.FC<WindowsMenuProps> = ({
                 </button>
               </div>
               <div className="grid grid-cols-2">
-                {recommendedItems.map((item, i) => (
-                  <button
-                    key={i}
-                    className="flex items-center gap-3 p-2 rounded-sm hover:bg-accent transition active:scale-95"
-                  >
-                    <span className="text-2xl">{item.icon}</span>
-                    <div className="text-left">
-                      <div className="text-sm">{item.name}</div>
-                      <div className="text-xs text-gray-500">{item.desc}</div>
-                    </div>
-                  </button>
-                ))}
-              </div>
+  {recommendedApps.map((app) => (
+    <button
+      key={app.shortname}
+      className="flex items-center gap-3 p-2 rounded-sm hover:bg-accent transition active:scale-95"
+      onClick={() => {
+        openApp(app);
+        onClose();
+      }}
+    >
+      <div className="relative w-7 h-7">
+        <Image
+          src={app.icon}
+          alt={`${app.name} icon`}
+          layout="fill"
+          objectFit="contain"
+        />
+      </div>
+      <div className="text-left">
+        <div className="text-sm">{app.name}</div>
+        <div className="text-xs text-gray-500">
+          {app === allApps.github && "Check out my projects"}
+          {app === allApps.linkedin && "Connect with me"}
+          {app === allApps.cv && "View my career and skills"}
+          {app === allApps.guestBook && "Leave me a comment"}
+        </div>
+      </div>
+    </button>
+  ))}
+</div>
             </div>
           </>
         )}
