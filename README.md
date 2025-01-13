@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ✨ Windows 11 Portfolio
+> Une expérience web unique simulant Windows 11 pour présenter mon portfolio de développeur
 
-## Getting Started
+<br>
 
-First, run the development server:
+## 🎥 Démonstration
+<div>
+    <img src="https://windows.estrine-alexis.fr/assets/images/welcome/windows.gif" alt="Démo" width="400" />
+</div>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<br>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📜 Description
+Windows 11 Portfolio est une réplique web interactive de l'interface Windows 11, conçue pour servir de portfolio créatif. Ce projet repousse les limites de l'expérience utilisateur classique en transformant un environnement familier - celui de Windows 11 - en une vitrine innovante de compétences en développement web.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<br>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Fonctionnalités
+- **Simulation Windows 11** : Une reproduction fidèle de l'interface utilisateur de Windows 11, offrant une expérience immersive et familière
+- **Applications Interactives** : Possibilité d'ouvrir et d'interagir avec différentes applications représentant les sections du portfolio
+- **Gestion des Fenêtres** : Système complet de gestion des fenêtres permettant de redimensionner, déplacer et organiser les applications comme dans Windows 11
+- **Contrôle Audio** : Système de gestion audio intégré pour une expérience multimédia complète
+- **Interface Responsive** : Adaptation fluide à différentes tailles d'écran pour une expérience optimale sur tous les appareils (Sauf mobile)
+- **Animations Fluides** : Transitions et animations soignées reproduisant l'esthétique moderne de Windows 11
 
-## Learn More
+<br>
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠 Technologies Utilisées
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<br>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📞 Contact
+N'hésitez pas à me contacter pour discuter de projets ou d'opportunités !
 
-## Deploy on Vercel
+<br>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alexis-estrine/)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:estrine.alexis@gmail.com)
