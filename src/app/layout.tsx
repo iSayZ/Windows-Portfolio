@@ -3,6 +3,7 @@ import './globals.css';
 import { ThemeProvider } from './context/ThemeContext';
 import { AudioProvider } from './context/AudioContext';
 import { AnimatedLayout } from './components/AnimatedLayout';
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata: Metadata = {
   title: 'Portfolio Windows | Alexis Estrine - Développeur Web Frontend',
@@ -56,6 +57,7 @@ export default function RootLayout({
         <ThemeProvider>
           <AudioProvider>
             {children}
+            <Analytics />
             <AnimatedLayout />
           </AudioProvider>
         </ThemeProvider>

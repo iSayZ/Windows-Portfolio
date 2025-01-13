@@ -5,7 +5,7 @@
 
 ## 🎥 Démonstration
 <div>
-    <img src="https://windows.estrine-alexis.fr/assets/images/welcome/windows.gif" alt="Démo" width="400" />
+    <img src="https://windows.estrine-alexis.fr/assets/images/welcome/windows.gif" alt="Démo" width="800" />
 </div>
 
 <br>
