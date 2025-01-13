@@ -60,7 +60,7 @@ const WelcomeApp = () => {
           {content[language].messages[1]}
         </p>
         <Image
-          src="/assets/images/welcome/demo.gif"
+          src="/assets/images/welcome/windows.gif"
           alt="Animation démonstrative des fenêtres"
           width={800}
           height={300}
