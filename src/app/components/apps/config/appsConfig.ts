@@ -148,7 +148,7 @@ export const allApps: AppsConfig = {
   imageViewer: {
     icon: '/assets/images/app-icons/apps/image-viewer.svg',
     shortname: 'ImageViewer',
-    name: 'ImageViewer - spider-mass.jpg',
+    name: 'ImageViewer',
     component: ImageViewer,
     defaultSize: {
       width: 400,
@@ -156,7 +156,6 @@ export const allApps: AppsConfig = {
     },
     defaultProps: {
       realPath: '/assets/documents/fake-files/explorer/pictures/spider-mass.jpg',
-      name: 'test',
     },
   },
   youtube: {
