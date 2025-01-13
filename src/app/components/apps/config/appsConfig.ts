@@ -11,6 +11,7 @@ import {
   type PdfViewerProps,
   Terminal,
   WebView,
+  WelcomeApp,
   YouTubeViewer,
 } from '@/app/components/apps';
 import { binFileSystem } from '../FileExplorer/data/binFileSystem';
@@ -201,6 +202,16 @@ export const allApps: AppsConfig = {
     component: GuestBook,
     defaultSize: {
       width: 900,
+      height: 550,
+    },
+  },
+  welcomeApp: {
+    icon: '/assets/images/app-icons/apps/windows.svg',
+    shortname: 'Welcome App',
+    name: 'Welcome into my Windows 11 Portfolio !',
+    component: WelcomeApp,
+    defaultSize: {
+      width: 600,
       height: 550,
     },
   },

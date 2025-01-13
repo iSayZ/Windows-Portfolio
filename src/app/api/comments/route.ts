@@ -7,8 +7,7 @@ export async function GET() {
     await dbConnect();
 
     const comments = await Comment.find({ isApproved: true })
-      .sort({ timestamp: -1 })
-      .limit(10);
+      .sort({ timestamp: 1 })
 
     return NextResponse.json(comments);
   } catch (error) {

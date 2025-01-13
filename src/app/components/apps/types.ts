@@ -30,7 +30,8 @@ export type AppName =
   | 'musicPlayer'
   | 'paint'
   | 'guestBook'
-  | 'bin';
+  | 'bin'
+  | 'welcomeApp';
 
 export type AppsConfig = {
   [K in AppName]: AppDefinition;
