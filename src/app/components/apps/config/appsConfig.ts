@@ -90,7 +90,7 @@ export const allApps: AppsConfig = {
       height: 550,
     },
     defaultProps: {
-      pdfUrl: '/assets/documents/cv.pdf',
+      pdfUrl: '/assets/documents/CV_Alexis_ESTRINE.pdf',
     } as PdfViewerProps,
   },
   calculator: {
