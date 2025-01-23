@@ -6,9 +6,9 @@ import { AnimatedLayout } from './components/AnimatedLayout';
 import { Analytics } from "@vercel/analytics/react"
 
 export const metadata: Metadata = {
-  title: 'Portfolio Windows | Alexis Estrine - Développeur Web Frontend',
+  title: 'Portfolio Windows | Alexis Estrine - Développeur Web',
   description:
-    'Explorez mon portfolio interactif inspiré de Windows. Développeur JavaScript spécialisé en React, Next.js et TypeScript, je crée des expériences web innovantes et performantes. Découvrez mes projets, compétences techniques et réalisations à travers une interface unique.',
+    'Explorez mon portfolio interactif inspiré de Windows. Développeur JavaScript Full-Stack passionné, je crée des expériences web innovantes et performantes. Découvrez mes projets, compétences techniques et réalisations à travers une interface unique.',
   keywords: [
     'développeur frontend',
     'React',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Portfolio Windows | Alexis Estrine - Développeur Web',
     description:
-      'Explorez mon portfolio interactif inspiré de Windows. Développeur JavaScript spécialisé en React, Next.js et TypeScript.',
+      "Explorez mon portfolio interactif inspiré de Windows. Développeur JavaScript Full-Stack passionné par l'innovation web.",
     type: 'website',
     images: [
       {
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Portfolio Windows | Alexis Estrine - Développeur Web',
     description:
-      "Portfolio interactif d'un développeur JavaScript passionné par l'innovation web.",
+      "Explorez mon portfolio interactif inspiré de Windows. Développeur JavaScript Full-Stack passionné par l'innovation web.",
     images: ['/assets/meta.png'],
   },
 };
