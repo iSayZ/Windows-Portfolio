@@ -64,7 +64,7 @@ const WelcomeApp = () => {
           alt="Animation démonstrative des fenêtres"
           width={800}
           height={300}
-          className='my-4'
+          className="my-4"
         />
         <p className="text-lg text-center leading-relaxed">
           {content[language].messages[2]}

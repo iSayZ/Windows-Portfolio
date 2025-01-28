@@ -19,11 +19,11 @@ export const PdfViewer: React.FC<PdfViewerProps> = ({ pdfUrl }) => {
           <p>Chargement du PDF...</p>
         </div>
       )}
-      
+
       {hasError && (
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-50">
           <p className="mb-4">Impossible d&apos;afficher le PDF.</p>
-          <a 
+          <a
             href={pdfUrl}
             className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
             target="_blank"
@@ -33,8 +33,8 @@ export const PdfViewer: React.FC<PdfViewerProps> = ({ pdfUrl }) => {
           </a>
         </div>
       )}
-      
-      <iframe 
+
+      <iframe
         src={`${pdfUrl}#toolbar=0`}
         className={`w-full h-full border-none ${isLoading || hasError ? 'invisible' : 'visible'}`}
         title="PDF Viewer"
@@ -57,7 +57,7 @@ export const PdfViewer: React.FC<PdfViewerProps> = ({ pdfUrl }) => {
             <Download size={20} />
             <span className="hidden sm:inline">Télécharger</span>
           </a>
-          
+
           <button
             onClick={handlePrint}
             className="flex items-center gap-2 px-3 py-1.5 rounded-full hover:bg-gray-100 text-gray-700 transition-colors"

@@ -33,8 +33,9 @@ export async function GET() {
   try {
     await dbConnect();
 
-    const comments = await Comment.find({ isApproved: true })
-      .sort({ timestamp: 1 });
+    const comments = await Comment.find({ isApproved: true }).sort({
+      timestamp: 1,
+    });
 
     return NextResponse.json(comments);
   } catch (error) {
@@ -67,7 +68,7 @@ Accédez à votre interface d'administration pour le valider.`,
       <p><strong>Le :</strong> ${new Date() || 'Date inconnue'}</p>
       <p><strong>Auteur :</strong> ${body.name || 'Anonyme'}</p>
       <p><strong>Commentaire :</strong> ${body.content}</p>
-      <p>Accédez à votre interface d'administration pour le valider.</p>`
+      <p>Accédez à votre interface d'administration pour le valider.</p>`,
     });
 
     return NextResponse.json(comment);

@@ -97,35 +97,35 @@ const WindowsMenu: React.FC<WindowsMenuProps> = ({
                 </button>
               </div>
               <div className="grid grid-cols-2">
-  {recommendedApps.map((app) => (
-    <button
-      key={app.shortname}
-      className="flex items-center gap-3 p-2 rounded-sm hover:bg-accent transition active:scale-95"
-      onClick={() => {
-        openApp(app);
-        onClose();
-      }}
-    >
-      <div className="relative w-7 h-7">
-        <Image
-          src={app.icon}
-          alt={`${app.name} icon`}
-          layout="fill"
-          objectFit="contain"
-        />
-      </div>
-      <div className="text-left">
-        <div className="text-sm">{app.name}</div>
-        <div className="text-xs text-gray-500">
-          {app === allApps.github && "Check out my projects"}
-          {app === allApps.linkedin && "Connect with me"}
-          {app === allApps.cv && "View my career and skills"}
-          {app === allApps.guestBook && "Leave me a comment"}
-        </div>
-      </div>
-    </button>
-  ))}
-</div>
+                {recommendedApps.map((app) => (
+                  <button
+                    key={app.shortname}
+                    className="flex items-center gap-3 p-2 rounded-sm hover:bg-accent transition active:scale-95"
+                    onClick={() => {
+                      openApp(app);
+                      onClose();
+                    }}
+                  >
+                    <div className="relative w-7 h-7">
+                      <Image
+                        src={app.icon}
+                        alt={`${app.name} icon`}
+                        layout="fill"
+                        objectFit="contain"
+                      />
+                    </div>
+                    <div className="text-left">
+                      <div className="text-sm">{app.name}</div>
+                      <div className="text-xs text-gray-500">
+                        {app === allApps.github && 'Check out my projects'}
+                        {app === allApps.linkedin && 'Connect with me'}
+                        {app === allApps.cv && 'View my career and skills'}
+                        {app === allApps.guestBook && 'Leave me a comment'}
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
             </div>
           </>
         )}

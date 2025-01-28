@@ -29,15 +29,13 @@ const Home = () => {
 
   useEffect(() => {
     if (!isScreenTooSmall) {
-
       const timer = setTimeout(() => {
-        openApp(allApps.welcomeApp);  // Open app after 2 seconds
+        openApp(allApps.welcomeApp); // Open app after 2 seconds
       }, 2000);
-  
+
       return () => clearTimeout(timer);
     }
   }, [openApp, allApps, isScreenTooSmall]);
-
 
   if (isScreenTooSmall) {
     return <ScreenSizeAlert />;

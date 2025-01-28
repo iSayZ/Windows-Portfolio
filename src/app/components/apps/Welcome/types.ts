@@ -7,4 +7,4 @@ export interface WelcomeContent {
 
 export type ContentDictionary = {
   [key in Language]: WelcomeContent;
-}
+};

@@ -155,7 +155,8 @@ export const allApps: AppsConfig = {
       height: 500,
     },
     defaultProps: {
-      realPath: '/assets/documents/fake-files/explorer/pictures/spider-mass.jpg',
+      realPath:
+        '/assets/documents/fake-files/explorer/pictures/spider-mass.jpg',
     },
   },
   youtube: {

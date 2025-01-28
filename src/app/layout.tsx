@@ -3,7 +3,7 @@ import './globals.css';
 import { ThemeProvider } from './context/ThemeContext';
 import { AudioProvider } from './context/AudioContext';
 import { AnimatedLayout } from './components/AnimatedLayout';
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
   title: 'Portfolio Windows | Alexis Estrine - Développeur Web',
@@ -30,11 +30,11 @@ export const metadata: Metadata = {
         url: '/assets/meta.png',
         width: 1200,
         height: 630,
-        alt: 'Portfolio Windows Alexis Estrine'
-      }
+        alt: 'Portfolio Windows Alexis Estrine',
+      },
     ],
-    siteName: "Portfolio Windows | Alexis Estrine - Développeur Web",
-    url: "https://windows.estrine-alexis.fr/",
+    siteName: 'Portfolio Windows | Alexis Estrine - Développeur Web',
+    url: 'https://windows.estrine-alexis.fr/',
   },
   twitter: {
     card: 'summary_large_image',

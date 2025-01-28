@@ -8,16 +8,22 @@ const translations = {
     title: 'Screen not supported',
     message:
       'This application requires a screen width of at least 768px for an optimal experience. Please use a device with a larger screen.',
+    button: 'View mobile portfolio',
   },
   fr: {
     title: 'Écran non supporté',
     message:
       "Cette application nécessite un écran d'au moins 768px de largeur pour une expérience optimale. Veuillez utiliser un appareil avec un écran plus large.",
+    button: 'Voir le portfolio mobile',
   },
 } as const;
 
 export const ScreenSizeAlert = () => {
   const [language, setLanguage] = useState<'en' | 'fr'>('en');
+
+  const handleRedirect = () => {
+    window.location.href = 'https://estrine-alexis.fr';
+  };
 
   return (
     <>
@@ -69,7 +75,15 @@ export const ScreenSizeAlert = () => {
             <h2 className="text-xl font-bold text-foreground mb-4">
               {translations[language].title}
             </h2>
-            <p className="text-foreground/80">{translations[language].message}</p>
+            <p className="text-foreground/80 mb-8">
+              {translations[language].message}
+            </p>
+            <button
+              className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
+              onClick={handleRedirect}
+            >
+              {translations[language].button}
+            </button>
           </div>
         </div>
       </div>
