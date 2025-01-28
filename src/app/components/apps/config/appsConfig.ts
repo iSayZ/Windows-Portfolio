@@ -216,4 +216,17 @@ export const allApps: AppsConfig = {
       height: 550,
     },
   },
+  portfolio: {
+    icon: '/assets/images/app-icons/apps/logo.png',
+    shortname: 'Portfolio',
+    name: 'https://estrine-alexis.fr/portfolio',
+    component: WebView,
+    defaultSize: {
+      width: 900,
+      height: 550,
+    },
+    defaultProps: {
+      url: 'https://estrine-alexis.fr/portfolio',
+    },
+  },
 };

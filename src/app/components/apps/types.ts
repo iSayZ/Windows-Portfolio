@@ -31,7 +31,8 @@ export type AppName =
   | 'paint'
   | 'guestBook'
   | 'bin'
-  | 'welcomeApp';
+  | 'welcomeApp'
+  | 'portfolio';
 
 export type AppsConfig = {
   [K in AppName]: AppDefinition;

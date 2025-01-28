@@ -2,7 +2,7 @@ import { AppDefinition } from '../types';
 import { allApps } from './appsConfig';
 
 export const pinnedApps: AppDefinition[] = [
-  allApps.edge,
+  allApps.portfolio,
   allApps.chrome,
   allApps.vscode,
   allApps.fileExplorer,

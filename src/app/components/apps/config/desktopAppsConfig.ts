@@ -12,5 +12,6 @@ export const desktopApps: AppDefinition[] = [
   allApps.youtube,
   allApps.musicPlayer,
   allApps.paint,
+  allApps.portfolio,
   allApps.guestBook,
 ];
